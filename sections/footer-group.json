@@ -28,18 +28,17 @@
             "logo_block": {
               "type": "logo",
               "settings": {
-                "logo_width": 120,
                 "padding-block-end": 16
               }
             },
             "social_links": {
               "type": "social-links",
               "settings": {
+                "icon_color": "#ffffff",
                 "facebook_url": "https://www.facebook.com/",
                 "instagram_url": "https://www.instagram.com/",
-                "twitter_url": "https://twitter.com/",
                 "tiktok_url": "https://tiktok.com/",
-                "icon_color": "#ffffff"
+                "twitter_url": "https://twitter.com/"
               }
             }
           },
@@ -51,19 +50,15 @@
         "menu_shop": {
           "type": "menu",
           "settings": {
-            "heading": "Shop",
             "menu": "main-menu",
-            "heading_color": "#ffffff",
-            "link_color": "#b3bed5"
+            "heading": "Shop"
           }
         },
         "menu_support": {
           "type": "menu",
           "settings": {
-            "heading": "Support",
             "menu": "footer",
-            "heading_color": "#ffffff",
-            "link_color": "#b3bed5"
+            "heading": "Support"
           }
         },
         "group_mission": {
@@ -124,15 +119,15 @@
           "type": "footer-copyright",
           "settings": {
             "show_powered_by": false,
-            "font_size": "0.875rem",
-            "text_color": "#7686a7"
+            "text_color": "#7686a7",
+            "font_size": "0.875rem"
           }
         },
         "footer_policy_list": {
           "type": "footer-policy-list",
           "settings": {
-            "font_size": "0.875rem",
-            "text_color": "#7686a7"
+            "text_color": "#7686a7",
+            "font_size": "0.875rem"
           }
         }
       },
@@ -144,9 +139,9 @@
       "settings": {
         "section_width": "page-width",
         "gap": 24,
+        "background_color": "#0a1930",
         "divider_thickness": 1,
         "divider_color": "#1d2e4d",
-        "background_color": "#0a1930",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
