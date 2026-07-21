@@ -1,0 +1,298 @@
+{% comment %}
+  Hero Slideshow Section
+  Tailored for 1920px max-width, fully responsive, and highly customizable.
+  Natively integrates with Shopify theme structure and loads assets from c:/Users/senap/Shopify theme/CanadaprojectGS/CandaH/healixscrubs/assets
+{% endcomment %}
+
+{{ 'hero-slideshow.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hero-slideshow.js' | asset_url }}" defer="defer"></script>
+
+<hero-slideshow class="hero-slideshow-section" id="HeroSlideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-autoplay-speed="{{ section.settings.autoplay_speed | times: 1000 }}" style="--desktop-height: {{ section.settings.desktop_height }}px; --mobile-height: {{ section.settings.mobile_height }}px;">
+  <div class="hero-slider-outer">
+    <div class="hero-slider-track" ref="sliderTrack">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'slide' -%}
+          {%- liquid
+            assign img_desktop = block.settings.image_desktop
+            assign img_mobile = block.settings.image_mobile | default: img_desktop
+            assign alt_text = img_desktop.alt | default: block.settings.heading | strip_html | escape
+          -%}
+          <div class="hero-slide" id="Slide-{{ block.id }}" {{ block.shopify_attributes }} style="--overlay-opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};">
+            
+            <!-- Background Image -->
+            {%- if img_desktop != blank -%}
+              <picture class="hero-slide-bg-picture">
+                <source media="(max-width: 767px)" srcset="{{ img_mobile | image_url: width: 800 }}">
+                <source media="(min-width: 768px)" srcset="{{ img_desktop | image_url: width: 1920 }}">
+                {{ img_desktop | image_url: width: 1920 | image_tag: 
+                  loading: 'eager', 
+                  class: 'hero-slide-bg-img', 
+                  alt: alt_text,
+                  fetchpriority: 'high'
+                }}
+              </picture>
+            {%- else -%}
+              <div class="hero-slide-bg-placeholder">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'hero-slide-bg-img placeholder-svg' }}
+              </div>
+            {%- endif -%}
+
+            <!-- Dark Overlay for legibility -->
+            <div class="hero-slide-overlay"></div>
+
+            <div class="hero-slide-container page-width align-{{ block.settings.content_alignment }}">
+              <!-- Content Column -->
+              <div class="hero-slide-content-col">
+                {%- if block.settings.subheading != blank -%}
+                  <div class="hero-slide-subheading" style="color: {{ block.settings.subheading_color }};">
+                    {{ block.settings.subheading }}
+                  </div>
+                {%- endif -%}
+                
+                {%- if block.settings.heading != blank -%}
+                  <div class="hero-slide-heading" style="color: {{ block.settings.heading_color }};">
+                    {{ block.settings.heading }}
+                  </div>
+                {%- endif -%}
+                
+                {%- if block.settings.description != blank -%}
+                  <div class="hero-slide-description" style="color: {{ block.settings.description_color }};">
+                    {{ block.settings.description }}
+                  </div>
+                {%- endif -%}
+                
+                {%- if block.settings.button_1_label != blank or block.settings.button_2_label != blank -%}
+                  <div class="hero-slide-buttons">
+                    {%- if block.settings.button_1_label != blank -%}
+                      <a href="{{ block.settings.button_1_link | default: '#' }}" class="hero-slider-btn btn-primary" style="--btn-bg: {{ block.settings.button_1_bg }}; --btn-text: {{ block.settings.button_1_text }};">
+                        {{ block.settings.button_1_label }}
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.button_2_label != blank -%}
+                      <a href="{{ block.settings.button_2_link | default: '#' }}" class="hero-slider-btn btn-secondary" style="--btn-bg: {{ block.settings.button_2_bg }}; --btn-text: {{ block.settings.button_2_text }};">
+                        {{ block.settings.button_2_label }}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+            
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  
+  <!-- Slide Navigation Dots -->
+  {%- if section.blocks.size > 1 -%}
+    <div class="hero-slider-controls">
+      <div class="hero-slider-dots" ref="dotsContainer">
+        {%- assign slide_idx = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'slide' -%}
+            <button class="hero-dot{% if slide_idx == 0 %} active{% endif %}" data-slide-index="{{ slide_idx }}" aria-label="Go to slide {{ slide_idx | plus: 1 }}"></button>
+            {%- assign slide_idx = slide_idx | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</hero-slideshow>
+
+{% schema %}
+{
+  "name": "Hero Slideshow",
+  "tag": "section",
+  "class": "section-hero-slideshow",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Change slides every",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Slider height (Desktop)",
+      "min": 400,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 650
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Slider height (Mobile)",
+      "min": 300,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "default": 450
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktop Image (1920x960px recommended)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image (750x900px recommended)"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": "Subheading / Label",
+          "default": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description / Paragraph",
+          "default": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_1_label",
+          "label": "Button 1 Label",
+          "default": "Shop Women"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "color",
+          "id": "button_1_bg",
+          "label": "Button 1 Background Color",
+          "default": "#0b1c3f"
+        },
+        {
+          "type": "color",
+          "id": "button_1_text",
+          "label": "Button 1 Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "button_2_label",
+          "label": "Button 2 Label",
+          "default": "Shop Men"
+        },
+        {
+          "type": "url",
+          "id": "button_2_link",
+          "label": "Button 2 Link"
+        },
+        {
+          "type": "color",
+          "id": "button_2_bg",
+          "label": "Button 2 Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_2_text",
+          "label": "Button 2 Text Color",
+          "default": "#0b1c3f"
+        },
+        {
+          "type": "header",
+          "content": "Overlay & Alignment"
+        },
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "label": "Image Overlay Opacity",
+          "min": 0,
+          "max": 90,
+          "step": 10,
+          "unit": "%",
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": "Text Colors"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slideshow",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
