@@ -49,7 +49,7 @@
             "constrain_to_viewport": true,
             "media_fit": "contain",
             "media_radius": 0,
-            "extend_media": false,
+            "extend_media": true,
             "zoom": true,
             "video_loop": false,
             "hide_variants": true,
