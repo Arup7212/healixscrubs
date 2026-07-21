@@ -55,6 +55,7 @@
           "blocks": {
             "text_LWt8Pz": {
               "type": "text",
+              "disabled": true,
               "settings": {
                 "text": "<h2>Join our email list</h2>",
                 "width": "100%",
@@ -81,7 +82,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Innovating the future of scrubs — for those who give their everything.<br/><br/></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
