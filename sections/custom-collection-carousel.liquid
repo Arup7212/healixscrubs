@@ -1,0 +1,304 @@
+{%- style -%}
+  .custom-collection-carousel {
+    background-color: {{ section.settings.background_color }};
+    padding: 60px 0 60px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .ccc-main-layout {
+    display: flex;
+    align-items: stretch;
+  }
+  .ccc-heading-container {
+    width: 80px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ccc-heading {
+    transform: rotate(-90deg);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #000;
+    white-space: nowrap;
+    position: absolute;
+    text-transform: uppercase;
+  }
+  .ccc-carousel-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .ccc-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    padding-right: 20px;
+    scroll-behavior: smooth;
+  }
+  .ccc-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  .ccc-card {
+    min-width: 280px;
+    width: 280px;
+    height: 320px;
+    position: relative;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    background-color: #ddd;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+  }
+  .ccc-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .ccc-card:hover .ccc-card__image {
+    transform: scale(1.05);
+  }
+  .ccc-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, rgba(16,40,82,0.9) 0%, rgba(16,40,82,0) 100%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ccc-card__icon {
+    width: 16px;
+    height: 16px;
+    background-color: #f7931e; /* Orange square */
+    flex-shrink: 0;
+  }
+  .ccc-card__title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .ccc-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 80px;
+    padding-right: 40px;
+    margin-top: 30px;
+  }
+  .ccc-controls {
+    display: flex;
+    gap: 10px;
+  }
+  .ccc-control-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: #0b457f;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+  }
+  .ccc-control-btn:hover {
+    background-color: #0b457f;
+    color: #fff;
+  }
+  .ccc-control-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+  .ccc-view-more {
+    background-color: #0b457f;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+  }
+  .ccc-view-more:hover {
+    background-color: #08335e;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ccc-main-layout {
+      flex-direction: column;
+    }
+    .ccc-heading-container {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .ccc-heading {
+      position: static;
+      transform: none;
+      font-size: 24px;
+    }
+    .ccc-bottom-bar {
+      padding-left: 20px;
+      padding-right: 20px;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .ccc-card {
+      min-width: 240px;
+      width: 240px;
+      height: 280px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-collection-carousel" id="ccc-{{ section.id }}">
+  <div class="ccc-main-layout">
+    <div class="ccc-heading-container">
+      <h2 class="ccc-heading">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="ccc-carousel-wrapper">
+      <div class="ccc-carousel" id="ccc-scroll-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign collection = block.settings.collection
+            assign image = block.settings.custom_image | default: collection.image | default: collection.products.first.featured_image
+            assign title = block.settings.title_override | default: collection.title | default: 'Collection'
+            assign link = collection.url | default: '#'
+          -%}
+          <a href="{{ link }}" class="ccc-card" {{ block.shopify_attributes }}>
+            {%- if image != blank -%}
+              {{ image | image_url: width: 600 | image_tag: class: 'ccc-card__image', loading: 'lazy' }}
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'ccc-card__image' }}
+            {%- endif -%}
+            <div class="ccc-card__overlay">
+              <div class="ccc-card__icon"></div>
+              <h3 class="ccc-card__title">{{ title }}</h3>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+  
+  <div class="ccc-bottom-bar">
+    <div class="ccc-controls">
+      <button class="ccc-control-btn ccc-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="ccc-control-btn ccc-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+    </div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="ccc-view-more">
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('ccc-{{ section.id }}');
+    const carousel = section.querySelector('.ccc-carousel');
+    const prevBtn = section.querySelector('.ccc-prev');
+    const nextBtn = section.querySelector('.ccc-next');
+
+    if(carousel && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Collection Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "INDUSTRIES"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#b9cce4"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "VIEW MORE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image",
+          "info": "Overrides the collection's default image."
+        },
+        {
+          "type": "text",
+          "id": "title_override",
+          "label": "Title Override",
+          "info": "Overrides the collection's title."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Collection Slider",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}
