@@ -115,7 +115,7 @@
           "name": "t:names.menu",
           "settings": {
             "menu": "main-menu",
-            "heading": "",
+            "heading": "Shop",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -175,6 +175,7 @@
         },
         "email_signup_crihX7": {
           "type": "email-signup",
+          "disabled": true,
           "settings": {
             "width": "fill",
             "custom_width": 100,
