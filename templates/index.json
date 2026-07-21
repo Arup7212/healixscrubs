@@ -377,15 +377,49 @@
         "padding-block-end": 48
       }
     },
-    "newsletter_banner_1": {
-      "type": "newsletter-banner",
+    "custom_collection_carousel_1": {
+      "type": "custom-collection-carousel",
+      "blocks": {
+        "col_1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title_override": "MINING"
+          }
+        },
+        "col_2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title_override": "CONSUMER ELECTRONICS"
+          }
+        },
+        "col_3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title_override": "TRUCKING"
+          }
+        },
+        "col_4": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title_override": "WIRELESS"
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3",
+        "col_4"
+      ],
       "settings": {
-        "heading": "Stay in the know",
-        "subheading": "New arrivals, exclusive offers, and nurse-approved tips.",
-        "background_color": "#0F2145",
-        "text_color": "#ffffff",
-        "button_bg_color": "#2b5ba3",
-        "button_text_color": "#ffffff"
+        "heading": "INDUSTRIES",
+        "background_color": "#b9cce4",
+        "button_label": "VIEW MORE",
+        "button_link": ""
       }
     },
     "features_banner_1": {
@@ -432,44 +466,92 @@
         "icon_bg_color": "#dbe4f0"
       }
     },
-    "custom_collection_carousel_1": {
+    "custom_collection_carousel_h8D6YX": {
       "type": "custom-collection-carousel",
       "blocks": {
-        "col_1": {
+        "collection_UJmmgU": {
           "type": "collection",
           "settings": {
-            "title_override": "MINING"
+            "collection": "",
+            "custom_image": "shopify://shop_images/2_7ab8613e-422d-4070-97c8-b5b5fb7c1a9c.webp",
+            "title_override": ""
           }
         },
-        "col_2": {
+        "collection_pRdGmz": {
           "type": "collection",
           "settings": {
-            "title_override": "CONSUMER ELECTRONICS"
+            "collection": "",
+            "custom_image": "shopify://shop_images/Scrub_W_One-Pocket_Top_Yellow_Pax_01_1.webp",
+            "title_override": ""
           }
         },
-        "col_3": {
+        "collection_tkp8QJ": {
           "type": "collection",
           "settings": {
-            "title_override": "TRUCKING"
+            "collection": "",
+            "custom_image": "shopify://shop_images/2_f09212ec-45a4-4651-8c41-4670be56da92.webp",
+            "title_override": ""
           }
         },
-        "col_4": {
+        "collection_jJYg6G": {
           "type": "collection",
           "settings": {
-            "title_override": "WIRELESS"
+            "collection": "",
+            "custom_image": "shopify://shop_images/DSC03497.webp",
+            "title_override": ""
+          }
+        },
+        "collection_KjHPgW": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "custom_image": "shopify://shop_images/Scrub_W_One-Pocket_Top_Green_Pax_02.webp",
+            "title_override": ""
+          }
+        },
+        "collection_8Y4gR9": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "custom_image": "shopify://shop_images/CopyofScrub_W_One-Pocket_Top_Black_Pax_02.webp",
+            "title_override": ""
+          }
+        },
+        "collection_iUNkWy": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "custom_image": "shopify://shop_images/1_7e14ec49-0a23-42f5-9959-fb1e6911267b.webp",
+            "title_override": ""
           }
         }
       },
       "block_order": [
-        "col_1",
-        "col_2",
-        "col_3",
-        "col_4"
+        "collection_UJmmgU",
+        "collection_pRdGmz",
+        "collection_tkp8QJ",
+        "collection_jJYg6G",
+        "collection_KjHPgW",
+        "collection_8Y4gR9",
+        "collection_iUNkWy"
       ],
+      "name": "Custom Collection Slider",
       "settings": {
         "heading": "INDUSTRIES",
         "background_color": "#b9cce4",
-        "button_label": "VIEW MORE"
+        "button_label": "VIEW MORE",
+        "button_link": ""
+      }
+    },
+    "newsletter_banner_1": {
+      "type": "newsletter-banner",
+      "settings": {
+        "heading": "Stay in the know",
+        "subheading": "New arrivals, exclusive offers, and nurse-approved tips.",
+        "background_color": "#0f2145",
+        "text_color": "#ffffff",
+        "button_bg_color": "#2b5ba3",
+        "button_text_color": "#ffffff"
       }
     }
   },
@@ -479,6 +561,7 @@
     "product_list_fa6P9H",
     "custom_collection_carousel_1",
     "features_banner_1",
+    "custom_collection_carousel_h8D6YX",
     "newsletter_banner_1"
   ]
 }
