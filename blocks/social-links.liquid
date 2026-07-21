@@ -58,13 +58,9 @@
             endcase
         endcase
 
-        # Check if URL has a profile path (more than just the domain)
-        assign url_parts = link_url | split: '//' | last | split: '/'
-        assign has_profile = false
+        # Always render the social icon if a URL is provided, even if it's a generic domain
+        assign has_profile = true
 
-        if url_parts.size > 1 and url_parts[1] != ''
-          assign has_profile = true
-        endif
 
         unless render_icon
           assign has_profile = true

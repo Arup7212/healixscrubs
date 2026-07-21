@@ -1,0 +1,237 @@
+{%- style -%}
+  .newsletter-banner-wrapper {
+    padding: 0 var(--page-padding, 1.5rem);
+    max-width: var(--page-width, 1400px);
+    margin: 40px auto;
+  }
+  .newsletter-banner {
+    display: flex;
+    align-items: center;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    border-radius: 8px;
+    padding: 24px 32px;
+    position: relative;
+  }
+  .newsletter-banner__image {
+    flex-shrink: 0;
+    margin-top: -50px;
+    margin-right: 40px;
+    margin-bottom: -24px;
+    position: relative;
+    z-index: 1;
+    align-self: flex-end;
+  }
+  .newsletter-banner__image img {
+    display: block;
+    height: 160px;
+    width: auto;
+    object-fit: contain;
+  }
+  .newsletter-banner__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .newsletter-banner__text {
+    max-width: 400px;
+  }
+  .newsletter-banner__heading {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: inherit;
+    line-height: 1.2;
+  }
+  .newsletter-banner__subheading {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+  }
+  .newsletter-banner__form-container {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 420px;
+  }
+  .newsletter-banner__form {
+    display: flex;
+    width: 100%;
+  }
+  .newsletter-banner__input {
+    flex-grow: 1;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    outline: none;
+    color: #000;
+    font-family: inherit;
+  }
+  .newsletter-banner__input::placeholder {
+    color: #666;
+  }
+  .newsletter-banner__button {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    padding: 14px 24px;
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+  .newsletter-banner__button:hover {
+    opacity: 0.9;
+  }
+  .newsletter-banner__message {
+    font-size: 12px;
+    margin-top: 8px;
+    color: inherit;
+  }
+
+  @media screen and (max-width: 768px) {
+    .newsletter-banner {
+      flex-direction: column;
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .newsletter-banner__image {
+      margin-top: -90px;
+      margin-right: 0;
+      margin-bottom: 20px;
+      align-self: center;
+    }
+    .newsletter-banner__content {
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+    .newsletter-banner__text {
+      max-width: 100%;
+    }
+    .newsletter-banner__form {
+      flex-direction: column;
+    }
+    .newsletter-banner__input {
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .newsletter-banner__button {
+      border-radius: 4px;
+      width: 100%;
+    }
+  }
+{%- endstyle -%}
+
+<div class="newsletter-banner-wrapper">
+  <div class="newsletter-banner">
+    {%- if section.settings.image != blank -%}
+      <div class="newsletter-banner__image">
+        {{ section.settings.image | image_url: width: 400 | image_tag: loading: 'lazy' }}
+      </div>
+    {%- endif -%}
+
+    <div class="newsletter-banner__content">
+      <div class="newsletter-banner__text">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="newsletter-banner__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="newsletter-banner__subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="newsletter-banner__form-container">
+        {% form 'customer', class: 'newsletter-banner__form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input 
+            type="email" 
+            name="contact[email]" 
+            class="newsletter-banner__input" 
+            placeholder="Enter your email" 
+            required
+            {% if form.errors %}
+              aria-invalid="true"
+            {% endif %}
+          >
+          <button type="submit" class="newsletter-banner__button">
+            Subscribe
+          </button>
+          
+          {%- if form.errors -%}
+            <div class="newsletter-banner__message">
+              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <div class="newsletter-banner__message">
+              Thanks for subscribing!
+            </div>
+          {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Use a transparent PNG of a person. It will slightly overlap the top edge."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay in the know"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "New arrivals, exclusive offers, and nurse-approved tips."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#11203b"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#2b5ba3"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Banner"
+    }
+  ]
+}
+{% endschema %}

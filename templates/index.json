@@ -367,11 +367,68 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "newsletter_banner_1": {
+      "type": "newsletter-banner",
+      "settings": {
+        "heading": "Stay in the know",
+        "subheading": "New arrivals, exclusive offers, and nurse-approved tips.",
+        "background_color": "#0F2145",
+        "text_color": "#ffffff",
+        "button_bg_color": "#2b5ba3",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "features_banner_1": {
+      "type": "features-banner",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Engineered for Comfort",
+            "description": "Soft, breathable & moisture-wicking"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Performance Stretch",
+            "description": "Four-way stretch for unlimited movement"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Functional Design",
+            "description": "Pockets where you need them most"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Trusted by Nurses",
+            "description": "10,000+ healthcare professionals"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {
+        "background_color": "#eef2f9",
+        "text_color": "#11203b",
+        "icon_bg_color": "#dbe4f0"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "hero_slideshow_RQeWDK",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "features_banner_1",
+    "newsletter_banner_1"
   ]
 }
