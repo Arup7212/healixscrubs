@@ -377,51 +377,6 @@
         "padding-block-end": 48
       }
     },
-    "custom_collection_carousel_1": {
-      "type": "custom-collection-carousel",
-      "blocks": {
-        "col_1": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title_override": "MINING"
-          }
-        },
-        "col_2": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title_override": "CONSUMER ELECTRONICS"
-          }
-        },
-        "col_3": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title_override": "TRUCKING"
-          }
-        },
-        "col_4": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title_override": "WIRELESS"
-          }
-        }
-      },
-      "block_order": [
-        "col_1",
-        "col_2",
-        "col_3",
-        "col_4"
-      ],
-      "settings": {
-        "heading": "INDUSTRIES",
-        "background_color": "#b9cce4",
-        "button_label": "VIEW MORE",
-        "button_link": ""
-      }
-    },
     "features_banner_1": {
       "type": "features-banner",
       "blocks": {
@@ -559,7 +514,6 @@
     "hero_jVaWmY",
     "hero_slideshow_RQeWDK",
     "product_list_fa6P9H",
-    "custom_collection_carousel_1",
     "features_banner_1",
     "custom_collection_carousel_h8D6YX",
     "newsletter_banner_1"
