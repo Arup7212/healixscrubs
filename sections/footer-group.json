@@ -21,26 +21,77 @@
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
             "gap": 16,
-            "width": "fill"
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
             "logo_block": {
               "type": "logo",
               "settings": {
-                "logo_width": 120,
-                "padding-block-end": 16
-              }
+                "inverse": false,
+                "font": "heading",
+                "text_color": "",
+                "unit": "percent",
+                "percent_width": 100,
+                "pixel_height": 48,
+                "custom_mobile_size": false,
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_height_mobile": 120,
+                "padding-block-start": 0,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "social_links": {
               "type": "social-links",
               "settings": {
+                "icon_color": "#ffffff",
                 "facebook_url": "https://www.facebook.com/",
                 "instagram_url": "https://www.instagram.com/",
-                "twitter_url": "https://twitter.com/",
+                "youtube_url": "",
                 "tiktok_url": "https://tiktok.com/",
-                "icon_color": "#ffffff"
-              }
+                "twitter_url": "https://twitter.com/",
+                "threads_url": "",
+                "linkedin_url": "",
+                "bluesky_url": "",
+                "snapchat_url": "",
+                "pinterest_url": "",
+                "tumblr_url": "",
+                "vimeo_url": "",
+                "custom_url": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -51,20 +102,42 @@
         "menu_shop": {
           "type": "menu",
           "settings": {
-            "heading": "Shop",
             "menu": "main-menu",
-            "heading_color": "#ffffff",
-            "link_color": "#b3bed5"
-          }
+            "heading": "Shop",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "caret",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "h3",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "menu_support": {
           "type": "menu",
           "settings": {
-            "heading": "Support",
-            "menu": "footer",
-            "heading_color": "#ffffff",
-            "link_color": "#b3bed5"
-          }
+            "menu": "company",
+            "heading": "Company",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "caret",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "h3",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "group_mission": {
           "type": "group",
@@ -73,8 +146,36 @@
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-start",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
-            "width": "fill"
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
             "mission_heading": {
@@ -82,18 +183,50 @@
               "settings": {
                 "text": "<h4>Our Mission</h4>",
                 "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
                 "type_preset": "h4",
-                "text_color": "#ffffff"
-              }
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "#ffffff",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "mission_text": {
               "type": "text",
               "settings": {
                 "text": "<p>We design premium, performance-driven scrubs for healthcare heroes. Engineered for comfort, built for the shift.</p>",
                 "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
                 "type_preset": "paragraph",
-                "text_color": "#b3bed5"
-              }
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "#b3bed5",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -124,16 +257,20 @@
           "type": "footer-copyright",
           "settings": {
             "show_powered_by": false,
+            "text_color": "#7686a7",
             "font_size": "0.875rem",
-            "text_color": "#7686a7"
-          }
+            "case": "none"
+          },
+          "blocks": {}
         },
         "footer_policy_list": {
           "type": "footer-policy-list",
           "settings": {
+            "text_color": "#7686a7",
             "font_size": "0.875rem",
-            "text_color": "#7686a7"
-          }
+            "case": "none"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -144,9 +281,9 @@
       "settings": {
         "section_width": "page-width",
         "gap": 24,
+        "background_color": "#0a1930",
         "divider_thickness": 1,
         "divider_color": "#1d2e4d",
-        "background_color": "#0a1930",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
