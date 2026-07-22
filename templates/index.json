@@ -296,7 +296,7 @@
       ],
       "name": "Custom Collection Slider",
       "settings": {
-        "heading": "INDUSTRIES",
+        "heading": "",
         "background_color": "#b9cce4",
         "button_label": "VIEW MORE",
         "button_link": ""
