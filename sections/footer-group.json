@@ -104,7 +104,7 @@
           "settings": {
             "menu": "main-menu",
             "heading": "Shop",
-            "menu_spacing": 12,
+            "menu_spacing": 0,
             "show_as_accordion": false,
             "accordion_icon": "caret",
             "accordion_dividers": false,
@@ -124,6 +124,27 @@
           "settings": {
             "menu": "company",
             "heading": "Company",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "caret",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "h3",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "menu_46GPEL": {
+          "type": "menu",
+          "name": "t:names.menu",
+          "settings": {
+            "menu": "main-menu",
+            "heading": "",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -239,6 +260,7 @@
         "group_logo",
         "menu_shop",
         "menu_support",
+        "menu_46GPEL",
         "group_mission"
       ],
       "name": "t:names.footer",
