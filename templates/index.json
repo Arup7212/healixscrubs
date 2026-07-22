@@ -264,6 +264,7 @@
         "feature_1": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/snuggly.png",
             "title": "Engineered for Comfort",
             "description": "Soft, breathable & moisture-wicking"
           }
@@ -271,6 +272,7 @@
         "feature_2": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/stretching-exercises.png",
             "title": "Performance Stretch",
             "description": "Four-way stretch for unlimited movement"
           }
@@ -278,6 +280,7 @@
         "feature_3": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/design-thinking.png",
             "title": "Functional Design",
             "description": "Pockets where you need them most"
           }
@@ -285,6 +288,7 @@
         "feature_4": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/nurse.png",
             "title": "Trusted by Nurses",
             "description": "10,000+ healthcare professionals"
           }
