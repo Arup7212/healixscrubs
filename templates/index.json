@@ -380,6 +380,53 @@
         "padding-block-end": 48
       }
     },
+    "why_choose_us_CGamKt": {
+      "type": "why-choose-us",
+      "blocks": {
+        "feature_tKBdCK": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/info_1.png",
+            "title": "Certified Experts",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "feature_7XneN3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/diamond_fa53fc17-c78a-4f96-8a63-0439dd02887e_1.png",
+            "title": "Certified Experts",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "feature_bAEjkA": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/social-support_1.png",
+            "title": "Certified Experts",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        }
+      },
+      "block_order": [
+        "feature_tKBdCK",
+        "feature_7XneN3",
+        "feature_bAEjkA"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "heading": "Why Choose Us",
+        "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "image_1": "shopify://shop_images/DSC03520.webp",
+        "image_2": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM.png",
+        "right_title": "Build a strategy that puts your money to work.",
+        "right_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>",
+        "button_label": "Read More",
+        "button_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "features_banner_1": {
       "type": "features-banner",
       "blocks": {
@@ -511,62 +558,15 @@
         "button_bg_color": "#2b5ba3",
         "button_text_color": "#ffffff"
       }
-    },
-    "why_choose_us_CGamKt": {
-      "type": "why-choose-us",
-      "blocks": {
-        "feature_tKBdCK": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/info_1.png",
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          }
-        },
-        "feature_7XneN3": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/diamond_fa53fc17-c78a-4f96-8a63-0439dd02887e_1.png",
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          }
-        },
-        "feature_bAEjkA": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/social-support_1.png",
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          }
-        }
-      },
-      "block_order": [
-        "feature_tKBdCK",
-        "feature_7XneN3",
-        "feature_bAEjkA"
-      ],
-      "name": "Why Choose Us",
-      "settings": {
-        "heading": "Why Choose Us",
-        "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "image_1": "shopify://shop_images/DSC03520.webp",
-        "image_2": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM.png",
-        "right_title": "Build a strategy that puts your money to work.",
-        "right_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>",
-        "button_label": "Read More",
-        "button_link": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "hero_slideshow_RQeWDK",
     "product_list_fa6P9H",
+    "why_choose_us_CGamKt",
     "features_banner_1",
     "custom_collection_carousel_h8D6YX",
-    "newsletter_banner_1",
-    "why_choose_us_CGamKt"
+    "newsletter_banner_1"
   ]
 }
