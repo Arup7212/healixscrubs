@@ -125,6 +125,7 @@
           "type": "slide",
           "settings": {
             "image_desktop": "shopify://shop_images/ChatGPT_Image_Jul_21_2026_03_13_38_PM.png",
+            "image_mobile": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_24_46_PM.png",
             "subheading": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>",
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
@@ -147,6 +148,7 @@
           "type": "slide",
           "settings": {
             "image_desktop": "shopify://shop_images/ChatGPT_Image_Jul_21_2026_04_27_50_PM.png",
+            "image_mobile": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_21_48_PM.png",
             "subheading": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>",
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
