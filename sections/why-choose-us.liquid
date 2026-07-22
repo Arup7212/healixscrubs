@@ -1,0 +1,198 @@
+{{ 'why-choose-us.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+
+<div class="why-choose-us-section page-width section-{{ section.id }}-padding">
+  <div class="why-choose-us-header center">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p>{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="why-choose-us-content">
+    <div class="why-choose-us-images">
+      <div class="image-large">
+        {% if section.settings.image_1 != blank %}
+          {{ section.settings.image_1 | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div class="image-small">
+        {% if section.settings.image_2 != blank %}
+          {{ section.settings.image_2 | image_url: width: 400 | image_tag: loading: 'lazy' }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="why-choose-us-text">
+      {% if section.settings.right_title != blank %}
+        <h3 class="right-title">{{ section.settings.right_title }}</h3>
+      {% endif %}
+      
+      {% if section.settings.right_text != blank %}
+        <div class="right-description">{{ section.settings.right_text }}</div>
+      {% endif %}
+
+      <div class="why-choose-us-blocks">
+        {% for block in section.blocks %}
+          <div class="why-choose-us-block" {{ block.shopify_attributes }}>
+            <div class="block-icon">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon | image_url: width: 100 | image_tag: loading: 'lazy' }}
+              {% else %}
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              {% endif %}
+            </div>
+            <div class="block-content">
+              {% if block.settings.title != blank %}
+                <h4>{{ block.settings.title }}</h4>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p>{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.button_label != blank %}
+        <div class="why-choose-us-btn-wrapper">
+          <a href="{{ section.settings.button_link }}" class="button why-choose-us-btn">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Large Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Small Overlapping Image"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right Title",
+      "default": "Build a strategy that puts your money to work."
+    },
+    {
+      "type": "richtext",
+      "id": "right_text",
+      "label": "Right Description",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Read More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Certified Experts"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
