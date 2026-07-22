@@ -1,0 +1,225 @@
+{{ 'product-tabs-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #pts-{{ section.id }} .pts-content-wrapper {
+    background-color: {{ section.settings.bg_color }};
+  }
+  #pts-{{ section.id }} .pts-tab-btn.active {
+    background-color: {{ section.settings.bg_color }};
+  }
+  #pts-{{ section.id }} .pts-tab-btn {
+    background-color: {{ section.settings.inactive_tab_color }};
+    color: {{ section.settings.tab_text_color }};
+  }
+  #pts-{{ section.id }} .pts-tab-btn.active {
+    color: {{ section.settings.active_tab_text_color }};
+  }
+{%- endstyle -%}
+
+<div class="pts-section" id="pts-{{ section.id }}">
+  <div class="pts-header">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="pts-tabs-container">
+    <button class="pts-tab-btn active" data-target="tab1-{{ section.id }}">
+      {{ section.settings.tab1_name | default: 'Category 1' }}
+    </button>
+    <button class="pts-tab-btn" data-target="tab2-{{ section.id }}">
+      {{ section.settings.tab2_name | default: 'Category 2' }}
+    </button>
+  </div>
+
+  <div class="pts-content-wrapper">
+    <!-- TAB 1 -->
+    <div class="pts-slider-container active" id="tab1-{{ section.id }}">
+      <div class="pts-slider-wrapper">
+        <button class="pts-nav-btn pts-nav-prev" aria-label="Previous">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="pts-slider">
+          {%- assign collection1 = section.settings.collection1 -%}
+          {%- if collection1 != blank and collection1.products_count > 0 -%}
+            {%- for product in collection1.products limit: 12 -%}
+              <a href="{{ product.url }}" class="pts-product-card">
+                <div class="pts-image-wrapper">
+                  {%- if product.featured_image -%}
+                    {{ product.featured_image | image_url: width: 400 | image_tag: class: 'pts-product-image', loading: 'lazy' }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'pts-product-image placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+                <h3 class="pts-product-title">{{ product.title }}</h3>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for i in (1..5) -%}
+              <div class="pts-product-card">
+                <div class="pts-image-wrapper">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'pts-product-image placeholder-svg' }}
+                </div>
+                <h3 class="pts-product-title">Example Product {{ i }}</h3>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+        <button class="pts-nav-btn pts-nav-next" aria-label="Next">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 2 -->
+    <div class="pts-slider-container" id="tab2-{{ section.id }}">
+      <div class="pts-slider-wrapper">
+        <button class="pts-nav-btn pts-nav-prev" aria-label="Previous">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="pts-slider">
+          {%- assign collection2 = section.settings.collection2 -%}
+          {%- if collection2 != blank and collection2.products_count > 0 -%}
+            {%- for product in collection2.products limit: 12 -%}
+              <a href="{{ product.url }}" class="pts-product-card">
+                <div class="pts-image-wrapper">
+                  {%- if product.featured_image -%}
+                    {{ product.featured_image | image_url: width: 400 | image_tag: class: 'pts-product-image', loading: 'lazy' }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'pts-product-image placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+                <h3 class="pts-product-title">{{ product.title }}</h3>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for i in (1..5) -%}
+              <div class="pts-product-card">
+                <div class="pts-image-wrapper">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'pts-product-image placeholder-svg' }}
+                </div>
+                <h3 class="pts-product-title">Example Product {{ i }}</h3>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+        <button class="pts-nav-btn pts-nav-next" aria-label="Next">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('pts-{{ section.id }}');
+    if (!section) return;
+
+    // Tab Switching Logic
+    const tabBtns = section.querySelectorAll('.pts-tab-btn');
+    const tabContainers = section.querySelectorAll('.pts-slider-container');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and containers
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContainers.forEach(c => c.classList.remove('active'));
+
+        // Add active class to clicked button and target container
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+
+    // Slider Controls Logic
+    tabContainers.forEach(container => {
+      const slider = container.querySelector('.pts-slider');
+      const prevBtn = container.querySelector('.pts-nav-prev');
+      const nextBtn = container.querySelector('.pts-nav-next');
+
+      if (slider && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Tabs Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SEARCH PRODUCTS BY:"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Active Tab & Background Color",
+      "default": "#007bb5"
+    },
+    {
+      "type": "color",
+      "id": "inactive_tab_color",
+      "label": "Inactive Tab Color",
+      "default": "#8ab4c9"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Inactive Tab Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "active_tab_text_color",
+      "label": "Active Tab Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Tab 1 Settings"
+    },
+    {
+      "type": "text",
+      "id": "tab1_name",
+      "label": "Tab 1 Name",
+      "default": "BY PRODUCT CATEGORIES"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection 1"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2 Settings"
+    },
+    {
+      "type": "text",
+      "id": "tab2_name",
+      "label": "Tab 2 Name",
+      "default": "BY MANUFACTURER"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "Collection 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Tabs Slider"
+    }
+  ]
+}
+{% endschema %}
