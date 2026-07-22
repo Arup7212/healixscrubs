@@ -297,7 +297,7 @@
       "name": "Custom Collection Slider",
       "settings": {
         "heading": "",
-        "background_color": "#E7F0FA",
+        "background_color": "#e7f0fa",
         "button_label": "VIEW MORE",
         "button_link": ""
       }
@@ -480,6 +480,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:names.product_list",
       "settings": {
         "collection": "all",
@@ -499,6 +500,21 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "product_tabs_slider_PKCyJw": {
+      "type": "product-tabs-slider",
+      "name": "Product Tabs Sliderr",
+      "settings": {
+        "heading": "SEARCH PRODUCTS BY",
+        "bg_color": "#007bb5",
+        "inactive_tab_color": "#8ab4c9",
+        "tab_text_color": "#ffffff",
+        "active_tab_text_color": "#ffffff",
+        "tab1_name": "BY PRODUCT CATEGORIES",
+        "collection1": "pax-one-pocket-scrub-top",
+        "tab2_name": "BY MANUFACTURER",
+        "collection2": "prime-two-pocket-scrub-top"
       }
     },
     "why_choose_us_CGamKt": {
@@ -566,6 +582,7 @@
     "features_banner_1",
     "custom_collection_carousel_h8D6YX",
     "product_list_fa6P9H",
+    "product_tabs_slider_PKCyJw",
     "why_choose_us_CGamKt",
     "newsletter_banner_1"
   ]
