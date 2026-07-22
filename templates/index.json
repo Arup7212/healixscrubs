@@ -511,7 +511,7 @@
       "name": "Product Tabs Sliderr",
       "settings": {
         "heading": "SEARCH PRODUCTS BY",
-        "bg_color": "#007bb5",
+        "bg_color": "#C0DFEE",
         "inactive_tab_color": "#8ab4c9",
         "tab_text_color": "#ffffff",
         "active_tab_text_color": "#ffffff",
