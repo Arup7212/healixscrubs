@@ -1,0 +1,83 @@
+{{ 'moko-feature-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="moko-feature-banner" style="background-color: {{ section.settings.bg_color }};">
+  <div class="moko-feature-banner__grid">
+    {% for block in section.blocks %}
+      <div class="moko-feature-banner__item">
+        <div class="moko-feature-banner__icon">
+          {% if block.settings.icon != blank %}
+            {{ block.settings.icon | image_url: width: 80 | image_tag: loading: 'lazy' }}
+          {% else %}
+            {% case forloop.index %}
+              {% when 1 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 22l8.5-8.5"/></svg>
+              {% when 2 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V4z"/><path d="M8 4v3c0 2.2 1.8 4 4 4s4-1.8 4-4V4"/></svg>
+              {% when 3 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              {% when 4 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M4 6h16"/><circle cx="12" cy="14" r="4"/><path d="M8 2h.01"/><path d="M12 2h.01"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+            {% endcase %}
+          {% endif %}
+        </div>
+        <div class="moko-feature-banner__text-wrap">
+          <h4 class="moko-feature-banner__title">{{ block.settings.title }}</h4>
+          <p class="moko-feature-banner__desc">{{ block.settings.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MOKO Feature Banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0a1930"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MOKO Feature Banner",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Ultra Soft Fabrics", "text": "All-day comfort, zero compromise" } },
+        { "type": "feature", "settings": { "title": "Functional Design", "text": "Pockets, fit & details that work" } },
+        { "type": "feature", "settings": { "title": "Durable Quality", "text": "Built to last through every shift" } },
+        { "type": "feature", "settings": { "title": "Easy Care", "text": "Wash. Wear. Repeat." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

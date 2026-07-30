@@ -1,0 +1,70 @@
+.moko-feature-banner {
+  padding: 40px 20px;
+  background-color: #0a1930; /* Dark blue */
+  margin: 20px auto;
+  max-width: 1400px;
+  border-radius: 16px;
+}
+
+.moko-feature-banner__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .moko-feature-banner__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .moko-feature-banner__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.moko-feature-banner__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #ffffff;
+}
+
+.moko-feature-banner__icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moko-feature-banner__icon svg, 
+.moko-feature-banner__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Make uploaded image icons white to match the text and contrast with dark background */
+.moko-feature-banner__icon img {
+  filter: brightness(0) invert(1);
+}
+
+.moko-feature-banner__text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.moko-feature-banner__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.moko-feature-banner__desc {
+  font-size: 12px;
+  margin: 0;
+  color: #94a3b8; /* Light gray text */
+}

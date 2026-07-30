@@ -1,0 +1,129 @@
+{{ 'moko-promo-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="moko-promo-banner" style="background-color: {{ section.settings.bg_color }};">
+  <div class="moko-promo-banner__text-wrap">
+    <h2 class="moko-promo-banner__heading">
+      {% if section.settings.main_icon != blank %}
+        {{ section.settings.main_icon | image_url: width: 48 | image_tag: class: 'moko-promo-banner__heading-icon', loading: 'lazy' }}
+      {% else %}
+        <svg class="moko-promo-banner__heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+      {% endif %}
+      <span>{{ section.settings.heading | newline_to_br }}</span>
+    </h2>
+    <p class="moko-promo-banner__text">{{ section.settings.text }}</p>
+    {% if section.settings.btn_label != blank %}
+      <a href="{{ section.settings.btn_link }}" class="moko-promo-banner__btn">
+        {{ section.settings.btn_label }}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="moko-promo-banner__features">
+    {% for block in section.blocks %}
+      <div class="moko-promo-banner__feature">
+        <div class="moko-promo-banner__feature-icon">
+          {% if block.settings.icon != blank %}
+            {{ block.settings.icon | image_url: width: 32 | image_tag: loading: 'lazy' }}
+          {% else %}
+            {% case forloop.index %}
+              {% when 1 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              {% when 2 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V4z"/><path d="M8 4v3c0 2.2 1.8 4 4 4s4-1.8 4-4V4"/></svg>
+              {% when 3 %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            {% endcase %}
+          {% endif %}
+        </div>
+        <span class="moko-promo-banner__feature-text">{{ block.settings.title }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="moko-promo-banner__image">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+    {% else %}
+      {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MOKO Promo Banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0a1930"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_icon",
+      "label": "Heading Icon"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for Comfort.\nMade for You."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Experience the perfect blend of style, comfort, and performance."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MOKO Promo Banner",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Breathable Fabric" } },
+        { "type": "feature", "settings": { "title": "4-Way Stretch" } },
+        { "type": "feature", "settings": { "title": "Moisture Wicking" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
