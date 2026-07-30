@@ -671,3 +671,139 @@
     "newsletter_banner_1"
   ]
 }
+}
+},
+"img_3": {
+"type": "image",
+"settings": {
+"card_bg": "#e6f5f0"
+}
+},
+"img_4": {
+"type": "image",
+"settings": {
+"card_bg": "#f5f5f5"
+}
+}
+},
+"block_order": [
+"img_1",
+"img_2",
+"img_3",
+"img_4"
+],
+"settings": {
+"bg_color": "#f0f4f8",
+"subtitle": "Our Collections",
+"title": "Styles That Work As Hard As You Do",
+"text": "From classic solids to modern fits — our collections are made for every role and every routine.",
+"btn_label": "EXPLORE COLLECTIONS"
+}
+},
+"moko_best_sellers": {
+"type": "moko-best-sellers",
+"settings": {
+"title": "Best Sellers",
+"view_all_label": "VIEW ALL PRODUCTS",
+"limit": 5
+}
+},
+"moko_promo_banner": {
+"type": "moko-promo-banner",
+"blocks": {
+"promo_feat_1": {
+"type": "feature",
+"settings": {
+"title": "Breathable Fabric"
+}
+},
+"promo_feat_2": {
+"type": "feature",
+"settings": {
+"title": "4-Way Stretch"
+}
+},
+"promo_feat_3": {
+"type": "feature",
+"settings": {
+"title": "Moisture Wicking"
+}
+}
+},
+"block_order": [
+"promo_feat_1",
+"promo_feat_2",
+"promo_feat_3"
+],
+"settings": {
+"bg_color": "#0a1930",
+"heading": "Built for Comfort.\nMade for You.",
+"text": "Experience the perfect blend of style, comfort, and performance.",
+"btn_label": "SHOP NOW"
+}
+},
+"moko_trust_badges": {
+"type": "moko-trust-badges",
+"blocks": {
+"trust_1": {
+"type": "feature",
+"settings": {
+"title": "Loved by Professionals",
+"text": "Trusted by thousands of healthcare workers"
+}
+},
+"trust_2": {
+"type": "feature",
+"settings": {
+"title": "Secure & Easy Shopping",
+"text": "Safe checkout and multiple payment options"
+}
+},
+"trust_3": {
+"type": "feature",
+"settings": {
+"title": "Fast & Reliable Shipping",
+"text": "Quick delivery right to your doorstep"
+}
+},
+"trust_4": {
+"type": "feature",
+"settings": {
+"title": "Hassle-Free Returns",
+"text": "30-day easy returns and size exchanges"
+}
+}
+},
+"block_order": [
+"trust_1",
+"trust_2",
+"trust_3",
+"trust_4"
+],
+"settings": {
+"bg_color": "#f4f7f9"
+}
+},
+"moko_newsletter": {
+"type": "moko-newsletter",
+"settings": {
+"bg_color": "#f4f7f9",
+"heading": "Stay in the Loop",
+"subheading": "Exclusive offers, new arrivals & more.",
+"placeholder": "Enter your email",
+"btn_label": "SUBSCRIBE"
+}
+}
+},
+"order": [
+"hero_jVaWmY",
+"hero_slideshow_RQeWDK",
+"moko_category_grid",
+"moko_feature_banner",
+"moko_collection_highlight",
+"moko_best_sellers",
+"moko_promo_banner",
+"moko_trust_badges",
+"moko_newsletter"
+]
+}

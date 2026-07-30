@@ -1,0 +1,118 @@
+.moko-col-highlight {
+  padding: 60px 20px;
+}
+
+.moko-col-highlight__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media screen and (min-width: 990px) {
+  .moko-col-highlight__container {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+}
+
+.moko-col-highlight__text-wrap {
+  flex: 1;
+}
+
+@media screen and (min-width: 990px) {
+  .moko-col-highlight__text-wrap {
+    flex: 0 0 30%;
+  }
+}
+
+.moko-col-highlight__subtitle {
+  display: block;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.moko-col-highlight__title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: #0f2145;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.moko-col-highlight__desc {
+  font-size: 16px;
+  color: #475569;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.moko-col-highlight__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background-color: #0f2145;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.moko-col-highlight__btn:hover {
+  background-color: #1e3a8a;
+}
+
+.moko-col-highlight__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .moko-col-highlight__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .moko-col-highlight__grid {
+    flex: 0 0 calc(70% - 60px);
+  }
+}
+
+.moko-col-highlight__card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  aspect-ratio: 3/5;
+  text-decoration: none;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .moko-col-highlight__card {
+    aspect-ratio: 3/4;
+  }
+}
+
+.moko-col-highlight__card img,
+.moko-col-highlight__card svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.moko-col-highlight__card:hover img {
+  transform: scale(1.05);
+}
