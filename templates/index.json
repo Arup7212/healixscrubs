@@ -181,6 +181,49 @@
         "mobile_height": 450
       }
     },
+    "moko_feature_banner_getaE6": {
+      "type": "moko-feature-banner",
+      "blocks": {
+        "feature_PrL4Eg": {
+          "type": "feature",
+          "settings": {
+            "title": "Ultra Soft Fabrics",
+            "text": "All-day comfort, zero compromise"
+          }
+        },
+        "feature_MfQdVQ": {
+          "type": "feature",
+          "settings": {
+            "title": "Functional Design",
+            "text": "Pockets, fit & details that work"
+          }
+        },
+        "feature_XMdi6M": {
+          "type": "feature",
+          "settings": {
+            "title": "Durable Quality",
+            "text": "Built to last through every shift"
+          }
+        },
+        "feature_gtUjtR": {
+          "type": "feature",
+          "settings": {
+            "title": "Easy Care",
+            "text": "Wash. Wear. Repeat."
+          }
+        }
+      },
+      "block_order": [
+        "feature_PrL4Eg",
+        "feature_MfQdVQ",
+        "feature_XMdi6M",
+        "feature_gtUjtR"
+      ],
+      "name": "MOKO Feature Banner",
+      "settings": {
+        "bg_color": "#0a1930"
+      }
+    },
     "custom_collection_carousel_h8D6YX": {
       "type": "custom-collection-carousel",
       "blocks": {
@@ -256,54 +299,6 @@
         "background_color": "#e7f0fa",
         "button_label": "VIEW MORE",
         "button_link": ""
-      }
-    },
-    "features_banner_1": {
-      "type": "features-banner",
-      "blocks": {
-        "feature_1": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/snuggly.png",
-            "title": "Engineered for Comfort",
-            "description": "Soft, breathable & moisture-wicking"
-          }
-        },
-        "feature_2": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/stretching-exercises.png",
-            "title": "Performance Stretch",
-            "description": "Four-way stretch for unlimited movement"
-          }
-        },
-        "feature_3": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/design-thinking.png",
-            "title": "Functional Design",
-            "description": "Pockets where you need them most"
-          }
-        },
-        "feature_4": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/nurse.png",
-            "title": "Trusted by Nurses",
-            "description": "10,000+ healthcare professionals"
-          }
-        }
-      },
-      "block_order": [
-        "feature_1",
-        "feature_2",
-        "feature_3",
-        "feature_4"
-      ],
-      "settings": {
-        "background_color": "#eef2f9",
-        "text_color": "#11203b",
-        "icon_bg_color": "#dbe4f0"
       }
     },
     "product_list_fa6P9H": {
@@ -521,6 +516,43 @@
         "collection2": "prime-two-pocket-scrub-top"
       }
     },
+    "moko_promo_banner_VhwFwi": {
+      "type": "moko-promo-banner",
+      "blocks": {
+        "feature_j3KE3q": {
+          "type": "feature",
+          "settings": {
+            "title": "Breathable Fabric"
+          }
+        },
+        "feature_xdUnD4": {
+          "type": "feature",
+          "settings": {
+            "title": "4-Way Stretch"
+          }
+        },
+        "feature_9Az9mx": {
+          "type": "feature",
+          "settings": {
+            "title": "Moisture Wicking"
+          }
+        }
+      },
+      "block_order": [
+        "feature_j3KE3q",
+        "feature_xdUnD4",
+        "feature_9Az9mx"
+      ],
+      "name": "MOKO Promo Banner",
+      "settings": {
+        "bg_color": "#0a1930",
+        "heading": "Built for Comfort.\nMade for You.",
+        "text": "Experience the perfect blend of style, comfort, and performance.",
+        "btn_label": "SHOP NOW",
+        "btn_link": "",
+        "image": "shopify://shop_images/ChatGPT_Image_Jul_30_2026_03_22_38_PM.png"
+      }
+    },
     "why_choose_us_CGamKt": {
       "type": "why-choose-us",
       "blocks": {
@@ -551,6 +583,7 @@
         "feature_7XneN3",
         "feature_bAEjkA"
       ],
+      "disabled": true,
       "name": "Why Choose Us",
       "settings": {
         "heading": "Why Choose Us",
@@ -563,6 +596,54 @@
         "button_link": "",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "features_banner_1": {
+      "type": "features-banner",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/snuggly.png",
+            "title": "Engineered for Comfort",
+            "description": "Soft, breathable & moisture-wicking"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/stretching-exercises.png",
+            "title": "Performance Stretch",
+            "description": "Four-way stretch for unlimited movement"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/design-thinking.png",
+            "title": "Functional Design",
+            "description": "Pockets where you need them most"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/nurse.png",
+            "title": "Trusted by Nurses",
+            "description": "10,000+ healthcare professionals"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {
+        "background_color": "#eef2f9",
+        "text_color": "#11203b",
+        "icon_bg_color": "#dbe4f0"
       }
     },
     "newsletter_banner_1": {
@@ -580,11 +661,13 @@
   "order": [
     "hero_jVaWmY",
     "hero_slideshow_RQeWDK",
+    "moko_feature_banner_getaE6",
     "custom_collection_carousel_h8D6YX",
-    "features_banner_1",
     "product_list_fa6P9H",
     "product_tabs_slider_PKCyJw",
+    "moko_promo_banner_VhwFwi",
     "why_choose_us_CGamKt",
+    "features_banner_1",
     "newsletter_banner_1"
   ]
 }
