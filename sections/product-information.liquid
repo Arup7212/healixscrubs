@@ -126,9 +126,7 @@
         class="sticky-add-to-cart__button add-to-cart-button button"
         ref="addToCartButton"
         on:click="/handleAddToCartClick"
-        {% unless current_variant.available %}
-          disabled
-        {% endunless %}
+       
       >
         <span
           class="add-to-cart-text"
