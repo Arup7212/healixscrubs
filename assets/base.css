@@ -896,7 +896,6 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6) a:where(:not(.button, .button-secondary)),
 }
 
 @media screen and (min-width: 768px) {
-
   .section-title {
     font-size: 32px;
     margin-bottom: 24px !important;

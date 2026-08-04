@@ -8,3 +8,24 @@
     padding-top: 60px;
   }
 }
+
+.product-list-section .section-resource-list__header h2,
+.product-list-section .section-resource-list__header h3,
+.product-list-section .section-resource-list__header h4 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #0f2145 !important;
+  line-height: 1.25 !important;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  text-transform: uppercase !important;
+}
+
+@media screen and (min-width: 768px) {
+  .product-list-section .section-resource-list__header h2,
+  .product-list-section .section-resource-list__header h3,
+  .product-list-section .section-resource-list__header h4 {
+    font-size: 32px !important;
+    margin-bottom: 24px !important;
+  }
+}
