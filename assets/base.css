@@ -885,25 +885,20 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6) a:where(:not(.button, .button-secondary)),
   }
 }
 
-.section-title,
-.product-list-section .section-resource-list__header h2,
-.product-list-section .section-resource-list__header h3,
-.product-list-section .section-resource-list__header h4 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  color: #0f2145 !important;
-  line-height: 1.25 !important;
-  margin-top: 0 !important;
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f2145;
+  line-height: 1.25;
+  margin-top: 0;
   margin-bottom: 16px !important;
-  text-transform: uppercase !important;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
-  .section-title,
-  .product-list-section .section-resource-list__header h2,
-  .product-list-section .section-resource-list__header h3,
-  .product-list-section .section-resource-list__header h4 {
-    font-size: 32px !important;
+
+  .section-title {
+    font-size: 32px;
     margin-bottom: 24px !important;
   }
 }
