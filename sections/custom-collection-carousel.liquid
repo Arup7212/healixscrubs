@@ -1,23 +1,23 @@
 {%- style -%}
   .custom-collection-carousel {
     background-color: {{ section.settings.background_color }};
-    padding: 60px 0 60px 20px;
+  padding:40px 0px;
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
+
+
+@media(min-width:768px){
+  .custom-collection-carousel{
+      padding:60px 0px;
+  }
+}
+
   .ccc-main-layout {
     display: flex;
     align-items: stretch;
-  }
-  .ccc-heading-container {
-    width: 80px;
-    flex-shrink: 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .ccc-heading {
     transform: rotate(-90deg);
@@ -87,7 +87,7 @@
   .ccc-card__title {
     color: #fff;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -97,8 +97,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 80px;
-    padding-right: 40px;
     margin-top: 30px;
   }
   .ccc-controls {
@@ -128,28 +126,27 @@
     fill: currentColor;
   }
   .ccc-view-more {
-    background-color: #0b457f;
-    color: #fff;
-    padding: 12px 24px;
-    text-decoration: none;
+    display: inline-block;
+    padding: 12px 28px;
     font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: background-color 0.2s;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    border: none;
+     background:#0f2145;
+    color: var(--btn-text, var(--color-primary-button-text, #ffffff));
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    box-sizing: border-box;
   }
   .ccc-view-more:hover {
-    background-color: #08335e;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
   @media screen and (max-width: 768px) {
     .ccc-main-layout {
       flex-direction: column;
-    }
-    .ccc-heading-container {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
     }
     .ccc-heading {
       position: static;
@@ -157,9 +154,6 @@
       font-size: 24px;
     }
     .ccc-bottom-bar {
-      padding-left: 20px;
-      padding-right: 20px;
-      flex-direction: column;
       gap: 20px;
       align-items: flex-start;
     }
@@ -172,9 +166,10 @@
 {%- endstyle -%}
 
 <div class="custom-collection-carousel" id="ccc-{{ section.id }}">
+<div class="container">
   <div class="ccc-main-layout">
     <div class="ccc-heading-container">
-      <h2 class="ccc-heading">{{ section.settings.heading }}</h2>
+      <h2 class="ccc-heading section-title">{{ section.settings.heading }}</h2>
     </div>
     <div class="ccc-carousel-wrapper">
       <div class="ccc-carousel" id="ccc-scroll-{{ section.id }}">
@@ -216,6 +211,7 @@
       </a>
     {%- endif -%}
   </div>
+</div>
 </div>
 
 <script>

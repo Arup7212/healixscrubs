@@ -1,10 +1,22 @@
 .moko-feature-banner {
-  padding: 40px 20px;
-  background-color: #0a1930; /* Dark blue */
-  margin: 20px auto;
-  max-width: 1400px;
+  margin: 40px auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media(min-width:768px) {
+  .moko-feature-banner {
+    margin: 60px auto;
+  }
+}
+
+.moko-feature-banner__grid {
+  padding: 20px;
+  background-color: #0a1930;
   border-radius: 16px;
 }
+
+
 
 .moko-feature-banner__grid {
   display: grid;
@@ -21,6 +33,7 @@
 @media screen and (min-width: 1024px) {
   .moko-feature-banner__grid {
     grid-template-columns: repeat(4, 1fr);
+    padding: 40px;
   }
 }
 
@@ -32,15 +45,23 @@
 }
 
 .moko-feature-banner__icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.moko-feature-banner__icon svg, 
+@media(min-width:768px) {
+  .moko-feature-banner__icon {
+
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.moko-feature-banner__icon svg,
 .moko-feature-banner__icon img {
   width: 100%;
   height: 100%;
@@ -59,12 +80,14 @@
 
 .moko-feature-banner__title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 4px;
+  letter-spacing: .5px;
 }
 
 .moko-feature-banner__desc {
   font-size: 12px;
   margin: 0;
-  color: #94a3b8; /* Light gray text */
+  color: white;
+  letter-spacing: .5px;
 }

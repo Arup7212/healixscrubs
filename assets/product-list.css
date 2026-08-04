@@ -1,0 +1,10 @@
+.product-list-section {
+  padding-top: 40px;
+
+}
+
+@media (min-width: 768px) {
+  .product-list-section {
+    padding-top: 60px;
+  }
+}

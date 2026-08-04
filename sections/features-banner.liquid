@@ -1,9 +1,14 @@
 {%- style -%}
   .features-banner-wrapper {
-    padding: 0 var(--page-padding, 1.5rem);
-    max-width: var(--page-width, 1400px);
-    margin: 40px auto;
+padding-bottom:40px;
   }
+
+@media(min-width:768px){
+  .features-banner-wrapper{
+padding-bottom:60px;
+  }
+}
+
   .features-banner {
     display: flex;
     align-items: center;
@@ -75,6 +80,7 @@
 {%- endstyle -%}
 
 <div class="features-banner-wrapper">
+<div class="container">
   <div class="features-banner">
     {%- for block in section.blocks -%}
       <div class="features-banner__item" {{ block.shopify_attributes }}>
@@ -99,6 +105,7 @@
       </div>
     {%- endfor -%}
   </div>
+</div>
 </div>
 
 {% schema %}

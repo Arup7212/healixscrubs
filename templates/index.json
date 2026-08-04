@@ -342,7 +342,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h2 class=\"section-title\">{{ closest.collection.title }}</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -664,7 +664,7 @@
         "subheading": "New arrivals, exclusive offers, and nurse-approved tips.",
         "background_color": "#0f2145",
         "text_color": "#ffffff",
-        "button_bg_color": "#2b5ba3",
+        "button_bg_color": "#0f2145",
         "button_text_color": "#ffffff"
       }
     }

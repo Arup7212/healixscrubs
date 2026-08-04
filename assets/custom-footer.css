@@ -1,0 +1,286 @@
+/* ============================================
+   Professional Footer Styling — Healix Scrubs
+   Dark Navy (#0a1930) premium look
+   ============================================ */
+
+/* --- Base Section --- */
+.custom-footer-section {
+  padding-top: 72px;
+  padding-bottom: 32px;
+  position: relative;
+}
+
+/* Subtle top accent line */
+.custom-footer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 1400px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 80%, transparent 100%);
+}
+
+.custom-footer-section .footer-content {
+  max-width: 1920px;
+  width: 100%;
+  margin-inline: auto;
+  gap: 48px 40px;
+}
+
+/* --- Headings --- */
+.custom-footer-section h2,
+.custom-footer-section h3,
+.custom-footer-section h4,
+.custom-footer-section .menu__heading,
+.custom-footer-section .menu__heading__default,
+.custom-footer-section summary,
+.custom-footer-section .footer-block__heading {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 18px !important;
+  line-height: 1.3 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  position: relative;
+  padding-bottom: 12px !important;
+}
+
+/* Heading underline accent */
+.custom-footer-section h2::after,
+.custom-footer-section h3::after,
+.custom-footer-section h4::after,
+.custom-footer-section .menu__heading__default::after,
+.custom-footer-section summary::after,
+.custom-footer-section .footer-block__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, #4a90d9, #6bb5f0);
+  border-radius: 1px;
+}
+
+/* --- Links --- */
+.custom-footer-section a,
+.custom-footer-section .menu__link,
+.custom-footer-section .menu__item {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  color: rgba(179, 190, 213, 0.85) !important;
+  transition: color 0.25s ease, transform 0.2s ease, padding-left 0.25s ease;
+  display: inline-block;
+}
+
+.custom-footer-section a:hover,
+.custom-footer-section .menu__link:hover {
+  text-decoration: none;
+  color: #ffffff !important;
+  padding-left: 4px;
+}
+
+/* Menu list spacing */
+.custom-footer-section .menu nav ul,
+.custom-footer-section .menu__details ul {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.custom-footer-section .menu__item,
+.custom-footer-section .menu__item+.menu__item {
+  margin-top: 0 !important;
+  margin-block-start: 0 !important;
+}
+
+/* --- Body Text (Mission, RTE) --- */
+.custom-footer-section p,
+.custom-footer-section .rte {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(179, 190, 213, 0.75);
+}
+
+/* --- Social Icons --- */
+.custom-footer-section .social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.custom-footer-section .social-links a,
+.custom-footer-section .social-links .svg-wrapper {
+  opacity: 0.7;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.custom-footer-section .social-links a:hover,
+.custom-footer-section .social-links .svg-wrapper:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  padding-left: 0 !important;
+}
+
+/* --- Newsletter Input & Form --- */
+.custom-footer-section input[type="email"],
+.custom-footer-section .field__input {
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.custom-footer-section input[type="email"]:focus,
+.custom-footer-section .field__input:focus {
+  border-color: rgba(106, 181, 240, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.custom-footer-section .button,
+.custom-footer-section button[type="submit"] {
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 28px;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.custom-footer-section .button:hover,
+.custom-footer-section button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   Footer Utilities (Copyright / Policies)
+   ============================================ */
+.custom-footer-utilities .utilities {
+  max-width: 1920px;
+  width: 100%;
+  margin-inline: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(118, 134, 167, 0.8);
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  text-wrap: wrap !important;
+}
+
+/* Left-align first child, right-align last child */
+.custom-footer-utilities .utilities > *:first-child {
+  text-align: left !important;
+}
+
+.custom-footer-utilities .utilities > *:last-child {
+  text-align: right !important;
+  margin-left: auto;
+}
+
+.custom-footer-utilities a {
+  font-size: 13px;
+  text-decoration: none;
+  color: rgba(118, 134, 167, 0.8);
+  transition: color 0.25s ease;
+}
+
+.custom-footer-utilities a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   Tablet (750px - 989px)
+   ============================================ */
+@media screen and (max-width: 989px) {
+  .custom-footer-section {
+    padding-top: 56px;
+    padding-bottom: 28px;
+  }
+
+  .custom-footer-section .footer-content {
+    gap: 36px 28px;
+  }
+}
+
+/* ============================================
+   Mobile (≤749px)
+   ============================================ */
+@media screen and (max-width: 749px) {
+  .custom-footer-section {
+    padding-top: 44px;
+    padding-bottom: 0px !important;
+  }
+
+  .custom-footer-section .footer-content {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 28px 16px;
+  }
+
+  /* Logo+Socials — full width on top */
+  .custom-footer-section .footer-content> :nth-child(1) {
+    grid-column: span 6;
+    padding-bottom: 4px;
+  }
+
+  /* Row 2: Shop + Company + Main Menu — 3 in a row */
+  .custom-footer-section .footer-content> :nth-child(2),
+  .custom-footer-section .footer-content> :nth-child(3),
+  .custom-footer-section .footer-content> :nth-child(4) {
+    grid-column: span 2;
+  }
+
+  /* Our Mission — full width at bottom */
+  .custom-footer-section .footer-content> :nth-child(5) {
+    grid-column: span 6;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 4px;
+  }
+
+  /* Any remaining blocks — full width */
+  .custom-footer-section .footer-content> :nth-child(n+6) {
+    grid-column: span 6;
+  }
+
+  /* Tighter heading spacing on mobile */
+  .custom-footer-section h2,
+  .custom-footer-section h3,
+  .custom-footer-section h4,
+  .custom-footer-section .menu__heading,
+  .custom-footer-section .menu__heading__default,
+  .custom-footer-section summary,
+  .custom-footer-section .footer-block__heading {
+    font-size: 12px !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .custom-footer-section a,
+  .custom-footer-section .menu__link,
+  .custom-footer-section .menu__item {
+    font-size: 13px;
+  }
+
+  .custom-footer-utilities {
+    padding-top: 0px !important;
+    padding-bottom: 24px;
+  }
+}

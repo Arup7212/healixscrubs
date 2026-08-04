@@ -1,4 +1,4 @@
-
+{{ 'product-list.css' | asset_url | stylesheet_tag }}
 
 {% liquid
   assign max_items = section.settings.max_products
@@ -13,17 +13,9 @@
 <div
   data-testid="product-list"
   class="
-    section
-    section--{{ section.settings.section_width }}
-    {% if section.settings.background_color != blank %}color-custom-{{ section.id }}{% endif %}
-    section-resource-list
-    spacing-style
-    gap-style
+    container product-list-section
   "
-  style="
-    {% render 'spacing-style', settings: section.settings %}
-    {% render 'gap-style', value: section.settings.gap %}
-  "
+
 >
   <div class="section-resource-list__header">
     {%- content_for 'block', type: '_product-list-content', id: 'static-header' -%}

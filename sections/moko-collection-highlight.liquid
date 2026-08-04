@@ -1,18 +1,18 @@
 {{ 'moko-collection-highlight.css' | asset_url | stylesheet_tag }}
 
 <div class="moko-col-highlight" style="background-color: {{ section.settings.bg_color }};">
-  <div class="moko-col-highlight__container">
+  <div class="moko-col-highlight__container container">
     <div class="moko-col-highlight__text-wrap">
       {% if section.settings.subtitle != blank %}
         <span class="moko-col-highlight__subtitle">{{ section.settings.subtitle }}</span>
       {% endif %}
       
       {% if section.settings.title != blank %}
-        <h2 class="moko-col-highlight__title">{{ section.settings.title }}</h2>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
       {% endif %}
       
       {% if section.settings.text != blank %}
-        <p class="moko-col-highlight__desc">{{ section.settings.text }}</p>
+        <p class="section-details">{{ section.settings.text }}</p>
       {% endif %}
       
       {% if section.settings.btn_label != blank %}
