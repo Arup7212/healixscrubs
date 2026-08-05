@@ -17,7 +17,6 @@
 
   .theme-drawer__dialog {
     --theme-drawer-padding: var(--padding-xl);
-
     z-index: calc(var(--layer-sticky) + var(--drawer-stack-order, 0));
     position: fixed;
     inset: unset;
@@ -33,6 +32,7 @@
     border-left: var(--style-border-drawer);
     background-color: var(--color-background);
     color: var(--color-foreground);
+  z-index:999;
   }
 
   .theme-drawer__dialog[open] {
