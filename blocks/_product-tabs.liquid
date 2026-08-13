@@ -31,34 +31,35 @@
     </div>
   </product-info-tabs>
 
-  {%- if request.design_mode == false -%}
-    <script>
-      if (!customElements.get('product-info-tabs')) {
-        class ProductInfoTabs extends HTMLElement {
-          constructor() {
-            super();
-            this.tabs = this.querySelectorAll('[data-tab-target]');
-            this.contents = this.querySelectorAll('[data-tab-content]');
+  <script>
+    if (!customElements.get('product-info-tabs')) {
+      class ProductInfoTabs extends HTMLElement {
+        constructor() {
+          super();
+          this.tabs = this.querySelectorAll('[data-tab-target]');
+          this.contents = this.querySelectorAll('[data-tab-content]');
 
-            this.tabs.forEach(tab => {
-              tab.addEventListener('click', () => {
-                const target = tab.dataset.tabTarget;
-                
-                // Remove active class from all
-                this.tabs.forEach(t => t.classList.remove('active'));
-                this.contents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content
-                tab.classList.add('active');
-                this.querySelector(`[data-tab-content="${target}"]`).classList.add('active');
-              });
+          this.tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              const target = tab.dataset.tabTarget;
+              
+              // Remove active class from all
+              this.tabs.forEach(t => t.classList.remove('active'));
+              this.contents.forEach(c => c.classList.remove('active'));
+              
+              // Add active class to clicked tab and corresponding content
+              tab.classList.add('active');
+              const contentTarget = this.querySelector(`[data-tab-content="${target}"]`);
+              if (contentTarget) {
+                contentTarget.classList.add('active');
+              }
             });
-          }
+          });
         }
-        customElements.define('product-info-tabs', ProductInfoTabs);
       }
-    </script>
-  {%- endif -%}
+      customElements.define('product-info-tabs', ProductInfoTabs);
+    }
+  </script>
 
   {% style %}
     .product-info-tabs {
@@ -84,10 +85,10 @@
     .product-info-tabs__tab {
       background: none;
       border: none;
-      padding: 0 0 1.2rem 0;
-      font-size: var(--font-paragraph-medium--size, 1.6rem);
+      padding: 0 0 1.5rem 0;
+      font-size: var(--font-paragraph--size, 1.5rem);
       font-weight: 500;
-      color: rgb(var(--color-foreground-rgb) / 0.6);
+      color: rgb(var(--color-foreground-rgb) / 0.5);
       cursor: pointer;
       position: relative;
       white-space: nowrap;
