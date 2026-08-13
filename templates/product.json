@@ -301,6 +301,16 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "product_tabs_added": {
+              "type": "_product-tabs",
+              "settings": {
+                "details_tab_label": "Product Details",
+                "fabric_tab_label": "Fabric & Care",
+                "shipping_tab_label": "Shipping & Returns",
+                "margin_top": 24,
+                "margin_bottom": 24
+              }
             }
           },
           "block_order": [
@@ -308,7 +318,8 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "product_tabs_added"
           ]
         }
       },
