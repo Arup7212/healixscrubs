@@ -1,0 +1,171 @@
+{%- style -%}
+  .ccb-wrapper {
+    width: 100%;
+    padding: 2rem 0;
+  }
+
+  .ccb {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    background-color: #f2f3f5;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 160px;
+    position: relative;
+  }
+
+  @media screen and (min-width: 768px) {
+    .ccb {
+      grid-template-columns: 1fr 1fr;
+      min-height: 180px;
+    }
+  }
+
+  /* ── Left: text panel ── */
+  .ccb__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.4rem 3.5rem;
+    z-index: 2;
+  }
+
+  @media screen and (max-width: 767px) {
+    .ccb__content {
+      padding: 2rem 2rem;
+    }
+  }
+
+  .ccb__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(11, 26, 48, 0.65);
+    margin-bottom: 1rem;
+  }
+
+  .ccb__breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ccb__breadcrumbs a:hover {
+    color: #0b1a30;
+  }
+
+  .ccb__breadcrumbs svg {
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .ccb__title {
+    font-size: clamp(2rem, 2.6vw, 3.2rem);
+    font-weight: 800;
+    color: #0b1a30;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 1rem 0;
+  }
+
+  .ccb__desc {
+    font-size: 1.3rem;
+    color: rgba(11, 26, 48, 0.6);
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 420px;
+    /* Truncate to one line with ellipsis */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* ── Right: image panel ── */
+  .ccb__image-wrap {
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .ccb__image-wrap {
+      display: none;
+    }
+  }
+
+  .ccb__image-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* No-image fallback: show a tinted placeholder */
+  .ccb__image-wrap--empty {
+    background: linear-gradient(135deg, #e9eaed 0%, #d5d8de 100%);
+  }
+{%- endstyle -%}
+
+<div class="page-width ccb-wrapper">
+  <div class="ccb">
+
+    {%- comment -%} LEFT: text content {%- endcomment -%}
+    <div class="ccb__content">
+      <nav class="ccb__breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 1L6 5.5L1 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <a href="{{ routes.collections_url }}">Catalog</a>
+      </nav>
+
+      <h1 class="ccb__title">{{ collection.title | escape }}</h1>
+
+      {%- if collection.description != blank -%}
+        <div class="ccb__desc">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} RIGHT: metafield image {%- endcomment -%}
+    {%- if collection.metafields.custom.banner != blank -%}
+      <div class="ccb__image-wrap">
+        {{
+          collection.metafields.custom.banner
+          | image_url: width: 1400
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            sizes: '(min-width: 768px) 50vw, 100vw'
+        }}
+      </div>
+    {%- else -%}
+      <div class="ccb__image-wrap ccb__image-wrap--empty"></div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Collection Banner",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Displays a two-column banner: title & description on the left, and the image from the 'custom.banner' collection metafield on the right."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Collection Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -9,6 +9,7 @@
  */
 {
   "sections": {
+<<<<<<< HEAD
     "section": {
       "type": "section",
       "blocks": {
@@ -98,6 +99,11 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+=======
+    "custom_banner": {
+      "type": "custom-collection-banner",
+      "settings": {}
+>>>>>>> 6898761 (A)
     },
     "main": {
       "type": "main-collection",
@@ -232,7 +238,7 @@
     }
   },
   "order": [
-    "section",
+    "custom_banner",
     "main"
   ]
 }
