@@ -131,7 +131,7 @@
                   "type": "text",
                   "name": "t:names.product_title",
                   "settings": {
-                    "text": "<h1 class=\"custom-product-title\">{{ closest.product.title }}</h1>",
+                    "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -345,7 +345,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h2 class=\"section-title\" style=\"text-align: center;\">You may also like </h2>",
+            "text": "<h2>You may also like </h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",

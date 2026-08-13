@@ -342,7 +342,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2 class=\"section-title\">{{ closest.collection.title }}</h2>",
+                "text": "<h2>{{ closest.collection.title }}</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
