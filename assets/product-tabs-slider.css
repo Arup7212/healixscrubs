@@ -1,20 +1,18 @@
 .pts-section {
-  padding: 60px 0;
+  padding: 40px 0;
   font-family: inherit;
+}
+
+@media(min-width:768px) {
+  .pts-section {
+    padding: 60px 0;
+  }
 }
 
 .pts-header {
   text-align: center;
-  margin-bottom: 30px;
 }
 
-.pts-header h2 {
-  font-size: 32px;
-  font-weight: 500;
-  color: #111;
-  margin: 0;
-  text-transform: uppercase;
-}
 
 .pts-tabs-container {
   display: flex;
@@ -25,9 +23,9 @@
 
 .pts-tab-btn {
   border: none;
-  padding: 18px 24px;
-  font-size: 16px;
-  font-weight: 700;
+  padding: 12px 6px;
+  font-size: 12px;
+  font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -35,16 +33,41 @@
   text-align: center;
 }
 
+@media(min-width:768px) {
+
+  .pts-tab-btn {
+
+    padding: 18px 24px;
+    font-size: 16px;
+  }
+}
+
 .pts-content-wrapper {
-  padding: 60px 20px;
+  padding: 30px 0;
   position: relative;
+}
+
+@media(min-width:768px) {
+  .pts-content-wrapper {
+
+    padding: 50px 0;
+  }
 }
 
 .pts-slider-container {
   display: none;
   position: relative;
-  max-width: 1200px;
+  max-width: 1920px;
+  width: 100%;
   margin: 0 auto;
+  padding-inline: 60px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1280px) {
+  .pts-slider-container {
+    padding-inline: 16px;
+  }
 }
 
 .pts-slider-container.active {
@@ -71,13 +94,19 @@
 
 .pts-slider {
   display: flex;
-  gap: 24px;
+  gap: 12px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding: 15px 5px;
-  /* for box-shadow visibility */
+
   scroll-behavior: smooth;
+}
+
+@media(min-width:768px) {
+  .pts-slider {
+    gap: 24px;
+  }
 }
 
 .pts-slider::-webkit-scrollbar {
@@ -92,12 +121,18 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 16px;
   text-decoration: none;
   color: inherit;
   border-radius: 6px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media(min-width:768px) {
+  .pts-product-card {
+    padding: 25px;
+  }
 }
 
 .pts-product-card:hover {
@@ -122,13 +157,20 @@
 
 .pts-product-title {
   text-align: center;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   color: #333;
   margin: 0;
   line-height: 1.4;
   margin-top: auto;
+}
+
+@media(min-width:768px) {
+  .pts-product-title {
+
+    font-size: 14px;
+  }
 }
 
 .pts-nav-btn {
@@ -161,9 +203,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .pts-tabs-container {
-    flex-direction: column;
-  }
 
   .pts-slider-wrapper {
     padding: 0;

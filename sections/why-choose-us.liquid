@@ -12,14 +12,15 @@
     }
   }
 </style>
+<div class="why-choose-us-section">
 
-<div class="why-choose-us-section page-width section-{{ section.id }}-padding">
+<div class="container">
   <div class="why-choose-us-header center">
     {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading }}</h2>
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
     {% endif %}
     {% if section.settings.subtitle != blank %}
-      <p>{{ section.settings.subtitle }}</p>
+      <p class="section-details">{{ section.settings.subtitle }}</p>
     {% endif %}
   </div>
 
@@ -81,6 +82,7 @@
       {% endif %}
     </div>
   </div>
+</div>
 </div>
 
 {% schema %}

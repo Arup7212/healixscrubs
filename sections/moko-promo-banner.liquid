@@ -1,14 +1,18 @@
 {{ 'moko-promo-banner.css' | asset_url | stylesheet_tag }}
 
-<div class="moko-promo-banner" style="background-color: {{ section.settings.bg_color }};">
+<div class="container">
+<div class="moko-promo-banner " style="background-color: {{ section.settings.bg_color }};">
+   <div class="flex-box">
+
+    <svg class="moko-promo-banner__heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
   <div class="moko-promo-banner__text-wrap">
-    <h2 class="moko-promo-banner__heading">
+    <h2 class="moko-promo-banner__heading ">
       {% if section.settings.main_icon != blank %}
         {{ section.settings.main_icon | image_url: width: 48 | image_tag: class: 'moko-promo-banner__heading-icon', loading: 'lazy' }}
       {% else %}
-        <svg class="moko-promo-banner__heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+    
       {% endif %}
-      <span>{{ section.settings.heading | newline_to_br }}</span>
+      <span class="section-title">{{ section.settings.heading | newline_to_br }}</span>
     </h2>
     <p class="moko-promo-banner__text">{{ section.settings.text }}</p>
     {% if section.settings.btn_label != blank %}
@@ -17,6 +21,7 @@
       </a>
     {% endif %}
   </div>
+   </div>
 
   <div class="moko-promo-banner__features">
     {% for block in section.blocks %}
@@ -49,6 +54,7 @@
       {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
   </div>
+</div>
 </div>
 
 {% schema %}

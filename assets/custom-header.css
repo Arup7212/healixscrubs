@@ -1,0 +1,60 @@
+/* Custom Mobile Header Layout
+   Layout: [Menu ☰] [Logo] ---spacer--- [Search] [Profile/Cart]
+   Professional look: hamburger on far left, logo next to it, actions on right */
+
+@media screen and (max-width: 749px) {
+
+  /* Override the mobile grid to: menu | logo | spacer | search | actions */
+  .header__columns {
+    grid-template-columns: auto auto 1fr auto auto !important;
+    grid-template-areas: 'menu logo spacer search actions' !important;
+    column-gap: 8px !important;
+  }
+
+  /* Hamburger menu — far left */
+  .header__columns header-drawer {
+    grid-area: menu !important;
+  }
+
+  /* Logo next to hamburger */
+  .header__columns .header-logo {
+    grid-area: logo !important;
+    justify-self: start;
+  }
+
+  /* Search icon — right side, before cart */
+  .header__columns .search-action {
+    grid-area: search !important;
+  }
+
+  /* Profile + Cart icons — far right */
+  .header__columns header-actions {
+    grid-area: actions !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+/* Same overrides for drawer menu style (JS-toggled on wider touch screens) */
+#header-component[data-menu-style='drawer'] .header__columns {
+  grid-template-columns: auto auto 1fr auto auto !important;
+  grid-template-areas: 'menu logo spacer search actions' !important;
+  column-gap: 8px !important;
+}
+
+#header-component[data-menu-style='drawer'] .header__columns header-drawer {
+  grid-area: menu !important;
+}
+
+#header-component[data-menu-style='drawer'] .header__columns .header-logo {
+  grid-area: logo !important;
+  justify-self: start;
+}
+
+#header-component[data-menu-style='drawer'] .header__columns .search-action {
+  grid-area: search !important;
+}
+
+#header-component[data-menu-style='drawer'] .header__columns header-actions {
+  grid-area: actions !important;
+}

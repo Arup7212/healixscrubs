@@ -309,12 +309,12 @@
           "name": "t:names.header",
           "static": true,
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "center",
             "vertical_alignment": "flex-end",
             "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
+            "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "fill",
@@ -342,10 +342,10 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
+                "text": "<h2 class=\"section-title\">{{ closest.collection.title }}</h2>",
+                "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "h4",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -496,8 +496,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     },
     "product_tabs_slider_PKCyJw": {
@@ -664,7 +664,7 @@
         "subheading": "New arrivals, exclusive offers, and nurse-approved tips.",
         "background_color": "#0f2145",
         "text_color": "#ffffff",
-        "button_bg_color": "#2b5ba3",
+        "button_bg_color": "#0f2145",
         "button_text_color": "#ffffff"
       }
     }

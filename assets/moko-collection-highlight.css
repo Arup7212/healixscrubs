@@ -1,15 +1,40 @@
 .moko-col-highlight {
+<<<<<<< HEAD
   padding: 40px 16px;
+=======
+  padding: 40px 0;
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
 }
 
+@media(min-width:768px) {
+  .moko-col-highlight {
+    padding: 60px 0;
+  }
+}
+
+
 .moko-col-highlight__container {
+<<<<<<< HEAD
   max-width: 1320px;
   margin: 0 auto;
+=======
+  max-width: 1920px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 60px;
+  box-sizing: border-box;
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
   display: flex;
   flex-direction: column;
   gap: 32px;
   background-color: inherit;
   border-radius: 24px;
+}
+
+@media screen and (max-width: 1280px) {
+  .moko-col-highlight__container {
+    padding-inline: 16px;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -44,6 +69,7 @@
   letter-spacing: 1.5px;
 }
 
+<<<<<<< HEAD
 .moko-col-highlight__title {
   font-size: clamp(32px, 5vw, 56px);
   font-weight: 700;
@@ -53,6 +79,8 @@
   letter-spacing: -0.02em;
 }
 
+=======
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
 .moko-col-highlight__desc {
   font-size: 16px;
   color: #475569;
@@ -65,12 +93,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
   padding: 16px 36px;
   background-color: #0f2145;
   color: #ffffff;
+=======
+  padding: 12px 28px;
+  background-color: #0b1c3f;
+  color: var(--color-primary-button-text, #ffffff);
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
+<<<<<<< HEAD
   border-radius: 8px;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
@@ -80,13 +115,23 @@
   background-color: #1e3a8a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(15, 33, 69, 0.2);
+=======
+  border-radius: 6px;
+  border: none;
+  transition: box-shadow 0.25s ease-out, background-color 0.25s ease-out, color 0.25s ease-out;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.moko-col-highlight__btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
 }
 
 .moko-col-highlight__grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 @media screen and (min-width: 768px) {
@@ -133,5 +178,10 @@
 }
 
 .moko-col-highlight__card:hover img {
+<<<<<<< HEAD
   transform: scale(1.08);
 }
+=======
+  transform: scale(1.05);
+}
+>>>>>>> 46c2cc0036bb65a28e57541c8aa53148a847743f
