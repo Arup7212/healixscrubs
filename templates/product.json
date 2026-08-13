@@ -248,9 +248,6 @@
                   "static": true,
                   "settings": {
                     "input_style": "default",
-                    "custom_input_background": "{{ settings.color_palette.background }}",
-                    "custom_input_text": "{{ settings.color_palette.foreground }}",
-                    "custom_input_border": "{{ settings.color_palette.foreground }}",
                     "border_width": 1,
                     "border_radius": 0
                   },
