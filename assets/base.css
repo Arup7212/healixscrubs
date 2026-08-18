@@ -2267,10 +2267,12 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
     margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
   }
 }
+
 /* Custom Cart Drawer Fix (All Devices) */
 .page-wrapper--drawer-open {
   margin-right: 0 !important;
 }
+
 .cart-drawer.dialog-drawer {
   position: fixed !important;
   right: 0 !important;
@@ -2280,7 +2282,8 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   margin: 0 !important;
   height: 100vh !important;
   max-height: 100vh !important;
-  z-index: 2147483647 !important; /* Ensure it overlays the navbar */
+  z-index: 2147483647 !important;
+  /* Ensure it overlays the navbar */
 }
 
 /* Recommended Product Section Title Fixes */
@@ -2294,6 +2297,7 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   text-transform: uppercase;
   text-align: center;
 }
+
 @media screen and (min-width: 768px) {
   .product-recommendations .text-block h2 {
     font-size: 32px;

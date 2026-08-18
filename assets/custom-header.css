@@ -2,6 +2,13 @@
    Layout: [Menu ☰] [Logo] ---spacer--- [Search] [Profile/Cart]
    Professional look: hamburger on far left, logo next to it, actions on right */
 
+/* ---- Make logo white on dark header ---- */
+.header__logo img,
+.header-logo img,
+.header__heading-logo img {
+  filter: brightness(0) invert(1);
+}
+
 @media screen and (max-width: 749px) {
 
   /* Override the mobile grid to: menu | logo | spacer | search | actions */

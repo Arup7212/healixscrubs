@@ -1,18 +1,15 @@
 {{ 'product-tabs-slider.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  #pts-{{ section.id }} .pts-content-wrapper {
-    background-color: {{ section.settings.bg_color }};
-  }
   #pts-{{ section.id }} .pts-tab-btn.active {
-    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.active_tab_color }};
   }
-  #pts-{{ section.id }} .pts-tab-btn {
-    background-color: {{ section.settings.inactive_tab_color }};
-    color: {{ section.settings.tab_text_color }};
+  #pts-{{ section.id }} .pts-tab-btn.active::after {
+    background-color: {{ section.settings.active_tab_color }};
   }
-  #pts-{{ section.id }} .pts-tab-btn.active {
-    color: {{ section.settings.active_tab_text_color }};
+  #pts-{{ section.id }} .pts-nav-btn:hover {
+    background: {{ section.settings.active_tab_color }};
+    border-color: {{ section.settings.active_tab_color }};
   }
 {%- endstyle -%}
 
@@ -163,27 +160,9 @@
     },
     {
       "type": "color",
-      "id": "bg_color",
-      "label": "Active Tab & Background Color",
-      "default": "#007bb5"
-    },
-    {
-      "type": "color",
-      "id": "inactive_tab_color",
-      "label": "Inactive Tab Color",
-      "default": "#8ab4c9"
-    },
-    {
-      "type": "color",
-      "id": "tab_text_color",
-      "label": "Inactive Tab Text Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "active_tab_text_color",
-      "label": "Active Tab Text Color",
-      "default": "#ffffff"
+      "id": "active_tab_color",
+      "label": "Active Tab Accent Color",
+      "default": "#0f2145"
     },
     {
       "type": "header",

@@ -1,12 +1,20 @@
 /* ============================================
    Professional Footer Styling — Healix Scrubs
-   Dark Navy (#0a1930) premium look
+   Dark Navy premium look
    ============================================ */
+
+/* ---- Footer Logo — White ---- */
+.custom-footer-section .footer-logo img,
+.custom-footer-section [class*="logo"] img,
+.custom-footer-section .header__heading-logo img,
+.custom-footer-section img[class*="logo"] {
+  filter: brightness(0) invert(1);
+}
 
 /* --- Base Section --- */
 .custom-footer-section {
-  padding-top: 72px;
-  padding-bottom: 32px;
+  padding-top: 60px;
+  padding-bottom: 40px;
   position: relative;
 }
 
@@ -184,11 +192,11 @@
 }
 
 /* Left-align first child, right-align last child */
-.custom-footer-utilities .utilities > *:first-child {
+.custom-footer-utilities .utilities>*:first-child {
   text-align: left !important;
 }
 
-.custom-footer-utilities .utilities > *:last-child {
+.custom-footer-utilities .utilities>*:last-child {
   text-align: right !important;
   margin-left: auto;
 }
@@ -210,8 +218,8 @@
    ============================================ */
 @media screen and (max-width: 989px) {
   .custom-footer-section {
-    padding-top: 56px;
-    padding-bottom: 28px;
+    padding-top: 80px;
+    padding-bottom: 48px;
   }
 
   .custom-footer-section .footer-content {
@@ -224,7 +232,7 @@
    ============================================ */
 @media screen and (max-width: 749px) {
   .custom-footer-section {
-    padding-top: 44px;
+    padding-top: 60px;
     padding-bottom: 0px !important;
   }
 

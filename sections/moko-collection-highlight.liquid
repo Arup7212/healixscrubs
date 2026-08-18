@@ -36,6 +36,9 @@
             {% else %}
               {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
+            <div class="moko-col-highlight__card-label">
+              <span class="moko-col-highlight__card-name">{{ product.title }}</span>
+            </div>
           </a>
         {% endfor %}
       {% else %}
@@ -45,6 +48,9 @@
           {% endcapture %}
           <a href="#" class="moko-col-highlight__card" style="background-color: {{ bg_color }};">
             {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="moko-col-highlight__card-label">
+              <span class="moko-col-highlight__card-name">Collection {{ i }}</span>
+            </div>
           </a>
         {% endfor %}
       {% endif %}

@@ -1,11 +1,11 @@
 .why-choose-us-section {
-  padding: 40px 0px;
+  padding: 60px 0;
 }
 
 
 @media(min-width:768px) {
   .why-choose-us-section {
-    padding: 60px 0px;
+    padding: 80px 0;
   }
 }
 

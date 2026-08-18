@@ -1,31 +1,204 @@
-.product-list-section {
-  padding-top: 40px;
+/* ============================================================
+   Premium Product List Section — Healix Scrubs
+   Modern card grid with hover effects & polished typography
+   ============================================================ */
 
+/* ---- Section Wrapper ---- */
+.product-list-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 @media (min-width: 768px) {
   .product-list-section {
-    padding-top: 60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
+}
+
+/* ---- Section Header / Title ---- */
+.product-list-section .section-resource-list__header {
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 .product-list-section .section-resource-list__header h2,
 .product-list-section .section-resource-list__header h3,
 .product-list-section .section-resource-list__header h4 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
   color: #0f2145 !important;
-  line-height: 1.25 !important;
+  line-height: 1.2 !important;
   margin-top: 0 !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 6px !important;
   text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
 }
 
 @media screen and (min-width: 768px) {
   .product-list-section .section-resource-list__header h2,
   .product-list-section .section-resource-list__header h3,
   .product-list-section .section-resource-list__header h4 {
-    font-size: 32px !important;
-    margin-bottom: 24px !important;
+    font-size: 36px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/* Decorative underline accent under the title */
+.product-list-section .section-resource-list__header h2::after,
+.product-list-section .section-resource-list__header h3::after,
+.product-list-section .section-resource-list__header h4::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, #0f2145, #4a6fa5);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+/* "View all" link styling */
+.product-list-section .section-resource-list__header a,
+.product-list-section .section-resource-list__header .view-all-link {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #0f2145 !important;
+  text-decoration: none !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1.5px solid #0f2145 !important;
+  padding-bottom: 1px !important;
+  transition: opacity 0.2s ease !important;
+  display: inline-block !important;
+  margin-top: 10px !important;
+}
+
+.product-list-section .section-resource-list__header a:hover {
+  opacity: 0.65 !important;
+}
+
+/* ---- Product Card Override ---- */
+.product-list-section .product-card,
+.product-list-section product-card .group-block {
+  background: #ffffff;
+  border-radius: 14px !important;
+  overflow: hidden;
+  border: 1px solid #f0f0f2;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+.product-list-section .product-card:hover,
+.product-list-section product-card:hover .group-block {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.10) !important;
+  border-color: #dde4f0 !important;
+}
+
+/* ---- Product Image Area ---- */
+.product-list-section .product-card__image,
+.product-list-section .card-gallery {
+  background: #f6f7f9;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+}
+
+.product-list-section .product-card__image img,
+.product-list-section .card-gallery img {
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.product-list-section .product-card:hover .product-card__image img,
+.product-list-section product-card:hover .card-gallery img {
+  transform: scale(1.05) !important;
+}
+
+/* ---- Product Content / Info ---- */
+.product-list-section .product-card__content,
+.product-list-section .product-card__meta {
+  padding: 12px 14px 16px !important;
+}
+
+/* Product title */
+.product-list-section .product-card__title,
+.product-list-section .product-card__content h2,
+.product-list-section .product-card__content h3,
+.product-list-section .product-card__content [class*="title"] {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #1a1a2e !important;
+  line-height: 1.4 !important;
+  margin-bottom: 6px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .product-list-section .product-card__title,
+  .product-list-section .product-card__content h2,
+  .product-list-section .product-card__content h3 {
+    font-size: 14px !important;
+  }
+}
+
+/* Product price */
+.product-list-section .product-card__price,
+.product-list-section [class*="price"] {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #0f2145 !important;
+}
+
+/* Sale price */
+.product-list-section .price--sale [class*="price"]:first-child,
+.product-list-section .price--on-sale {
+  color: #c0392b !important;
+}
+
+/* Compare-at / original price */
+.product-list-section .price--sale [class*="compare"],
+.product-list-section [class*="compare-at"] {
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+  text-decoration: line-through !important;
+  font-size: 12px !important;
+}
+
+/* ---- Quick-add button area ---- */
+.product-list-section .product-card__quick-add,
+.product-list-section [class*="quick-add"] {
+  border-radius: 0 0 14px 14px !important;
+}
+
+.product-list-section .product-card__quick-add button,
+.product-list-section [class*="quick-add"] button {
+  border-radius: 0 0 14px 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+}
+
+/* ---- Badge (Sale / Sold out) ---- */
+.product-list-section .badge {
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ---- Resource list grid spacing ---- */
+.product-list-section .section-resource-list {
+  gap: 16px !important;
+}
+
+@media (min-width: 768px) {
+  .product-list-section .section-resource-list {
+    gap: 20px !important;
   }
 }

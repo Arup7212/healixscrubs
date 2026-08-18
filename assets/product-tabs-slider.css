@@ -1,59 +1,99 @@
+/* ============================================
+   Product Tabs Slider — Clean Modern Tab Design
+   ============================================ */
+
 .pts-section {
-  padding: 40px 0;
+  padding: 60px 0;
   font-family: inherit;
+  background: #fff;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .pts-section {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 }
 
+/* ---- Section Header ---- */
 .pts-header {
   text-align: center;
+  margin-bottom: 32px;
 }
 
-
+/* ---- Tab Bar ---- */
 .pts-tabs-container {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  max-width: 800px;
+  margin: 0 auto 0;
+  max-width: 700px;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 0 16px;
 }
 
+/* ---- Tab Buttons — underline style ---- */
 .pts-tab-btn {
+  position: relative;
   border: none;
-  padding: 12px 6px;
-  font-size: 12px;
-  font-weight: 600;
+  background: transparent;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  transition: all 0.3s ease;
+  color: #9ca3af;
+  transition: color 0.25s ease;
   flex: 1;
   text-align: center;
+  white-space: nowrap;
 }
 
-@media(min-width:768px) {
-
+@media (min-width: 768px) {
   .pts-tab-btn {
-
-    padding: 18px 24px;
-    font-size: 16px;
+    padding: 14px 36px;
+    font-size: 14px;
   }
 }
 
+/* Underline indicator */
+.pts-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #0f2145;
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pts-tab-btn.active {
+  color: #0f2145;
+}
+
+.pts-tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.pts-tab-btn:hover:not(.active) {
+  color: #374151;
+}
+
+/* ---- Content Wrapper ---- */
 .pts-content-wrapper {
-  padding: 30px 0;
-  position: relative;
+  padding: 40px 0 0;
+  background: transparent;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .pts-content-wrapper {
-
-    padding: 50px 0;
+    padding: 48px 0 0;
   }
 }
 
+/* ---- Slider Container ---- */
 .pts-slider-container {
   display: none;
   position: relative;
@@ -72,40 +112,39 @@
 
 .pts-slider-container.active {
   display: block;
-  animation: fadeIn 0.4s ease;
+  animation: pts-fadeIn 0.35s ease;
 }
 
-@keyframes fadeIn {
+@keyframes pts-fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* ---- Slider Wrapper ---- */
 .pts-slider-wrapper {
   position: relative;
-  padding: 0 50px;
+  padding: 0 48px;
 }
 
 .pts-slider {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 15px 5px;
-
+  padding: 8px 4px 24px;
   scroll-behavior: smooth;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .pts-slider {
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -113,10 +152,12 @@
   display: none;
 }
 
+/* ---- Product Card ---- */
 .pts-product-card {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 220px;
+  max-width: 220px;
   background: #fff;
+  border: 1px solid #f0f0f0;
   scroll-snap-align: start;
   flex-shrink: 0;
   display: flex;
@@ -124,97 +165,127 @@
   padding: 16px;
   text-decoration: none;
   color: inherit;
-  border-radius: 6px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .pts-product-card {
-    padding: 25px;
+    min-width: 240px;
+    max-width: 240px;
+    padding: 20px;
   }
 }
 
 .pts-product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+  border-color: #e0e7ff;
 }
 
+/* ---- Product Image ---- */
 .pts-image-wrapper {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f8f8;
 }
 
 .pts-product-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.pts-product-card:hover .pts-product-image {
+  transform: scale(1.04);
+}
+
+/* ---- Product Title ---- */
 .pts-product-title {
   text-align: center;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  color: #333;
+  letter-spacing: 0.05em;
+  color: #1f2937;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   margin-top: auto;
+  padding-top: 8px;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .pts-product-title {
-
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
+/* ---- Nav Arrows ---- */
 .pts-nav-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-60%);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  color: #374151;
   cursor: pointer;
   z-index: 10;
   padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .pts-nav-btn:hover {
+  background: #0f2145;
   color: #fff;
-  transform: translateY(-50%) scale(1.1);
+  border-color: #0f2145;
+  box-shadow: 0 4px 16px rgba(15, 33, 69, 0.2);
+  transform: translateY(-60%) scale(1.08);
 }
 
 .pts-nav-prev {
-  left: -10px;
+  left: 0px;
 }
 
 .pts-nav-next {
-  right: -10px;
+  right: 0px;
 }
 
+/* ---- Mobile ---- */
 @media screen and (max-width: 768px) {
-
   .pts-slider-wrapper {
     padding: 0;
   }
 
   .pts-nav-btn {
     display: none;
-    /* Hide arrows on mobile, swiping is better */
   }
 
   .pts-product-card {
-    min-width: 220px;
-    max-width: 220px;
+    min-width: 185px;
+    max-width: 185px;
+  }
+
+  .pts-tabs-container {
+    padding: 0 8px;
+  }
+
+  .pts-tab-btn {
+    padding: 10px 12px;
+    font-size: 11px;
   }
 }
