@@ -505,10 +505,7 @@
       "name": "Product Tabs Sliderr",
       "settings": {
         "heading": "SEARCH PRODUCTS BY",
-        "bg_color": "#c0dfee",
-        "inactive_tab_color": "#8ab4c9",
-        "tab_text_color": "#ffffff",
-        "active_tab_text_color": "#ffffff",
+        "active_tab_color": "#0f2145",
         "tab1_name": "BY PRODUCT CATEGORIES",
         "collection1": "pax-one-pocket-scrub-top",
         "tab2_name": "BY MANUFACTURER",
@@ -586,7 +583,7 @@
       "settings": {
         "heading": "Why Choose Us",
         "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "image_1": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM.png",
+        "image_1": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM_2193100a-ea4b-4d8a-a3f1-d42de31f9604.png",
         "image_2": "shopify://shop_images/DSC03520.webp",
         "right_title": "Build a strategy that puts your money to work.",
         "right_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>",
