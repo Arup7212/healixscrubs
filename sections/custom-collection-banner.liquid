@@ -69,6 +69,7 @@
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 0 0 1rem 0;
+    word-break: break-word;
   }
 
   .ccb__desc {
@@ -77,10 +78,11 @@
     line-height: 1.5;
     font-weight: 400;
     max-width: 420px;
-    /* Truncate to one line with ellipsis */
+    /* Truncate to multiple lines if needed */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   /* ── Right: image panel ── */

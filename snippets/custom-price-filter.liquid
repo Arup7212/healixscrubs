@@ -1,0 +1,344 @@
+{%- style -%}
+  .custom-price-section {
+    padding-top: {{ settings.section_padding_top | default: 15 }}px;
+    padding-bottom: {{ settings.section_padding_bottom | default: 15 }}px;
+    background: {{ settings.section_bg | default: '#ffffff' }};
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .sidebar-filter-group {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+  }
+
+  .sidebar-filter-group .price-filter-label {
+    display: block;
+    font-size: {{ settings.label_font_size | default: 16 }}px;
+    font-weight: {{ settings.label_font_weight | default: '700' }};
+    color: {{ settings.label_color | default: '#111111' }};
+    margin-bottom: 20px;
+  }
+
+  .dual-slider-container {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    margin: 10px 0 20px;
+  }
+
+  .slider-track {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: {{ settings.track_color | default: '#e0e0e0' }};
+    border-radius: 5px;
+    top: 0;
+  }
+
+  .slider-track-active {
+    position: absolute;
+    height: 6px;
+    background: {{ settings.active_track_color | default: '#d32f2f' }};
+    border-radius: 5px;
+    top: 0;
+  }
+
+  input[type="range"].dual-range {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background: transparent !important;
+    pointer-events: none;
+  }
+
+  input#price-min {
+    background-color: {{ settings.track_color | default: '#e0e0e0' }} !important;
+    height: 6px;
+    border-radius: 5px !important;
+  }
+
+  input[type="range"].dual-range::-webkit-slider-runnable-track {
+    height: 6px;
+    background: transparent;
+  }
+
+  input[type="range"].dual-range::-moz-range-track {
+    height: 6px;
+    background: transparent;
+  }
+
+  input[type="range"].dual-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: {{ settings.thumb_color | default: '#d32f2f' }};
+    border: 3px solid {{ settings.thumb_border_color | default: '#ffffff' }};
+    cursor: pointer;
+    pointer-events: auto;
+    margin-top: -7px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  }
+
+  input[type="range"].dual-range::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: {{ settings.thumb_color | default: '#d32f2f' }};
+    border: 3px solid {{ settings.thumb_border_color | default: '#ffffff' }};
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .range-values-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .price-input-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .price-input-label {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  .price-input-wrapper {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #fecdd3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  
+  .price-currency {
+    background-color: #fff1f2;
+    color: #e11d48;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .price-number-input {
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827;
+    width: 100%;
+    background: transparent;
+  }
+{%- endstyle -%}
+{%- liquid
+  assign price_filter = collection.filters | where: "type", "price_range" | first
+
+  if price_filter
+    assign absolute_max = price_filter.range_max | divided_by: 100.0
+
+   
+    assign min_price = -1.0
+    for product in collection.all_products
+      assign product_min_price = product.price_min | divided_by: 100.0
+      if min_price == -1.0 or product_min_price < min_price
+        assign min_price = product_min_price
+      endif
+    endfor
+
+    if min_price == -1.0
+        assign min_price = 0.0
+    endif
+
+    if price_filter.min_value.value
+      assign current_min = price_filter.min_value.value | divided_by: 100.0
+    else
+      assign current_min = min_price
+    endif
+
+    if price_filter.max_value.value
+      assign current_max = price_filter.max_value.value | divided_by: 100.0
+    else
+      assign current_max = absolute_max
+    endif
+
+  else
+    assign absolute_max = 1000.0
+    assign min_price = 0.0
+    assign current_min = 0.0
+    assign current_max = 1000.0
+  endif
+%}
+
+<div class="custom-price-section">
+  <div class="sidebar-filter-group">
+    <label class="price-filter-label">{{ settings.price_label_text | default: "Price:" }}</label>
+
+<div class="dual-slider-container">
+  <div class="slider-track"></div>
+  <div class="slider-track-active js-active-track"></div>
+
+  <input
+    type="range"
+    class="dual-range js-price-min"
+    min="{{ min_price }}" 
+    max="{{ absolute_max }}"
+    value="{{ current_min }}"
+    step="0.01">
+
+  <input
+    type="range"
+    class="dual-range js-price-max"
+    min="{{ min_price }}" 
+    max="{{ absolute_max }}"
+    value="{{ current_max }}"
+    step="0.01">
+</div>
+    <div class="range-values-container">
+      <div class="price-input-box">
+        <label class="price-input-label">Min</label>
+        <div class="price-input-wrapper">
+          <span class="price-currency">{{ cart.currency.symbol }}</span>
+          <input type="text" class="price-number-input js-price-min-display" value="{{ current_min }}">
+        </div>
+      </div>
+      <div class="price-input-box">
+        <label class="price-input-label">Max</label>
+        <div class="price-input-wrapper">
+          <span class="price-currency">{{ cart.currency.symbol }}</span>
+          <input type="text" class="price-number-input js-price-max-display" value="{{ current_max }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function initPriceSlider() {
+  const sections = document.querySelectorAll('.custom-price-section');
+  
+  sections.forEach(section => {
+    if (section.dataset.initialized === 'true') return;
+    section.dataset.initialized = 'true';
+
+    const minInput = section.querySelector('.js-price-min');
+    const maxInput = section.querySelector('.js-price-max');
+    const activeTrack = section.querySelector('.js-active-track');
+    const minDisplay = section.querySelector('.js-price-min-display');
+    const maxDisplay = section.querySelector('.js-price-max-display');
+
+    if (!minInput || !maxInput || !activeTrack) return;
+
+    const currency = '{{ cart.currency.symbol }}';
+    let filterTimeout;
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    function updateSliderUI() {
+      let minVal = parseFloat(minInput.value);
+      let maxVal = parseFloat(maxInput.value);
+      
+      let rangeMin = parseFloat(minInput.min); 
+      let rangeMax = parseFloat(minInput.max);
+
+      if (minVal >= maxVal) {
+        if (document.activeElement === minInput) {
+          minInput.value = (maxVal - 0.01).toFixed(2);
+        } else {
+          maxInput.value = (minVal + 0.01).toFixed(2);
+        }
+        minVal = parseFloat(minInput.value);
+        maxVal = parseFloat(maxInput.value);
+      }
+      
+      const range = rangeMax - rangeMin;
+      if (range <= 0) return;
+
+      const percent1 = ((minVal - rangeMin) / range) * 100;
+      const percent2 = ((maxVal - rangeMin) / range) * 100;
+
+      activeTrack.style.left = percent1 + "%";
+      activeTrack.style.width = (percent2 - percent1) + "%";
+
+      minDisplay.value = formatter.format(minVal);
+      maxDisplay.value = formatter.format(maxVal);
+    }
+
+    function applyFilter() {
+      clearTimeout(filterTimeout);
+      filterTimeout = setTimeout(() => {
+        const params = new URLSearchParams(window.location.search);
+        params.set('filter.v.price.gte', minInput.value);
+        params.set('filter.v.price.lte', maxInput.value);
+        window.location.search = params.toString();
+      }, 700);
+    }
+
+    minInput.addEventListener('input', () => {
+      updateSliderUI();
+      applyFilter();
+    });
+
+    maxInput.addEventListener('input', () => {
+      updateSliderUI();
+      applyFilter();
+    });
+
+    minDisplay.addEventListener('change', () => {
+      let val = parseFloat(minDisplay.value.replace(/[^0-9.]/g, ''));
+      if (!isNaN(val)) {
+        minInput.value = val;
+        updateSliderUI();
+        applyFilter();
+      }
+    });
+
+    maxDisplay.addEventListener('change', () => {
+      let val = parseFloat(maxDisplay.value.replace(/[^0-9.]/g, ''));
+      if (!isNaN(val)) {
+        maxInput.value = val;
+        updateSliderUI();
+        applyFilter();
+      }
+    });
+
+    updateSliderUI();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initPriceSlider);
+
+const observer = new MutationObserver(() => {
+  if (document.querySelector('.custom-price-section:not([data-initialized="true"])')) {
+    initPriceSlider();
+  }
+});
+observer.observe(document.body, { childList: true, subtree: true });
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.active-facets__button-remove')) {
+    setTimeout(initPriceSlider, 600);
+  }
+});
+</script>

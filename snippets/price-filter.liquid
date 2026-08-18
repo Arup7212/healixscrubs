@@ -188,7 +188,13 @@
   close_with_escape: is_horizontal
 %}
 
+{% render 'custom-price-filter' %}
+
 {% stylesheet %}
+  accordion-custom:has([data-testid="price-filter"]) {
+    display: none !important;
+  }
+
   /* Price filter */
   .price-facet {
     container-type: inline-size;
