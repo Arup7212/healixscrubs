@@ -76,8 +76,10 @@
     color: var(--quick-add-foreground, var(--color-foreground));
     pointer-events: all;
     position: absolute;
-    inset-inline-end: var(--quick-add-inset-inline-end);
-    inset-block-end: var(--quick-add-inset-block-end);
+    right: 12px !important;
+    bottom: 12px !important;
+    inset-inline-end: 12px !important;
+    inset-block-end: 12px !important;
     max-inline-size: calc(100% - var(--quick-add-inset-inline-end));
     min-inline-size: 0;
     white-space: nowrap;
@@ -102,6 +104,9 @@
 
     .quick-add[stay-visible] & {
       display: flex;
+      opacity: 1;
+      width: var(--quick-add-expanded-width, max-content);
+      padding-inline-end: var(--padding-sm, 12px);
     }
 
     @media screen and (min-width: 750px) {
@@ -123,6 +128,14 @@
     flex-shrink: 0;
     width: var(--quick-add-icon-width);
     height: 100%;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+
+  .quick-add__button > .add-to-cart-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
   }
 
   .quick-add__product-form-component {

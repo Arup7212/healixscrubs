@@ -196,7 +196,7 @@
 }
 
 .hero-slider-btn.btn-primary {
-  background: var(--btn-bg, var(--color-primary-button-background, #0f2145));
+  background: var(--btn-bg, var(--color-primary-button-background, #173C2B));
   color: var(--btn-text, var(--color-primary-button-text, #ffffff));
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }

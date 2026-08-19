@@ -1,6 +1,6 @@
 {%- style -%}
   .custom-collection-carousel {
-    background-color: {{ section.settings.background_color }};
+   background:#eef2f9;
   padding:40px 0px;
     position: relative;
     display: flex;
@@ -57,6 +57,42 @@
     overflow: hidden;
     display: block;
     text-decoration: none;
+    transform: none !important;
+  }
+  .ccc-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .ccc-card:hover::after {
+    animation: image-shine-sweep 0.75s ease-in-out;
+    opacity: 1;
+  }
+  @keyframes image-shine-sweep {
+    0% {
+      left: -75%;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      left: 125%;
+      opacity: 0;
+    }
   }
   .ccc-card__image {
     width: 100%;
@@ -106,24 +142,29 @@
   .ccc-control-btn {
     width: 40px;
     height: 40px;
-    background-color: #fff;
-    color: #0b457f;
-    border: none;
+    background-color: #ffffff;
+    color: var(--primary-color, #173C2B);
+    border: 1px solid rgba(23, 60, 43, 0.15);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 18px;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
   }
   .ccc-control-btn:hover {
-    background-color: #0b457f;
-    color: #fff;
+    background-color: var(--primary-color, #173C2B) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color, #173C2B) !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(23, 60, 43, 0.25);
   }
   .ccc-control-btn svg {
     width: 16px;
     height: 16px;
     fill: currentColor;
+    stroke: currentColor;
   }
   .ccc-view-more {
     display: inline-block;
@@ -134,7 +175,7 @@
     border-radius: 6px;
     letter-spacing: 0.5px;
     border: none;
-     background:#0f2145;
+     background: var(--primary-color);
     color: var(--btn-text, var(--color-primary-button-text, #ffffff));
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     cursor: pointer;

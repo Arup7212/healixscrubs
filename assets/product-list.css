@@ -1,18 +1,13 @@
-/* ============================================================
-   Premium Product List Section — Healix Scrubs
-   Modern card grid with hover effects & polished typography
-   ============================================================ */
-
 /* ---- Section Wrapper ---- */
 .product-list-section {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 @media (min-width: 768px) {
   .product-list-section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
 
@@ -25,52 +20,45 @@
 .product-list-section .section-resource-list__header h2,
 .product-list-section .section-resource-list__header h3,
 .product-list-section .section-resource-list__header h4 {
-  font-size: 26px !important;
-  font-weight: 800 !important;
-  color: #0f2145 !important;
-  line-height: 1.2 !important;
-  margin-top: 0 !important;
-  margin-bottom: 6px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 16px !important;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
+
   .product-list-section .section-resource-list__header h2,
   .product-list-section .section-resource-list__header h3,
   .product-list-section .section-resource-list__header h4 {
-    font-size: 36px !important;
-    margin-bottom: 8px !important;
+    font-size: 32px;
+    margin-bottom: 24px !important;
   }
 }
 
-/* Decorative underline accent under the title */
-.product-list-section .section-resource-list__header h2::after,
-.product-list-section .section-resource-list__header h3::after,
-.product-list-section .section-resource-list__header h4::after {
-  content: '';
-  display: block;
-  width: 52px;
-  height: 3px;
-  background: linear-gradient(90deg, #0f2145, #4a6fa5);
-  border-radius: 2px;
-  margin: 12px auto 0;
+.section-resource-list__header .heading {
+  display: flex;
+  align-items: center;
 }
+
 
 /* "View all" link styling */
 .product-list-section .section-resource-list__header a,
 .product-list-section .section-resource-list__header .view-all-link {
   font-size: 13px !important;
   font-weight: 600 !important;
-  color: #0f2145 !important;
+  color: var(--primary-color) !important;
   text-decoration: none !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
-  border-bottom: 1.5px solid #0f2145 !important;
+  border-bottom: 1.5px solid var(--primary-color) !important;
   padding-bottom: 1px !important;
   transition: opacity 0.2s ease !important;
   display: inline-block !important;
-  margin-top: 10px !important;
+  flex-shrink: 0;
 }
 
 .product-list-section .section-resource-list__header a:hover {
@@ -138,6 +126,7 @@
 }
 
 @media (min-width: 768px) {
+
   .product-list-section .product-card__title,
   .product-list-section .product-card__content h2,
   .product-list-section .product-card__content h3 {
@@ -150,7 +139,7 @@
 .product-list-section [class*="price"] {
   font-size: 14px !important;
   font-weight: 700 !important;
-  color: #0f2145 !important;
+  color: var(--primary-color) !important;
 }
 
 /* Sale price */

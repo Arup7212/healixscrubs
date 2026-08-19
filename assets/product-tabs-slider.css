@@ -3,21 +3,20 @@
    ============================================ */
 
 .pts-section {
-  padding: 60px 0;
+  padding-bottom: 40px;
   font-family: inherit;
   background: #fff;
 }
 
 @media (min-width: 768px) {
   .pts-section {
-    padding: 80px 0;
+    padding-bottom: 60px;
   }
 }
 
 /* ---- Section Header ---- */
 .pts-header {
   text-align: center;
-  margin-bottom: 32px;
 }
 
 /* ---- Tab Bar ---- */
@@ -63,14 +62,14 @@
   left: 0;
   right: 0;
   height: 3px;
-  background-color: #0f2145;
+  background-color: var(--primary-color);
   border-radius: 2px 2px 0 0;
   transform: scaleX(0);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pts-tab-btn.active {
-  color: #0f2145;
+  color: var(--primary-color);
 }
 
 .pts-tab-btn.active::after {
@@ -100,7 +99,7 @@
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
-  padding-inline: 60px;
+  /* padding-inline: 60px; */
   box-sizing: border-box;
 }
 
@@ -120,6 +119,7 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -138,11 +138,10 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 8px 4px 24px;
   scroll-behavior: smooth;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 990px) {
   .pts-slider {
     gap: 20px;
   }
@@ -154,47 +153,85 @@
 
 /* ---- Product Card ---- */
 .pts-product-card {
-  min-width: 220px;
-  max-width: 220px;
+  min-width: calc((100% - 12px) / 2);
+  max-width: calc((100% - 12px) / 2);
+  width: calc((100% - 12px) / 2);
   background: #fff;
   border: 1px solid #f0f0f0;
   scroll-snap-align: start;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  gap: 8px !important;
+  padding: 14px;
   text-decoration: none;
   color: inherit;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 989px) {
   .pts-product-card {
-    min-width: 240px;
-    max-width: 240px;
-    padding: 20px;
+    min-width: calc((100% - 32px) / 3);
+    max-width: calc((100% - 32px) / 3);
+    width: calc((100% - 32px) / 3);
+    padding: 16px;
+  }
+}
+
+@media (min-width: 990px) {
+  .pts-product-card {
+    min-width: calc((100% - 60px) / 4);
+    max-width: calc((100% - 60px) / 4);
+    width: calc((100% - 60px) / 4);
+    padding: 18px;
   }
 }
 
 .pts-product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+  transform: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border-color: #e0e7ff;
 }
 
 /* ---- Product Image ---- */
 .pts-image-wrapper {
+  position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 0 !important;
   border-radius: 8px;
   overflow: hidden;
   background: #f8f8f8;
+}
+
+.pts-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.pts-product-card:hover .pts-image-wrapper::after {
+  animation: image-shine-sweep 0.75s ease-in-out;
+  opacity: 1;
 }
 
 .pts-product-image {
@@ -216,10 +253,9 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #1f2937;
-  margin: 0;
-  line-height: 1.5;
-  margin-top: auto;
-  padding-top: 8px;
+  margin: 0 !important;
+  line-height: 1.4;
+  padding: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -250,9 +286,9 @@
 }
 
 .pts-nav-btn:hover {
-  background: #0f2145;
+  background: var(--primary-color);
   color: #fff;
-  border-color: #0f2145;
+  border-color: var(--primary-color);
   box-shadow: 0 4px 16px rgba(15, 33, 69, 0.2);
   transform: translateY(-60%) scale(1.08);
 }

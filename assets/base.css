@@ -13,6 +13,9 @@ body {
 }
 
 :root {
+  --primary-color: #173C2B;
+  --color-primary: var(--primary-color);
+  --color-primary-rgb: 23 60 43;
   --hover-lift-amount: 4px;
   --hover-scale-amount: 1.03;
   --hover-subtle-zoom-amount: 1.015;
@@ -888,7 +891,7 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6) a:where(:not(.button, .button-secondary)),
 .section-title {
   font-size: 24px;
   font-weight: 700;
-  color: #0f2145;
+  color: var(--primary-color);
   line-height: 1.25;
   margin-top: 0;
   margin-bottom: 16px !important;
@@ -2290,7 +2293,7 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 .product-recommendations .text-block h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #0f2145;
+  color: var(--primary-color);
   line-height: 1.25;
   margin-top: 0;
   margin-bottom: 16px !important;
@@ -2303,4 +2306,116 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
     font-size: 32px;
     margin-bottom: 24px !important;
   }
+}
+
+/* ============================================
+   Button Hover Shadow & Shine Effects
+   ============================================ */
+.button:not(.button-unstyled),
+.button-secondary,
+.button-custom,
+.hero-slider-btn,
+.why-choose-us-btn,
+.moko-promo-banner__btn,
+.moko-col-highlight__btn,
+.ccc-view-more,
+.newsletter-banner__button {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease,
+              color 0.3s ease !important;
+}
+
+.button:not(.button-unstyled)::after,
+.button-secondary::after,
+.button-custom::after,
+.hero-slider-btn::after,
+.why-choose-us-btn::after,
+.moko-promo-banner__btn::after,
+.moko-col-highlight__btn::after,
+.ccc-view-more::after,
+.newsletter-banner__button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.button:not(.button-unstyled):hover,
+.button-secondary:hover,
+.button-custom:hover,
+.hero-slider-btn:hover,
+.why-choose-us-btn:hover,
+.moko-promo-banner__btn:hover,
+.moko-col-highlight__btn:hover,
+.ccc-view-more:hover,
+.newsletter-banner__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(23, 60, 43, 0.28) !important;
+}
+
+.button:not(.button-unstyled):hover::after,
+.button-secondary:hover::after,
+.button-custom:hover::after,
+.hero-slider-btn:hover::after,
+.why-choose-us-btn:hover::after,
+.moko-promo-banner__btn:hover::after,
+.moko-col-highlight__btn:hover::after,
+.ccc-view-more:hover::after,
+.newsletter-banner__button:hover::after {
+  animation: button-shine-sweep 0.75s ease-in-out;
+  opacity: 1;
+}
+
+@keyframes button-shine-sweep {
+  0% {
+    left: -75%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Uniform Product Card Element Spacing (Gap: 8px)
+   ============================================ */
+product-card,
+.product-card,
+.product-grid__card,
+.product-card__content {
+  --product-card-gap: 8px !important;
+}
+
+.product-card .group-block,
+.product-card .layout-panel-flex,
+.product-card__content {
+  gap: 8px !important;
+}
+
+.product-card :is(.product-title, h2, h3, h4, .h4, [class*="title"]),
+.product-card :is(.price, .product-price, [class*="price"]) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

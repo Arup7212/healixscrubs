@@ -34,7 +34,7 @@
     <div class="pts-slider-container active" id="tab1-{{ section.id }}">
       <div class="pts-slider-wrapper">
         <button class="pts-nav-btn pts-nav-prev" aria-label="Previous">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <div class="pts-slider">
           {%- assign collection1 = section.settings.collection1 -%}
@@ -63,7 +63,7 @@
           {%- endif -%}
         </div>
         <button class="pts-nav-btn pts-nav-next" aria-label="Next">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
     </div>
@@ -72,7 +72,7 @@
     <div class="pts-slider-container" id="tab2-{{ section.id }}">
       <div class="pts-slider-wrapper">
         <button class="pts-nav-btn pts-nav-prev" aria-label="Previous">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         <div class="pts-slider">
           {%- assign collection2 = section.settings.collection2 -%}
@@ -101,7 +101,7 @@
           {%- endif -%}
         </div>
         <button class="pts-nav-btn pts-nav-next" aria-label="Next">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
     </div>
@@ -138,10 +138,10 @@
 
       if (slider && prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
-          slider.scrollBy({ left: -300, behavior: 'smooth' });
+          slider.scrollBy({ left: -(slider.clientWidth + 20), behavior: 'smooth' });
         });
         nextBtn.addEventListener('click', () => {
-          slider.scrollBy({ left: 300, behavior: 'smooth' });
+          slider.scrollBy({ left: slider.clientWidth + 20, behavior: 'smooth' });
         });
       }
     });
@@ -162,7 +162,7 @@
       "type": "color",
       "id": "active_tab_color",
       "label": "Active Tab Accent Color",
-      "default": "#0f2145"
+      "default": "#173C2B"
     },
     {
       "type": "header",

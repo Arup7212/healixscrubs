@@ -2,11 +2,55 @@
    Layout: [Menu ☰] [Logo] ---spacer--- [Search] [Profile/Cart]
    Professional look: hamburger on far left, logo next to it, actions on right */
 
-/* ---- Make logo white on dark header ---- */
+/* ---- Header Styling — Matching Footer (#eef2f9 background, primary color text/icons) ---- */
+.header-section,
+.header__row,
+#header-component,
+.header-menu,
+.header__row--top,
+.header__row--bottom,
+.header-drawer__content {
+  background-color: #eef2f9 !important;
+  color: var(--primary-color, #173C2B) !important;
+}
+
+/* Header logo natural color (no white invert filter) */
 .header__logo img,
 .header-logo img,
-.header__heading-logo img {
-  filter: brightness(0) invert(1);
+.header__heading-logo img,
+.header img[class*="logo"],
+.header-logo .logo-block__image {
+  filter: none !important;
+}
+
+/* Header links: uppercase & 500 font-weight */
+.header__row a,
+.header__row .menu__link,
+.header-menu__link,
+.header__menu-item,
+.menu__item a {
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--primary-color, #173C2B) !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Header icons: clean stroke, no solid fill */
+.header__row button,
+.header__row svg,
+.header__row .header-actions__action,
+.header-drawer__toggle,
+.header-drawer__toggle svg,
+.header-actions__action svg,
+.search-action svg {
+  color: var(--primary-color, #173C2B) !important;
+  stroke: var(--primary-color, #173C2B) !important;
+  fill: none !important;
+}
+
+.header__row .cart-bubble {
+  background-color: var(--primary-color, #173C2B) !important;
+  color: #ffffff !important;
 }
 
 @media screen and (max-width: 749px) {

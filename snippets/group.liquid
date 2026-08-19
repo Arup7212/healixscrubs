@@ -46,7 +46,7 @@
       href="{{ settings.link }}"
       class="group-block__link"
       {% if settings.open_in_new_tab %}
-        target="_blank" rel="noopener"
+        target="_blank" rel="noopener"<
       {% endif %}
     ></a>
   {%- endif -%}
@@ -66,14 +66,7 @@
   </div>
 
   <div
-    class="
-      group-block-content
-      {% if request.design_mode %}group-block-content--design-mode{% endif %}
-      layout-panel-flex
-      layout-panel-flex--{{ settings.content_direction | default: 'column' }}
-      {% if settings.vertical_on_mobile %} mobile-column{% endif %}
-    "
-    style="{% render 'layout-panel-style', settings: settings %}"
+    class="heading"
   >
     {{- children -}}
   </div>

@@ -19,7 +19,7 @@
 .product-recommendations .section-resource-list__content h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #0f2145;
+  color: var(--primary-color);
   line-height: 1.25;
   margin-top: 0;
 

@@ -1,170 +1,287 @@
+/* ============================================
+   MOKO Promo Banner — Premium High-End Design
+   ============================================ */
+
 .moko-promo-banner {
-  border-radius: 16px;
+  position: relative;
+  background-color: var(--banner-bg, var(--primary-color, #173C2B));
+  border-radius: 20px;
   overflow: hidden;
-  max-width: 1920px;
-  width: 100%;
-  margin: 0px auto;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
+  padding: 36px 32px 0 32px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
-  padding: 20px 20px 0px 20px;
 }
 
-
-.moko-promo-banner .flex-box {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  padding-bottom: 20px;
-
-
-}
-
-
-@media(min-width:768px) {
-  .moko-promo-banner .flex-box {
-    flex-direction: row;
-    gap: 30px;
-    padding-bottom: 40px;
-  }
-
-}
-
-@media screen and (min-width: 990px) {
+@media (min-width: 1024px) {
   .moko-promo-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 40px 0px 40px;
+    padding: 48px 48px 0 48px;
   }
 }
 
-.moko-promo-banner__text-wrap {
-  flex: 1;
+/* Background Ambient Glow & Light Effect */
+.moko-promo-banner__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-
-.moko-promo-banner__heading {
-  display: flex;
+/* Grid Layout */
+.moko-promo-banner__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 0;
 }
 
-.moko-promo-banner__heading .section-title {
-  color: white;
+@media (min-width: 768px) and (max-width: 1023px) {
+  .moko-promo-banner__grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
 }
 
-.moko-promo-banner__heading-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
+@media (min-width: 1024px) {
+  .moko-promo-banner__grid {
+    grid-template-columns: 1.25fr 1fr 0.9fr;
+    gap: 40px;
+  }
 }
 
+/* ---- Left Column: Text & CTA ---- */
+.moko-promo-banner__text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 1024px) {
+  .moko-promo-banner__text-col {
+    padding-bottom: 48px;
+  }
+}
+
+/* Badge Pill */
+.moko-promo-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+/* Heading */
+.moko-promo-banner__heading {
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 800;
+  line-height: 1.18;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Text */
 .moko-promo-banner__text {
-  font-size: 16px;
-  color: white;
-  margin: 0 0 20px;
-  max-width: 400px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 28px 0;
+  max-width: 440px;
+}
+
+/* Button */
+.moko-promo-banner__btn-wrapper {
+  margin-top: 4px;
 }
 
 .moko-promo-banner__btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
-  border-radius: 6px;
-  border: none;
+  gap: 10px;
+  padding: 14px 32px;
   background-color: #ffffff;
-  color: #0a1930;
-  transition: box-shadow 0.25s ease-out, background-color 0.25s ease-out;
+  color: var(--primary-color, #173C2B);
+  font-weight: 700;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  letter-spacing: 1px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.moko-promo-banner__btn svg {
+  transition: transform 0.3s ease;
 }
 
 .moko-promo-banner__btn:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+  background-color: #ffffff;
+  color: var(--primary-color, #173C2B);
 }
 
-.moko-promo-banner__features {
-  display: flex;
-  gap: 24px;
-  padding: 20px 0px;
-  justify-content: center;
+.moko-promo-banner__btn:hover svg {
+  transform: translateX(4px);
 }
 
-@media screen and (min-width: 990px) {
-  .moko-promo-banner__features {
-    padding: 0;
-    flex: 0 0 35%;
-    gap: 32px;
-    justify-content: center;
-    padding: 30px 0px;
+/* ---- Center Column: Feature Cards ---- */
+.moko-promo-banner__features-col {
+  width: 100%;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 1024px) {
+  .moko-promo-banner__features-col {
+    padding-bottom: 48px;
   }
 }
 
-.moko-promo-banner__feature {
+.moko-promo-banner__features-grid {
   display: flex;
   flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.moko-promo-banner__feature-card {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  text-align: center;
-  max-width: 80px;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 14px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.moko-promo-banner__feature-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateX(4px);
 }
 
 .moko-promo-banner__feature-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* ensure SVGs are white */
 .moko-promo-banner__feature-icon svg {
-  width: 100%;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.moko-promo-banner__feature-icon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.moko-promo-banner__feature-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+/* ---- Right Column: Model / Product Image ---- */
+.moko-promo-banner__image-col {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  align-self: end;
   height: 100%;
 }
 
-.moko-promo-banner__feature-text {
-  font-size: 14px;
-  color: #ffffff;
-  line-height: 1.2;
-  letter-spacing: .5px;
-}
-
-.moko-promo-banner__image {
-  flex: 1;
-  width: 100%;
-  min-height: 200px;
-  display: flex;
-  align-items: flex-end;
-}
-
-@media screen and (min-width: 990px) {
-  .moko-promo-banner__image {
-    flex: 0 0 30%;
-    align-self: stretch;
-    /* stretch to fill height */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .moko-promo-banner__image-col {
+    grid-column: span 2;
   }
 }
 
-.moko-promo-banner__image img {
+.moko-promo-banner__image-wrapper {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: bottom center;
-  display: block;
+  max-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-@media screen and (min-width: 990px) {
-  .moko-promo-banner__image img {
-    /* on desktop, use contain so transparent model image sits at the bottom */
-    object-fit: contain;
-    object-position: bottom right;
+.moko-promo-banner__img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.2));
+}
+
+.moko-promo-banner__placeholder {
+  width: 100%;
+  max-height: 320px;
+  fill: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsiveness (≤767px) */
+@media (max-width: 767px) {
+  .moko-promo-banner {
+    padding: 28px 20px 0 20px;
+    border-radius: 16px;
+  }
+
+  .moko-promo-banner__grid {
+    gap: 24px;
+  }
+
+  .moko-promo-banner__text-col {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .moko-promo-banner__text {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .moko-promo-banner__btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 24px;
+  }
+
+  .moko-promo-banner__features-col {
+    padding-bottom: 0;
+  }
+
+  .moko-promo-banner__feature-card {
+    padding: 12px 16px;
+  }
+
+  .moko-promo-banner__img {
+    max-height: 280px;
   }
 }
