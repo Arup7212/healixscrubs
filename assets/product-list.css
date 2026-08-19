@@ -11,57 +11,85 @@
   }
 }
 
-/* ---- Section Header / Title ---- */
+/* ---- Section Header / Title & View All Layout ---- */
 .product-list-section .section-resource-list__header {
-  text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
-.product-list-section .section-resource-list__header h2,
-.product-list-section .section-resource-list__header h3,
-.product-list-section .section-resource-list__header h4 {
-  font-size: 24px;
+.product-list-section .section-resource-list__header .group-block {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.product-list-section .section-resource-list__header .heading,
+.product-list-section .section-resource-list__header .group-block-content,
+.product-list-section .section-resource-list__header .layout-panel-flex {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 16px !important;
+  flex-wrap: nowrap !important;
+}
+
+.product-list-section .section-resource-list__header .text-block,
+.product-list-section .section-resource-list__header .heading > :first-child {
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+}
+
+.product-list-section .section-resource-list__header :is(h2, h3, h4) {
+  font-size: 22px;
   font-weight: 700;
-  color: var(--primary-color);
-  line-height: 1.25;
-  margin-top: 0;
-  margin-bottom: 16px !important;
+  color: var(--primary-color, #173C2B);
+  line-height: 1.2;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
   text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
+  .product-list-section .section-resource-list__header {
+    margin-bottom: 28px;
+  }
 
-  .product-list-section .section-resource-list__header h2,
-  .product-list-section .section-resource-list__header h3,
-  .product-list-section .section-resource-list__header h4 {
+  .product-list-section .section-resource-list__header :is(h2, h3, h4) {
     font-size: 32px;
-    margin-bottom: 24px !important;
   }
 }
 
-.section-resource-list__header .heading {
-  display: flex;
-  align-items: center;
-}
-
-
-/* "View all" link styling */
+/* "View all" link styling — aligned right & vertically centered */
 .product-list-section .section-resource-list__header a,
-.product-list-section .section-resource-list__header .view-all-link {
+.product-list-section .section-resource-list__header .view-all-link,
+.product-list-section .section-resource-list__header .button-block,
+.product-list-section .section-resource-list__header button,
+.product-list-section .section-resource-list__header .heading > :last-child {
   font-size: 13px !important;
   font-weight: 600 !important;
-  color: var(--primary-color) !important;
+  color: var(--primary-color, #173C2B) !important;
   text-decoration: none !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
-  border-bottom: 1.5px solid var(--primary-color) !important;
+  border-bottom: 1.5px solid var(--primary-color, #173C2B) !important;
   padding-bottom: 1px !important;
   transition: opacity 0.2s ease !important;
-  display: inline-block !important;
-  flex-shrink: 0;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
-.product-list-section .section-resource-list__header a:hover {
+.product-list-section .section-resource-list__header a:hover,
+.product-list-section .section-resource-list__header .view-all-link:hover {
   opacity: 0.65 !important;
 }
 
@@ -160,12 +188,12 @@
 /* ---- Quick-add button area ---- */
 .product-list-section .product-card__quick-add,
 .product-list-section [class*="quick-add"] {
-  border-radius: 0 0 14px 14px !important;
+  border-radius: 14px !important;
 }
 
 .product-list-section .product-card__quick-add button,
 .product-list-section [class*="quick-add"] button {
-  border-radius: 0 0 14px 14px !important;
+  border-radius: 14px !important;
   font-weight: 600 !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;

@@ -86,26 +86,28 @@
   }
 }
 
-/* Same overrides for drawer menu style (JS-toggled on wider touch screens) */
-#header-component[data-menu-style='drawer'] .header__columns {
-  grid-template-columns: auto auto 1fr auto auto !important;
-  grid-template-areas: 'menu logo spacer search actions' !important;
-  column-gap: 8px !important;
-}
+@media screen and (max-width: 749px) {
+  /* Same overrides for drawer menu style on mobile */
+  #header-component[data-menu-style='drawer'] .header__columns {
+    grid-template-columns: auto auto 1fr auto auto !important;
+    grid-template-areas: 'menu logo spacer search actions' !important;
+    column-gap: 8px !important;
+  }
 
-#header-component[data-menu-style='drawer'] .header__columns header-drawer {
-  grid-area: menu !important;
-}
+  #header-component[data-menu-style='drawer'] .header__columns header-drawer {
+    grid-area: menu !important;
+  }
 
-#header-component[data-menu-style='drawer'] .header__columns .header-logo {
-  grid-area: logo !important;
-  justify-self: start;
-}
+  #header-component[data-menu-style='drawer'] .header__columns .header-logo {
+    grid-area: logo !important;
+    justify-self: start;
+  }
 
-#header-component[data-menu-style='drawer'] .header__columns .search-action {
-  grid-area: search !important;
-}
+  #header-component[data-menu-style='drawer'] .header__columns .search-action {
+    grid-area: search !important;
+  }
 
-#header-component[data-menu-style='drawer'] .header__columns header-actions {
-  grid-area: actions !important;
+  #header-component[data-menu-style='drawer'] .header__columns header-actions {
+    grid-area: actions !important;
+  }
 }

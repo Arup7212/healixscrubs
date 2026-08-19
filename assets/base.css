@@ -2311,8 +2311,7 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 /* ============================================
    Button Hover Shadow & Shine Effects
    ============================================ */
-.button:not(.button-unstyled),
-.button-secondary,
+.button-secondary:not(.skip-to-content-link),
 .button-custom,
 .hero-slider-btn,
 .why-choose-us-btn,
@@ -2323,13 +2322,13 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   position: relative !important;
   overflow: hidden !important;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-color 0.3s ease,
-              color 0.3s ease !important;
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s ease,
+    color 0.3s ease !important;
 }
 
-.button:not(.button-unstyled)::after,
-.button-secondary::after,
+.button:not(.button-unstyled):not(.skip-to-content-link)::after,
+.button-secondary:not(.skip-to-content-link)::after,
 .button-custom::after,
 .hero-slider-btn::after,
 .why-choose-us-btn::after,
@@ -2343,12 +2342,10 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   left: -75%;
   width: 50%;
   height: 200%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: rotate(25deg);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -2387,9 +2384,11 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
     left: -75%;
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   100% {
     left: 125%;
     opacity: 0;

@@ -156,14 +156,20 @@
   }
 
 
-  .product-information .price {
-    font-size: 16px;
-    font-weight: bold;
+  /* Product Details Page Price */
+  .product-information .price,
+  .product-details product-price,
+  .product-details .price {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--primary-color, #173C2B) !important;
   }
 
-  @media(min-width:767px) {
-    .product-information .price {
-      font-size: 20px;
+  @media (min-width: 768px) {
+    .product-information .price,
+    .product-details product-price,
+    .product-details .price {
+      font-size: 22px !important;
     }
   }
 
@@ -175,40 +181,42 @@
     gap: 12px;
   }
 
-  .product-information .product-form-buttons>* {
+  .product-information .product-form-buttons > * {
     flex: 1 1 auto !important;
     margin: 0 !important;
   }
 
   /* Prevent the quantity wrapper from expanding and leaving blank space */
-  .product-information .product-form-buttons>.quantity-selector-wrapper {
+  .product-information .product-form-buttons > .quantity-selector-wrapper {
     flex: 0 0 auto !important;
   }
 
   .product-information .quantity-selector {
     flex: 0 0 auto !important;
     width: 120px !important;
-    /* Set a fixed width for the quantity input */
   }
 
-  /* Custom Product Title Styles */
+  /* Product Details Page Title Styles */
   .custom-product-title,
-  .product-details .text-block h1 {
+  .product-details .text-block h1,
+  .product-details h1 {
+    color: var(--primary-color, #173C2B) !important;
     font-size: 24px !important;
-
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 8px 0 !important;
   }
 
   @media screen and (min-width: 768px) {
-
     .custom-product-title,
-    .product-details .text-block h1 {
+    .product-details .text-block h1,
+    .product-details h1 {
       font-size: 32px !important;
-
     }
   }
 
-  /* Remove spacing from product details text blocks */
-  .product-details .spacing-style {
-    padding: 0 !important;
-    margin: 0 !important;
+  /* Divider / Border spacing between price and color/variant options */
+  .product-details .divider {
+    margin-block-start: 16px !important;
+    margin-block-end: 18px !important;
   }

@@ -19,7 +19,7 @@
 /* --- Base Section --- */
 .custom-footer-section {
   background-color: #eef2f9;
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 60px;
   position: relative;
 }
@@ -211,7 +211,7 @@
   flex-wrap: wrap;
   gap: 12px;
   text-wrap: wrap !important;
-  padding: 320px 0px !important;
+
 }
 
 /* Left-align first child, right-align last child */
