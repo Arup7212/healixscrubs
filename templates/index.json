@@ -290,7 +290,7 @@
       "name": "Shop By Fabric",
       "settings": {
         "background_color": "#ffffff",
-        "heading": "Shop By Categaoy",
+        "heading": "Shop By Category",
         "subtitle": "Ten Fabrics, Each With Its Own Hand — From Featherlight Organza To Everyday Mul Cotton.",
         "layout_style": "slider",
         "enable_autoplay": true,
