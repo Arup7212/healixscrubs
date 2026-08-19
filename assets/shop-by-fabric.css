@@ -1,0 +1,317 @@
+/* shop-by-fabric.css */
+.shop-by-fabric-section {
+  position: relative;
+  width: 100%;
+  padding: var(--vmi-section-py-mobile, 40px) 0;
+  background-color: var(--sbf-bg-color, #ffffff);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (min-width: 769px) {
+  .shop-by-fabric-section {
+    padding: var(--vmi-section-py, 72px) 0;
+  }
+}
+
+.sbf-container {
+  max-width: var(--vmi-max-w, 1440px);
+  margin: 0 auto;
+  padding: 0 var(--vmi-px-mobile, 20px);
+  box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  .sbf-container {
+    padding: 0 var(--vmi-px, 60px);
+  }
+}
+
+/* Header */
+.sbf-header {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 40px auto;
+}
+
+.sbf-title {
+  font-family: var(--font-heading-family, 'Prata', serif);
+  font-size: 44px;
+  font-weight: 500;
+  color: #242946;
+  letter-spacing: 0.02em;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.sbf-subtitle {
+  font-family: var(--font-heading-family, 'Prata', serif);
+  font-size: 15px;
+  color: #72778e;
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Gradient Underline */
+.sbf-divider {
+  display: block;
+  margin: 20px auto 40px auto;
+  width: 160px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(247, 148, 30, 0) 0%, #f7941e 25%, #e07a3c 50%, #f7941e 75%, rgba(247, 148, 30, 0) 100%);
+}
+
+/* Slider Track Wrapper */
+.sbf-slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sbf-slider-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.sbf-slider-viewport::-webkit-scrollbar {
+  display: none !important;
+}
+
+.sbf-slider-viewport:active {
+  cursor: grabbing;
+}
+
+.sbf-slider-track {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Fabric Item Card */
+.sbf-item {
+  flex: 0 0 auto;
+  width: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.sbf-circle-wrapper {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(30, 36, 71, 0.1);
+  border: 4px solid #ffffff;
+  box-sizing: border-box;
+  background-color: #f0ebe4;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  flex-shrink: 0;
+}
+
+.sbf-item:hover .sbf-circle-wrapper {
+  box-shadow: 0 16px 36px rgba(30, 36, 71, 0.18);
+  border-color: #fff6ed;
+}
+
+.sbf-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sbf-item-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--vmi-navy);
+  text-align: center;
+  margin-top: 18px;
+  letter-spacing: 4%;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+      font-family: Jost, sans-serif;
+}
+
+.sbf-item:hover .sbf-item-title {
+  color: var(--vmi-orange);
+}
+
+/* Slider Nav Controls */
+.sbf-nav-button {
+  display: none !important;
+  position: absolute;
+  top: calc(50% - 24px);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(30, 36, 71, 0.12);
+  color: #242946;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sbf-nav-button:hover {
+  background-color: #242946;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.sbf-nav-button.prev {
+  left: -20px;
+}
+
+.sbf-nav-button.next {
+  right: -20px;
+}
+
+.sbf-nav-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Grid Layout Wrapper */
+.sbf-grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 60px;
+  max-width: var(--vmi-max-w, 1440px);
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+@media (max-width: 1024px) {
+  .sbf-grid-wrapper {
+    gap:7px 7px;
+    padding-top:0;
+  }
+}
+
+/* Responsive adjustments with min-width */
+@media (max-width: 480px) {
+  .sbf-title {
+    font-size: 30px;
+  }
+
+  .sbf-item {
+    width: 100px;
+  }
+
+  .sbf-circle-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .sbf-item-title {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .sbf-slider-track {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 481px) {
+  .sbf-item {
+    width: 140px;
+  }
+
+  .sbf-circle-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .sbf-item-title {
+    font-size: 16px;
+  }
+
+  .sbf-slider-track {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .shop-by-fabric-section {
+    padding: 47px 0 0px 0;
+  }
+
+  .sbf-grid-wrapper {
+    gap: 30px 40px;
+  }
+
+  .sbf-item {
+    width: 160px;
+  }
+
+  .sbf-circle-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .sbf-item-title {
+    font-size: 18px;
+    margin-top: 16px;
+  }
+
+  .sbf-slider-track {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .sbf-grid-wrapper {
+    gap: 40px 60px;
+  }
+
+  .sbf-item {
+    width: var(--sbf-circle-size, 190px);
+  }
+
+  .sbf-circle-wrapper {
+    width: var(--sbf-circle-size, 190px);
+    height: var(--sbf-circle-size, 190px);
+  }
+
+  .sbf-item-title {
+    font-size: 20px;
+    margin-top: 18px;
+  }
+
+  .sbf-slider-track {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .shop-by-fabric-section{
+    padding-bottom:0;
+  }
+}
