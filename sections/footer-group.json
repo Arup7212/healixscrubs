@@ -87,7 +87,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#173C2B",
+                "text_color": "#173c2b",
                 "background": false,
                 "background_color": "",
                 "corner_radius": 0,
@@ -101,7 +101,7 @@
             "social_links": {
               "type": "social-links",
               "settings": {
-                "icon_color": "#173C2B",
+                "icon_color": "#173c2b",
                 "facebook_url": "https://www.facebook.com/",
                 "instagram_url": "https://www.instagram.com/",
                 "youtube_url": "",
@@ -209,7 +209,7 @@
           "type": "footer-copyright",
           "settings": {
             "show_powered_by": false,
-            "text_color": "#173C2B",
+            "text_color": "#173c2b",
             "font_size": "0.875rem",
             "case": "none"
           },
@@ -218,7 +218,7 @@
         "footer_policy_list": {
           "type": "footer-policy-list",
           "settings": {
-            "text_color": "#173C2B",
+            "text_color": "#173c2b",
             "font_size": "0.875rem",
             "case": "none"
           },
