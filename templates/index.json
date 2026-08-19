@@ -342,6 +342,28 @@
         "bg_color": "{{ settings.color_palette.color2 }}"
       }
     },
+    "moko_virasat_slider_xQdrfw": {
+      "type": "MokoVirasatSlider",
+      "name": "Moko Virasat Slider",
+      "settings": {
+        "enable_section": true,
+        "collection": "pax-one-pocket-scrub-top",
+        "products_to_show": 8,
+        "enable_autoplay": true,
+        "autoplay_speed": 3.5,
+        "bg_overlay_opacity": 35,
+        "left_cta_label": "EXPLORE COLLECTION",
+        "left_cta_url": "",
+        "card1_subtitle": "VMI PRESENTS YOU",
+        "card1_title": "Virasat",
+        "logo_max_width": 220,
+        "card1_description": "A curated edit of heritage\nAjrakh sarees",
+        "card1_url": "",
+        "card1_bg_color": "#4E0F1B",
+        "card1_bg_opacity": 85,
+        "card1_text_color": "#FAF8F5"
+      }
+    },
     "custom_collection_carousel_h8D6YX": {
       "type": "custom-collection-carousel",
       "blocks": {
@@ -857,6 +879,7 @@
     "hero_slideshow_RQeWDK",
     "shop_by_fabric_U4NY9e",
     "moko_feature_banner_getaE6",
+    "moko_virasat_slider_xQdrfw",
     "custom_collection_carousel_h8D6YX",
     "product_list_fa6P9H",
     "1787136128c4733f22",
