@@ -1,0 +1,309 @@
+{{ 'shop-by-fabric.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shop-by-fabric.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign fabric_blocks = section.blocks | where: 'type', 'fabric_item'
+-%}
+
+<div 
+  id="ShopByFabric-{{ section.id }}" 
+  class="shop-by-fabric-section"
+  data-section-type="shop-by-fabric"
+  data-autoplay="{{ section.settings.enable_autoplay }}"
+  data-autoplay-speed="{{ section.settings.autoplay_speed }}"
+  style="--sbf-bg-color: {{ section.settings.background_color | default: '#ffffff' }}; --sbf-circle-size: {{ section.settings.circle_size | default: 190 }}px;"
+>
+  <div class="vmi-container">
+    {%- if section.settings.heading != blank or section.settings.subtitle != blank -%}
+      <div class="sbf-header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="section-title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        
+        {%- if section.settings.subtitle != blank -%}
+          <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+        
+        <div class="sbf-divider"></div>
+      </div>
+    {%- endif -%}
+
+    {%- if fabric_blocks.size > 0 -%}
+      {%- if section.settings.layout_style == 'grid' -%}
+        <div class="sbf-grid-wrapper">
+      {%- else -%}
+        <div class="sbf-slider-wrapper">
+          {%- if section.settings.show_arrows -%}
+            <button class="sbf-nav-button prev" aria-label="Previous Slide">
+              <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <button class="sbf-nav-button next" aria-label="Next Slide">
+              <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+          {%- endif -%}
+
+          <div class="sbf-slider-viewport">
+            <div class="sbf-slider-track">
+      {%- endif -%}
+
+            {%- for block in fabric_blocks -%}
+              {%- liquid
+                assign target_collection = block.settings.collection
+                
+                if block.settings.title != blank
+                  assign card_title = block.settings.title
+                elsif target_collection != blank and target_collection.title != blank
+                  assign card_title = target_collection.title
+                else
+                  assign card_title = 'FABRIC ' | append: forloop.index
+                endif
+
+                if block.settings.url != blank
+                  assign card_url = block.settings.url
+                elsif target_collection != blank
+                  assign card_url = target_collection.url
+                else
+                  assign card_url = '#'
+                endif
+
+                assign card_image = null
+                if block.settings.image != blank
+                  assign card_image = block.settings.image
+                elsif target_collection != blank and target_collection.featured_image != blank
+                  assign card_image = target_collection.featured_image
+                endif
+              -%}
+
+              <a href="{{ card_url }}" class="sbf-item" {{ block.shopify_attributes }}>
+                <div class="sbf-circle-wrapper">
+                  {%- if card_image != blank -%}
+                    {{ card_image | image_url: width: 500 | image_tag: class: 'sbf-image', loading: 'lazy', alt: card_title }}
+                  {%- else -%}
+                    {%- comment -%} High resolution fabric demo photos for instant preview {%- endcomment -%}
+                    {%- case forloop.index -%}
+                      {%- when 1 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 2 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 3 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 4 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 5 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1610030469668-98e550d6193c?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 6 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 7 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 8 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 9 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- when 10 -%}
+                        <img class="sbf-image" loading="lazy" src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=500&auto=format&fit=crop" alt="{{ card_title }}">
+                      {%- else -%}
+                        {{ 'collection-1' | placeholder_svg_tag: 'sbf-image' }}
+                    {%- endcase -%}
+                  {%- endif -%}
+                </div>
+                <div class="sbf-item-title">{{ card_title }}</div>
+              </a>
+            {%- endfor -%}
+            
+      {%- if section.settings.layout_style == 'grid' -%}
+        </div>
+      {%- else -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop By Fabric",
+  "class": "section-shop-by-fabric",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Title",
+      "default": "Shop By Fabric"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Line",
+      "default": "Ten Fabrics, Each With Its Own Hand — From Featherlight Organza To Everyday Mul Cotton."
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout Style",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Slider"
+        },
+        {
+          "value": "grid",
+          "label": "Normal Grid"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "header",
+      "content": "Slider Configuration"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Auto Slider",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay Interval (Seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "circle_size",
+      "label": "Circle Image Size (Desktop)",
+      "min": 120,
+      "max": 240,
+      "step": 10,
+      "unit": "px",
+      "default": 190
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fabric_item",
+      "name": "Fabric Circle Box",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Circle Image (Overrides collection image)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Fabric Title Name",
+          "info": "Leave blank to use Shopify Collection Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Custom Link URL",
+          "info": "Leave blank to use Shopify Collection URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Fabric",
+      "settings": {
+        "heading": "Shop By Fabric",
+        "subtitle": "Ten Fabrics, Each With Its Own Hand — From Featherlight Organza To Everyday Mul Cotton.",
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "circle_size": 190,
+        "show_arrows": true
+      },
+      "blocks": [
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Pure Silk"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Chiffon"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Cotton Linen"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Cotton Silk"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Dupion Silk"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Katan Silk"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Organza"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Mul Cotton"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Tussar Silk"
+          }
+        },
+        {
+          "type": "fabric_item",
+          "settings": {
+            "title": "Georgette"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
