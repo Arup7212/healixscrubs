@@ -257,20 +257,37 @@
   }
 
   .moko-promo-banner__text-col {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding-bottom: 0;
+  }
+
+  .moko-promo-banner__badge {
+    align-self: flex-start;
+    justify-content: flex-start;
+  }
+
+  .moko-promo-banner__heading {
+    text-align: left;
   }
 
   .moko-promo-banner__text {
     max-width: 100%;
+    text-align: left;
     margin-bottom: 20px;
   }
 
+  .moko-promo-banner__btn-wrapper {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+
   .moko-promo-banner__btn {
-    width: 100%;
-    justify-content: center;
-    padding: 13px 24px;
+    width: auto;
+    display: inline-flex;
+    justify-content: flex-start;
+    padding: 13px 28px;
   }
 
   .moko-promo-banner__features-col {

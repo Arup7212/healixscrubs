@@ -29,7 +29,6 @@ body {
 }
 
 html {
-  /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: rgb(var(--color-foreground-rgb) / var(--opacity-40)) var(--color-background);
   scroll-behavior: smooth;
@@ -2412,9 +2411,85 @@ product-card,
 }
 
 .product-card :is(.product-title, h2, h3, h4, .h4, [class*="title"]),
+.product-card .text-block,
 .product-card :is(.price, .product-price, [class*="price"]) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  text-align: left !important;
+}
+
+/* ============================================
+   Section Titles & Headings — Jost Font
+   ============================================ */
+:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, [class*="section-title"], [class*="section-heading"], [class*="__heading"], [class*="__title"]) {
+  font-family: 'Jost', sans-serif !important;
+}
+
+/* ============================================
+   Standard Section Heading & Subheading Classes
+   ============================================ */
+.section-heading,
+.section-title {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--primary-color, #173C2B) !important;
+  line-height: 1.25 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  margin-top: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+@media screen and (min-width: 768px) {
+
+  .section-heading,
+  .section-title {
+    font-size: 32px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+.section-subheading,
+.section-description,
+.section-subtitle {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #72778e !important;
+  line-height: 1.5 !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+@media screen and (min-width: 768px) {
+
+  .section-subheading,
+  .section-description,
+  .section-subtitle {
+    font-size: 15px !important;
+    margin-bottom: 28px !important;
+  }
+}
+
+/* ============================================
+   Product Card Quick Add / CHOOSE Pill Button
+   ============================================ */
+.quick-add__button,
+button.quick-add__button,
+.quick-add__button--choose,
+.quick-add__button--add {
+  background: var(--primary-color, #173C2B) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.quick-add__button :is(span, svg, .text, .add-to-cart-text, [class*="text"]),
+.quick-add__button .svg-wrapper svg,
+.quick-add__button .add-to-cart-icon svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
 }

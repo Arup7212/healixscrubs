@@ -64,16 +64,16 @@
     align-items: center;
     justify-content: flex-start;
     gap: 0;
-    background: linear-gradient(var(--quick-add-background, var(--color-background)) 0 100%) padding-box;
+    background: var(--primary-color, #173C2B) !important;
     padding: 0;
     border-radius: 50px;
-    border: 2px solid hsl(0 0% 0% / 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     height: var(--button-size-md);
     width: var(--quick-add-collapsed-width);
     cursor: pointer;
     opacity: var(--quick-add-mobile-opacity, 0);
     overflow: hidden;
-    color: var(--quick-add-foreground, var(--color-foreground));
+    color: #ffffff !important;
     pointer-events: all;
     position: absolute;
     right: 12px !important;
@@ -119,6 +119,21 @@
     height: var(--button-size-md);
   }
 
+  .quick-add__button,
+  .quick-add__button span,
+  .quick-add__button .text,
+  .quick-add__button .add-to-cart-text {
+    color: #ffffff !important;
+  }
+
+  .quick-add__button svg,
+  .quick-add__button .svg-wrapper svg,
+  .quick-add__button .add-to-cart-icon svg {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none !important;
+  }
+
   .quick-add__button .svg-wrapper .checkmark-burst {
     width: 22px;
     height: 22px;
@@ -128,7 +143,6 @@
     flex-shrink: 0;
     width: var(--quick-add-icon-width);
     height: 100%;
-
   }
 
   .quick-add__product-form-component {

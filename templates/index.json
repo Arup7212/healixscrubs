@@ -650,10 +650,10 @@
           "type": "shopify://apps/reelcart/blocks/reel-cards/019bd63f-c7d3-75e1-874e-9ea24a028f0f",
           "settings": {
             "playlist_name": "",
-            "heading": "<h2>Watch and Buy</h2>",
+            "heading": "<h2 class=\"section-heading\">Watch and Buy</h2>",
             "heading_color": "#173c2b",
-            "sub_heading": "<p>Experience our products through stories</p>",
-            "sub_heading_color": "#173c2b",
+            "sub_heading": "<p class=\"section-subheading\">Experience our products through stories</p>",
+            "sub_heading_color": "#72778e",
             "columns": 4,
             "grid_gap": 16,
             "card_border_radius": 20,
@@ -672,9 +672,9 @@
             "btn_bg_color": "#173c2b",
             "btn_text_color": "#ffffff",
             "btn_border_color": "#000000",
-            "margin_top": 20,
-            "margin_bottom": 20,
-            "custom_css": ""
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "custom_css": ".rc-slider-nav { display: flex !important; justify-content: center !important; align-items: center !important; gap: 14px !important; margin-top: 20px !important; } .rc-slider-nav button, .rc-slider-nav a, .slick-arrow, .swiper-button-prev, .swiper-button-next { background-color: #173c2b !important; color: #ffffff !important; fill: #ffffff !important; stroke: #ffffff !important; border: none !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; padding: 0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 4px 14px rgba(23, 60, 43, 0.3) !important; cursor: pointer !important; } .rc-slider-nav svg, .slick-arrow svg, .swiper-button-prev svg, .swiper-button-next svg { width: 18px !important; height: 18px !important; display: block !important; color: #ffffff !important; fill: #ffffff !important; stroke: #ffffff !important; } .rc-slider-nav svg *, .slick-arrow svg * { color: #ffffff !important; fill: #ffffff !important; stroke: #ffffff !important; } .rc-slider-nav button:hover, .rc-slider-nav a:hover, .slick-arrow:hover { background-color: #0f271c !important; transform: translateY(-2px) scale(1.05) !important; box-shadow: 0 6px 20px rgba(23, 60, 43, 0.45) !important; }"
           }
         }
       },

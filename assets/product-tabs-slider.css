@@ -3,14 +3,19 @@
    ============================================ */
 
 .pts-section {
-  padding-bottom: 40px;
+  position: relative;
+  width: 100%;
+  max-width: var(--page-width, 1440px);
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
   font-family: inherit;
   background: #fff;
 }
 
 @media (min-width: 768px) {
   .pts-section {
-    padding-bottom: 60px;
+    padding: 60px 48px;
   }
 }
 
@@ -96,17 +101,9 @@
 .pts-slider-container {
   display: none;
   position: relative;
-  max-width: 1920px;
   width: 100%;
   margin: 0 auto;
-  /* padding-inline: 60px; */
   box-sizing: border-box;
-}
-
-@media screen and (max-width: 1280px) {
-  .pts-slider-container {
-    padding-inline: 16px;
-  }
 }
 
 .pts-slider-container.active {
@@ -129,7 +126,9 @@
 /* ---- Slider Wrapper ---- */
 .pts-slider-wrapper {
   position: relative;
-  padding: 0 48px;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .pts-slider {
@@ -292,11 +291,11 @@
 }
 
 .pts-nav-prev {
-  left: 0px;
+  left: -20px;
 }
 
 .pts-nav-next {
-  right: 0px;
+  right: -20px;
 }
 
 /* ---- Mobile ---- */
