@@ -148,7 +148,7 @@
         "menu_support": {
           "type": "menu",
           "settings": {
-            "menu": "main-menu",
+            "menu": "company",
             "heading": "Company",
             "menu_spacing": 12,
             "show_as_accordion": false,
