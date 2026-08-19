@@ -181,6 +181,115 @@
         "mobile_height": 450
       }
     },
+    "shop_by_fabric_U4NY9e": {
+      "type": "ShopByFabric",
+      "blocks": {
+        "fabric_item_HKEhcN": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Pure Silk",
+            "url": ""
+          }
+        },
+        "fabric_item_d6KRht": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Chiffon",
+            "url": ""
+          }
+        },
+        "fabric_item_4ecFpV": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Cotton Linen",
+            "url": ""
+          }
+        },
+        "fabric_item_fDnxeP": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Cotton Silk",
+            "url": ""
+          }
+        },
+        "fabric_item_dcBBdh": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Dupion Silk",
+            "url": ""
+          }
+        },
+        "fabric_item_Ujzcqe": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Katan Silk",
+            "url": ""
+          }
+        },
+        "fabric_item_THdPkh": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Organza",
+            "url": ""
+          }
+        },
+        "fabric_item_YckWJw": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Mul Cotton",
+            "url": ""
+          }
+        },
+        "fabric_item_4YdTaL": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Tussar Silk",
+            "url": ""
+          }
+        },
+        "fabric_item_d8XKKi": {
+          "type": "fabric_item",
+          "settings": {
+            "collection": "",
+            "title": "Georgette",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "fabric_item_HKEhcN",
+        "fabric_item_d6KRht",
+        "fabric_item_4ecFpV",
+        "fabric_item_fDnxeP",
+        "fabric_item_dcBBdh",
+        "fabric_item_Ujzcqe",
+        "fabric_item_THdPkh",
+        "fabric_item_YckWJw",
+        "fabric_item_4YdTaL",
+        "fabric_item_d8XKKi"
+      ],
+      "disabled": true,
+      "name": "Shop By Fabric",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "heading": "Shop By Fabric",
+        "subtitle": "Ten Fabrics, Each With Its Own Hand — From Featherlight Organza To Everyday Mul Cotton.",
+        "layout_style": "slider",
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "circle_size": 190,
+        "show_arrows": true
+      }
+    },
     "moko_feature_banner_getaE6": {
       "type": "moko-feature-banner",
       "blocks": {
@@ -736,6 +845,7 @@
   "order": [
     "hero_jVaWmY",
     "hero_slideshow_RQeWDK",
+    "shop_by_fabric_U4NY9e",
     "moko_feature_banner_getaE6",
     "custom_collection_carousel_h8D6YX",
     "product_list_fa6P9H",
