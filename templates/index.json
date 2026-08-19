@@ -289,7 +289,7 @@
       ],
       "name": "Shop By Fabric",
       "settings": {
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "heading": "Shop By Fabric",
         "subtitle": "Ten Fabrics, Each With Its Own Hand — From Featherlight Organza To Everyday Mul Cotton.",
         "layout_style": "slider",
@@ -411,6 +411,7 @@
         "collection_8Y4gR9",
         "collection_iUNkWy"
       ],
+      "disabled": true,
       "name": "Custom Collection Slider",
       "settings": {
         "heading": "",
