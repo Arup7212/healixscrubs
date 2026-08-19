@@ -1,0 +1,669 @@
+{%- comment -%}
+  VMI Virasat Collection Slider
+  Full section background with left CTA, semi-transparent introductory card (Card 1),
+  and auto-sliding horizontal product cards from a selected Shopify collection (no product titles, no arrows).
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+<section
+  class="vmi-virasat vmi-section--full"
+  id="vmi-virasat-{{ section.id }}"
+  style="
+    {%- if section.settings.bg_image != blank -%}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 2200 }}');
+    {%- else -%}
+      background-image: url('{{ 'vmi-virasat-bg.png' | asset_url }}');
+    {%- endif -%}
+    --vmi-bg-overlay-opacity: {{ section.settings.bg_overlay_opacity | default: 35 | divided_by: 100.0 }};
+    --vmi-card1-bg: {{ section.settings.card1_bg_color | default: '#4E0F1B' }};
+    --vmi-card1-opacity: {{ section.settings.card1_bg_opacity | default: 85 | divided_by: 100.0 }};
+    --vmi-card1-text: {{ section.settings.card1_text_color | default: '#FAF8F5' }};
+  "
+>
+  {%- comment -%} Dark background overlay {%- endcomment -%}
+  <div class="vmi-virasat__bg-overlay"></div>
+
+  <div class="vmi-virasat__container">
+    
+    {%- comment -%} Left Side CTA {%- endcomment -%}
+    {%- if section.settings.left_cta_label != blank -%}
+      <div class="vmi-virasat__left-meta">
+        <a href="{{ section.settings.left_cta_url | default: section.settings.collection.url | default: 'shopify://collections/all' }}" class="vmi-virasat__explore-link">
+          <span>{{ section.settings.left_cta_label | upcase }}</span>
+          <svg width="26" height="14" viewBox="0 0 26 14" fill="none" aria-hidden="true">
+            <path d="M1 7h23M18 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Auto-Sliding Track Wrapper {%- endcomment -%}
+    <div class="vmi-virasat__slider-wrap">
+      
+      <div class="vmi-virasat__track" id="vmi-virasat-track-{{ section.id }}">
+        
+        {%- comment -%} CARD 1: Semi-Transparent Introductory Card {%- endcomment -%}
+        <div class="vmi-virasat__card vmi-virasat__card--intro">
+          <a href="{{ section.settings.card1_url | default: section.settings.collection.url | default: 'shopify://collections/all' }}" class="vmi-virasat__intro-inner">
+            
+            {%- comment -%} Top Subtitle {%- endcomment -%}
+            {%- if section.settings.card1_subtitle != blank -%}
+              <div class="vmi-virasat__intro-subtitle">
+                {{ section.settings.card1_subtitle | upcase }}
+              </div>
+            {%- endif -%}
+
+            {%- comment -%} Center Signature Logo / Title {%- endcomment -%}
+            <div class="vmi-virasat__intro-logo">
+              {%- if section.settings.card1_logo_image != blank -%}
+                <img
+                  src="{{ section.settings.card1_logo_image | image_url: width: 500 }}"
+                  alt="{{ section.settings.card1_title | default: 'Virasat' | escape }}"
+                  class="vmi-virasat__logo-img"
+                  style="max-width: {{ section.settings.logo_max_width | default: 220 }}px;"
+                >
+              {%- else -%}
+                {%- assign title_text = section.settings.card1_title | default: 'Virasat' -%}
+                {%- assign v_first_char = title_text | slice: 0, 1 -%}
+                {%- assign v_rest_chars = title_text | slice: 1, 100 -%}
+                <div class="vmi-virasat__logo-brand">
+                  <div class="vmi-virasat__logo-text">
+                    <span class="vmi-virasat__first-letter">{{ v_first_char }}</span>
+                    <span class="vmi-virasat__rest-letters">{{ v_rest_chars }}</span>
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Bottom Description {%- endcomment -%}
+            {%- if section.settings.card1_description != blank -%}
+              <div class="vmi-virasat__intro-desc">
+                {{ section.settings.card1_description | newline_to_br }}
+              </div>
+            {%- endif -%}
+          </a>
+        </div>
+
+        {%- comment -%} CARDS 2+: Assigned Collection Product Cards (Clean Images Only) {%- endcomment -%}
+        {%- assign selected_collection = section.settings.collection -%}
+        {%- assign limit = section.settings.products_to_show | default: 8 -%}
+
+        {%- if selected_collection != blank and selected_collection.products_count > 0 -%}
+          {%- for product in selected_collection.products limit: limit -%}
+            <div class="vmi-virasat__card vmi-virasat__card--item">
+              <a href="{{ product.url }}" class="vmi-virasat__item-inner">
+                {%- if product.featured_media != blank -%}
+                  <img
+                    src="{{ product.featured_media | image_url: width: 800 }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    class="vmi-virasat__item-img"
+                  >
+                {%- else -%}
+                  <img
+                    src="{{ 'vmi-virasat-card-sample.png' | asset_url }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    class="vmi-virasat__item-img"
+                  >
+                {%- endif -%}
+              </a>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%} Demo Fallback Cards when no collection selected in theme editor yet {%- endcomment -%}
+          {%- for i in (1..limit) -%}
+            <div class="vmi-virasat__card vmi-virasat__card--item">
+              <a href="shopify://collections/all" class="vmi-virasat__item-inner">
+                <img
+                  src="{{ 'vmi-virasat-card-sample.png' | asset_url }}"
+                  alt="Virasat Saree"
+                  loading="lazy"
+                  class="vmi-virasat__item-img"
+                >
+              </a>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .vmi-virasat {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 640px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+        margin-top: 60px;
+  }
+
+  .vmi-virasat__bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, var(--vmi-bg-overlay-opacity, 0.35));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .vmi-virasat__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    align-items: center;
+    padding: 4.5rem 0 4.5rem 3.5rem;
+    box-sizing: border-box;
+  }
+
+  /* ════════════════════════════════
+     LEFT SIDE: FIXED CTA
+  ════════════════════════════════ */
+  .vmi-virasat__left-meta {
+    padding-right: 2rem;
+  }
+
+  .vmi-virasat__explore-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-family: 'Jost', var(--vmi-font-body, system-ui, sans-serif);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    color: #FAF8F5;
+    text-decoration: none;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    transition: gap 0.25s ease, color 0.25s ease;
+  }
+
+  .vmi-virasat__explore-link:hover {
+    color: #D4B976;
+    gap: 1.15rem;
+  }
+
+  .vmi-virasat__explore-link svg {
+    transition: transform 0.25s ease;
+  }
+
+  .vmi-virasat__explore-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ════════════════════════════════
+     SLIDER TRACK & WRAPPER
+  ════════════════════════════════ */
+  .vmi-virasat__slider-wrap {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vmi-virasat__track {
+    display: flex;
+    gap: 1.8rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 3.5rem;
+    padding-bottom: 1rem;
+    scrollbar-width: none; /* Firefox */
+    cursor: grab;
+    user-select: none;
+  }
+
+  .vmi-virasat__track:active {
+    cursor: grabbing;
+  }
+
+  .vmi-virasat__track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .vmi-virasat__card {
+    flex: 0 0 340px;
+    height: 520px;
+    scroll-snap-align: start;
+    border-radius: 0px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: none !important;
+    transition: transform 0.3s ease;
+  }
+
+  .vmi-virasat__card:hover {
+    transform: translateY(-4px);
+    box-shadow: none !important;
+  }
+
+  /* ── CARD 1: INTRO SEMI-TRANSPARENT CARD ── */
+  .vmi-virasat__card--intro {
+    position: relative;
+    background: transparent;
+    box-shadow: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .vmi-virasat__card--intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--vmi-card1-bg);
+    opacity: var(--vmi-card1-opacity);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .vmi-virasat__intro-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 3.2rem 2.2rem 3rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--vmi-card1-text);
+  }
+
+  .vmi-virasat__intro-subtitle {
+    font-family: 'Jost', var(--vmi-font-body, system-ui, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: var(--vmi-card1-text);
+    opacity: 0.85;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .vmi-virasat__intro-logo {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vmi-virasat__logo-brand {
+    display: flex;
+    align-items: baseline;
+    line-height: 1;
+  }
+
+  .vmi-virasat__first-letter {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 4.6rem;
+    line-height: 0.8;
+    color: var(--vmi-card1-text);
+    margin-right: -0.06em;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .vmi-virasat__rest-letters {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--vmi-card1-text);
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .vmi-virasat__logo-img {
+    max-width: 220px;
+    height: auto;
+    display: block;
+  }
+
+  .vmi-virasat__intro-desc {
+    font-family: 'Jost', var(--vmi-font-body, system-ui, sans-serif);
+    font-size: 0.84rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--vmi-card1-text);
+    opacity: 0.9;
+    max-width: 250px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── CARDS 2+: PRODUCT IMAGE CARDS (CLEAN, NO OVERLAY TITLES) ── */
+  .vmi-virasat__card--item {
+    background-color: #1A1A1A;
+    box-shadow: none !important;
+  }
+
+  .vmi-virasat__item-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .vmi-virasat__item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .vmi-virasat__card--item:hover .vmi-virasat__item-img {
+    transform: scale(1.05);
+  }
+
+  /* ════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .vmi-virasat{
+      margin-top:0px !important;
+    }
+    .vmi-virasat__container {
+      grid-template-columns: 200px 1fr;
+      padding-left: 2rem;
+    }
+
+    .vmi-virasat__card {
+      flex: 0 0 300px;
+      height: 460px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .vmi-virasat__container {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.25rem;
+      gap: 2rem;
+    }
+
+    .vmi-virasat__left-meta {
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .vmi-virasat__track {
+      padding-right: 1.25rem;
+      gap: 1.2rem;
+    }
+
+    .vmi-virasat__card {
+      flex: 0 0 260px;
+      height: 380px;
+    }
+
+    .vmi-virasat__first-letter { font-size: 3.8rem; }
+    .vmi-virasat__rest-letters { font-size: 2.3rem; }
+  }
+
+  @media (max-width: 480px) {
+    .vmi-virasat {
+      min-height: unset;
+    }
+
+    .vmi-virasat__card {
+      flex: 0 0 220px;
+      height: 320px;
+    }
+
+    .vmi-virasat__container {
+      padding: 2.5rem 1rem;
+      gap: 1.5rem;
+    }
+
+    .vmi-virasat__first-letter { font-size: 3rem; }
+    .vmi-virasat__rest-letters { font-size: 1.9rem; }
+
+    .vmi-virasat__intro-inner {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    function initVirasatAutoplay() {
+      const track = document.getElementById('vmi-virasat-track-{{ section.id }}');
+      if (!track) return;
+
+      const enableAutoplay = {{ section.settings.enable_autoplay | default: true }};
+      const speed = ({{ section.settings.autoplay_speed | default: 3.5 }}) * 1000;
+
+      let timer = null;
+      const cardWidth = 360;
+
+      function startAutoplay() {
+        if (!enableAutoplay) return;
+        stopAutoplay();
+        timer = setInterval(function() {
+          const maxScrollLeft = track.scrollWidth - track.clientWidth;
+          if (track.scrollLeft >= maxScrollLeft - 10) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          }
+        }, speed);
+      }
+
+      function stopAutoplay() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      startAutoplay();
+
+      // Pause on hover or touch
+      track.addEventListener('mouseenter', stopAutoplay);
+      track.addEventListener('mouseleave', startAutoplay);
+      track.addEventListener('touchstart', stopAutoplay, { passive: true });
+      track.addEventListener('touchend', startAutoplay, { passive: true });
+
+      // Mouse drag-to-scroll functionality for desktop
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      track.addEventListener('mousedown', function(e) {
+        isDown = true;
+        stopAutoplay();
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseup', function() {
+        isDown = false;
+        startAutoplay();
+      });
+
+      track.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVirasatAutoplay);
+    } else {
+      initVirasatAutoplay();
+    }
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "VMI Virasat Slider",
+  "tag": "div",
+  "class": "vmi-virasat-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Collection Assignment"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 18,
+      "step": 1,
+      "label": "Maximum products to show as cards",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Auto-Slide Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable auto-slide slider",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 8,
+      "step": 0.5,
+      "unit": "s",
+      "label": "Auto-slide interval speed",
+      "default": 3.5
+    },
+    {
+      "type": "header",
+      "content": "Section Background & Left CTA"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Full section background image"
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Background overlay dark opacity",
+      "default": 35
+    },
+    {
+      "type": "text",
+      "id": "left_cta_label",
+      "label": "Left side link text",
+      "default": "EXPLORE COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "left_cta_url",
+      "label": "Left side link URL (optional)",
+      "info": "Defaults to selected collection URL if left blank."
+    },
+    {
+      "type": "header",
+      "content": "Card 1 (Introductory Semi-Transparent Card)"
+    },
+    {
+      "type": "text",
+      "id": "card1_subtitle",
+      "label": "Card 1 Subtitle",
+      "default": "VMI PRESENTS YOU"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Card 1 Collection / Brand Name",
+      "default": "Virasat"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_logo_image",
+      "label": "Upload Signature Logo Image (SVG/PNG)",
+      "info": "Custom logo graphic overrides text title."
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 100,
+      "max": 350,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 220
+    },
+    {
+      "type": "textarea",
+      "id": "card1_description",
+      "label": "Card 1 Description text",
+      "default": "A curated edit of heritage\nAjrakh sarees"
+    },
+    {
+      "type": "url",
+      "id": "card1_url",
+      "label": "Card 1 Link URL (optional)"
+    },
+    {
+      "type": "color",
+      "id": "card1_bg_color",
+      "label": "Card 1 Background color",
+      "default": "#4E0F1B"
+    },
+    {
+      "type": "range",
+      "id": "card1_bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Card 1 Opacity %",
+      "default": 85
+    },
+    {
+      "type": "color",
+      "id": "card1_text_color",
+      "label": "Card 1 Text color",
+      "default": "#FAF8F5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VMI Virasat Slider"
+    }
+  ]
+}
+{% endschema %}
