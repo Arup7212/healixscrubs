@@ -2320,6 +2320,7 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   margin-bottom: 16px !important;
   text-transform: uppercase;
   text-align: center;
+  font-family: 'Jost', sans-serif;
 }
 
 @media screen and (min-width: 768px) {
@@ -2332,6 +2333,10 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 /* ============================================
    Button Hover Shadow & Shine Effects
    ============================================ */
+.button[id^='BuyButtons-ProductSubmitButton-'],
+.buy-buttons-block .button,
+.product-form .button,
+.product-form .add-to-cart-button,
 .button-secondary:not(.skip-to-content-link),
 .button-custom,
 .hero-slider-btn,
@@ -2348,7 +2353,10 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
     color 0.3s ease !important;
 }
 
-.button:not(.button-unstyled):not(.skip-to-content-link)::after,
+.button[id^='BuyButtons-ProductSubmitButton-']::after,
+.buy-buttons-block .button::after,
+.product-form .button::after,
+.product-form .add-to-cart-button::after,
 .button-secondary:not(.skip-to-content-link)::after,
 .button-custom::after,
 .hero-slider-btn::after,
@@ -2369,12 +2377,14 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
       rgba(255, 255, 255, 0) 100%);
   transform: rotate(25deg);
   opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
   z-index: 2;
 }
 
-.button:not(.button-unstyled):hover,
+.button[id^='BuyButtons-ProductSubmitButton-']:hover,
+.buy-buttons-block .button:hover,
+.product-form .button:hover,
+.product-form .add-to-cart-button:hover,
 .button-secondary:hover,
 .button-custom:hover,
 .hero-slider-btn:hover,
@@ -2387,7 +2397,10 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   box-shadow: 0 8px 24px rgba(23, 60, 43, 0.28) !important;
 }
 
-.button:not(.button-unstyled):hover::after,
+.button[id^='BuyButtons-ProductSubmitButton-']:hover::after,
+.buy-buttons-block .button:hover::after,
+.product-form .button:hover::after,
+.product-form .add-to-cart-button:hover::after,
 .button-secondary:hover::after,
 .button-custom:hover::after,
 .hero-slider-btn:hover::after,
@@ -2416,10 +2429,6 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   }
 }
 
-/* ============================================
-   Uniform Product Card Element Spacing (Gap: 8px)
-   ============================================ */
-product-card,
 .product-card,
 .product-grid__card,
 .product-card__content {
