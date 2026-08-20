@@ -12,3 +12,7 @@
 [class*="reelcart"] :is(p, .sub-heading, [class*="sub_heading"], [class*="subheading"]) {
    margin-bottom: 0px !important;
 }
+
+.rc-cards-header-container {
+   gap: 0px !important;
+}

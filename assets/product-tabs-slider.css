@@ -31,7 +31,6 @@
   margin: 0 auto 0;
   max-width: 700px;
   border-bottom: 2px solid #e5e7eb;
-  padding: 0 16px;
 }
 
 /* ---- Tab Buttons — underline style ---- */
@@ -313,9 +312,6 @@
     max-width: 185px;
   }
 
-  .pts-tabs-container {
-    padding: 0 8px;
-  }
 
   .pts-tab-btn {
     padding: 10px 12px;
