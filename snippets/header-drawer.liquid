@@ -774,20 +774,27 @@
 {% stylesheet %}
   .header__icon--menu {
     position: initial;
+    color: var(--primary-color, #173C2B) !important;
   }
 
   .menu-drawer-container .header__icon--summary {
-    color: var(--color-foreground);
+    color: var(--primary-color, #173C2B) !important;
     display: flex;
     justify-content: center;
     align-items: center;
- padding-right:20px;
+    padding-right: 20px;
   }
 
   .header__icon--summary .header-drawer-icon {
     margin: auto;
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
+    width: 30px;
+    height: 30px;
+    color: var(--primary-color, #173C2B) !important;
+  }
+
+  .header__icon--summary .header-drawer-icon svg {
+    color: var(--primary-color, #173C2B) !important;
+    stroke: var(--primary-color, #173C2B);
   }
 
   .menu-drawer__featured-content {

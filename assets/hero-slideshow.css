@@ -146,7 +146,9 @@
   font-weight: 800;
   line-height: 1.15;
   margin: 0 0 1.5rem 0;
+  font-family: 'Jost', sans-serif !important;
   color: inherit;
+
 }
 
 .hero-slide-heading strong,

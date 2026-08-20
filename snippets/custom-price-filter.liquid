@@ -40,7 +40,7 @@
   .slider-track-active {
     position: absolute;
     height: 6px;
-    background: {{ settings.active_track_color | default: '#d32f2f' }};
+    background: {{ settings.active_track_color | default: 'var(--primary-color, #173C2B)' }};
     border-radius: 5px;
     top: 0;
   }
@@ -80,7 +80,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: {{ settings.thumb_color | default: '#d32f2f' }};
+    background: {{ settings.thumb_color | default: 'var(--primary-color, #173C2B)' }};
     border: 3px solid {{ settings.thumb_border_color | default: '#ffffff' }};
     cursor: pointer;
     pointer-events: auto;
@@ -92,7 +92,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: {{ settings.thumb_color | default: '#d32f2f' }};
+    background: {{ settings.thumb_color | default: 'var(--primary-color, #173C2B)' }};
     border: 3px solid {{ settings.thumb_border_color | default: '#ffffff' }};
     cursor: pointer;
     pointer-events: auto;
@@ -121,15 +121,21 @@
   .price-input-wrapper {
     display: flex;
     align-items: stretch;
-    border: 1px solid #fecdd3;
+    border: 1px solid rgba(23, 60, 43, 0.2);
     border-radius: 6px;
     overflow: hidden;
     background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .price-input-wrapper:focus-within {
+    border-color: var(--primary-color, #173C2B);
+    box-shadow: 0 0 0 1px var(--primary-color, #173C2B);
   }
   
   .price-currency {
-    background-color: #fff1f2;
-    color: #e11d48;
+    background-color: rgba(23, 60, 43, 0.08);
+    color: var(--primary-color, #173C2B);
     padding: 8px 12px;
     font-weight: 700;
     font-size: 14px;

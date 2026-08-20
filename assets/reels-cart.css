@@ -1,7 +1,14 @@
+.reelcart-block-AaXBJVkFWM0wrNTBLb__reelcart_reel_cards_EqGyyi {
+   padding: 0px !important;
+   margin: 0px !important;
 
-/* ==========================================================================
-   Reels / ReelCart Custom Styling
-   ========================================================================== */
+}
 
-/* 1. Section Spacing & Bottom Gap */
-/*  */
+.rc-cards-header-container {
+   margin-bottom: 0px !important;
+}
+
+
+[class*="reelcart"] :is(p, .sub-heading, [class*="sub_heading"], [class*="subheading"]) {
+   margin-bottom: 0px !important;
+}

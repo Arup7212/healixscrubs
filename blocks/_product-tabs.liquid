@@ -1,5 +1,5 @@
 {%- if product.metafields.custom.product_details != blank or product.metafields.custom.fabric_care != blank or product.metafields.custom.shipping_returns != blank -%}
-  <product-info-tabs class="product-info-tabs" data-product-tabs style="--margin-top: {{ block.settings.margin_top }}px; --margin-bottom: {{ block.settings.margin_bottom }}px;">
+  <product-info-tabs class="product-info-tabs" data-product-tabs">
     <div class="product-info-tabs__header">
       {%- if product.metafields.custom.product_details != blank -%}
         <button class="product-info-tabs__tab active" data-tab-target="details">{{ block.settings.details_tab_label | default: 'Product Details' }}</button>
@@ -64,15 +64,14 @@
   {% style %}
     .product-info-tabs {
       display: block;
-      margin-top: var(--margin-top, 24px);
-      margin-bottom: var(--margin-bottom, 24px);
+margin-top:24px;
       width: 100%;
     }
     
     .product-info-tabs__header {
       display: flex;
       border-bottom: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
-      margin-bottom: 2rem;
+      margin-bottom: 20px;
       gap: 2rem;
       overflow-x: auto;
       scrollbar-width: none;
@@ -128,7 +127,7 @@
     }
 
     .product-info-tabs__content p {
-      margin-bottom: 1rem;
+      margin-bottom: 0px;
     }
     
     @keyframes fadeIn {

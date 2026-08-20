@@ -3,6 +3,7 @@
 }
 
 body {
+  font-family: 'Inter', sans-serif;
   color: var(--color-foreground);
   background: var(--color-background);
   display: flex;
@@ -10,6 +11,17 @@ body {
   margin: 0;
   min-height: 100svh;
   font-variation-settings: 'slnt' 0;
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
 }
 
 :root {
@@ -32,6 +44,8 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgb(var(--color-foreground-rgb) / var(--opacity-40)) var(--color-background);
   scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 @media (min-width: 990px) {
@@ -53,12 +67,15 @@ html[scroll-lock] .page-wrapper {
   flex-direction: column;
   min-height: 100dvh;
   transition: margin-right var(--animation-speed) var(--animation-timing-fade-out);
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 @media (min-width: 990px) {
   .page-wrapper {
     height: 100dvh;
     overflow-y: auto;
+    overflow-x: clip;
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: rgb(var(--color-foreground-rgb) / var(--opacity-40)) var(--color-background);
@@ -72,6 +89,11 @@ html[scroll-lock] .page-wrapper {
 .page-wrapper--drawer-open {
   margin-right: var(--theme-drawer-width, var(--sidebar-width));
   transition-timing-function: var(--animation-timing-fade-in);
+}
+
+.shopify-section {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 img,
@@ -2421,17 +2443,12 @@ product-card,
 }
 
 /* ============================================
-   Section Titles & Headings — Jost Font
-   ============================================ */
-:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, [class*="section-title"], [class*="section-heading"], [class*="__heading"], [class*="__title"]) {
-  font-family: 'Jost', sans-serif !important;
-}
-
-/* ============================================
    Standard Section Heading & Subheading Classes
    ============================================ */
 .section-heading,
-.section-title {
+.section-title,
+[class*="section-title"],
+[class*="section-heading"] {
   font-family: 'Jost', sans-serif !important;
   font-size: 22px !important;
   font-weight: 700 !important;
@@ -2446,7 +2463,9 @@ product-card,
 @media screen and (min-width: 768px) {
 
   .section-heading,
-  .section-title {
+  .section-title,
+  [class*="section-title"],
+  [class*="section-heading"] {
     font-size: 32px !important;
     margin-bottom: 8px !important;
   }
@@ -2455,7 +2474,6 @@ product-card,
 .section-subheading,
 .section-description,
 .section-subtitle {
-  font-family: 'Jost', sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   color: #72778e !important;

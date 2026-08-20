@@ -1,9 +1,9 @@
 .recommendations-product {
   padding-bottom: 40px;
+  gap: 0px;
 }
 
 @media(min-width:768px) {
-
   .recommendations-product {
     padding-bottom: 60px;
   }

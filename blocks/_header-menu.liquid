@@ -526,7 +526,7 @@
     font-family: var(--menu-child-font-family);
     font-style: var(--menu-child-font-style);
     font-weight: var(--menu-child-font-weight);
-    font-size: var(--menu-child-font-size);
+    font-size: 14px !important;
     line-height: var(--menu-child-font-line-height);
     text-transform: var(--menu-child-font-case);
     color: var(--menu-child-font-color);
@@ -544,7 +544,7 @@
     font-family: var(--menu-parent-font-family);
     font-style: var(--menu-parent-font-style);
     font-weight: 700;
-    font-size: var(--menu-parent-font-size);
+    font-size: 16px !important;
     line-height: var(--menu-parent-font-line-height);
     text-transform: uppercase;
     color: var(--menu-parent-font-color);
@@ -565,13 +565,14 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 2px;
-    background-color: var(--menu-parent-font-color);
+    height: 1px;
+    background-color: var(--primary-color, #173C2B);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .mega-menu__link--parent:hover::after {
-    opacity: 0.7;
+    opacity: 0.85;
+    background-color: var(--primary-color, #173C2B);
     transform: translateY(1px);
   }
 

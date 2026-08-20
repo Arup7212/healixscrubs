@@ -139,9 +139,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e95144;
-  background: rgba(233, 81, 68, 0.05);
-  /* Soft background for icon */
+  color: var(--primary-color, #173C2B);
+  background: rgba(23, 60, 43, 0.08);
+  /* Soft green background for icon */
   border-radius: 50%;
   width: 45px;
   height: 45px;
