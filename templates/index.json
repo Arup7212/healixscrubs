@@ -870,6 +870,55 @@
         "icon_bg_color": "#dbe4f0"
       }
     },
+    "mask_features_c9rMw7": {
+      "type": "Mask_Features",
+      "blocks": {
+        "feature_hHhKpF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/1ddd.jpg",
+            "title": "Anti-Pollution",
+            "text": "Tortor posuere ac ut consequat semper viverra nam libero justo."
+          }
+        },
+        "feature_XTbgY9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/WhatsApp_Image_2026-09-14_at_6.3.14_PM.jpg",
+            "title": "Prevents Tiny Droplets",
+            "text": "Erat imperdiet sed euismod nisi porta lorem. Justo nec ultrices."
+          }
+        },
+        "feature_gXJfig": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/WhatsApp_Image_2026-09-14_at_6.35.14_PM.jpg",
+            "title": "Filters Out 95%",
+            "text": "Orci nulla pellentesque dignissim enim sit apien eget mi proin sed."
+          }
+        },
+        "feature_XGcRUY": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/WhatsApp_Image_2026-09-14_at_6.34.14_PM.jpg",
+            "title": "Comfortable Breathing",
+            "text": "Quis lectus nulla at volutpat diam ut venenatis tellussagittis purus."
+          }
+        }
+      },
+      "block_order": [
+        "feature_hHhKpF",
+        "feature_XTbgY9",
+        "feature_gXJfig",
+        "feature_XGcRUY"
+      ],
+      "name": "Mask Features",
+      "settings": {
+        "heading": "Comfortability. Durability. Safety",
+        "subheading": "DURABLE FACE MASKS",
+        "main_image": "shopify://shop_images/WhatsApp_Image_2026-09-1_at_6.35.14_PM.jpg"
+      }
+    },
     "moko_collection_highlight_xYtVM9": {
       "type": "moko-collection-highlight",
       "name": "MOKO Collection Highlight",
@@ -909,6 +958,7 @@
     "moko_promo_banner_VhwFwi",
     "why_choose_us_CGamKt",
     "features_banner_1",
+    "mask_features_c9rMw7",
     "moko_collection_highlight_xYtVM9",
     "newsletter_banner_1"
   ]
