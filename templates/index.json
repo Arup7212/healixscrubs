@@ -726,6 +726,21 @@
         "collection2": "prime-two-pocket-scrub-top"
       }
     },
+    "divider_iCBxeM": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "{{ settings.color_palette.background }}",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
     "moko_promo_banner_VhwFwi": {
       "type": "moko-promo-banner",
       "blocks": {
@@ -890,6 +905,7 @@
     "product_list_fa6P9H",
     "1787136128c4733f22",
     "product_tabs_slider_PKCyJw",
+    "divider_iCBxeM",
     "moko_promo_banner_VhwFwi",
     "why_choose_us_CGamKt",
     "features_banner_1",
