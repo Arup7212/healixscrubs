@@ -287,6 +287,7 @@
         "fabric_item_4YdTaL",
         "fabric_item_d8XKKi"
       ],
+      "disabled": true,
       "name": "Shop By Fabric",
       "settings": {
         "background_color": "#ffffff",
@@ -353,7 +354,7 @@
         "autoplay_speed": 3.5,
         "bg_image": "shopify://shop_images/ChatGPT_Image_Aug_19_2026_05_02_20_PM.png",
         "bg_overlay_opacity": 35,
-        "left_cta_label": "EXPLORE COLLECTION",
+        "left_cta_label": "EXPLORE PRODUCTS",
         "left_cta_url": "",
         "card1_subtitle": "MOKO PRESENTS YOU",
         "card1_title": "Virasat",
