@@ -407,13 +407,13 @@
         "left_cta_url": "",
         "card1_subtitle": "MOKO PRESENTS YOU",
         "card1_title": "Virasat",
-        "card1_logo_image": "shopify://shop_images/ChatGPT_Image_Aug_19_2026_06_30_57_PM.png",
+        "card1_logo_image": "shopify://shop_images/WhatsApp_Image_2026-09-29_at_7.51.56_PM_1.png",
         "logo_max_width": 220,
         "card1_description": "A curated edit of heritage\nAjrakh Drees",
         "card1_url": "",
-        "card1_bg_color": "#4e0f1b",
+        "card1_bg_color": "{{ settings.color_palette.background }}",
         "card1_bg_opacity": 85,
-        "card1_text_color": "#faf8f5"
+        "card1_text_color": "#E82F2F"
       }
     },
     "custom_collection_carousel_h8D6YX": {
