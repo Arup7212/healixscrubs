@@ -27,7 +27,7 @@
                   {% assign text_key = 'feature_text_' | append: i %}
                   {% if block.settings[icon_key] != blank and block.settings[text_key] != blank %}
                     <div class="about-hero__feature">
-                      {{ block.settings[icon_key] | image_url: width: 60 | image_tag: loading: 'lazy' }}
+                      {{ block.settings[icon_key] | image_url: width: 150 | image_tag: loading: 'lazy' }}
                       <span>{{ block.settings[text_key] }}</span>
                     </div>
                   {% endif %}
@@ -78,7 +78,7 @@
                       {% if block.settings[icon_key] != blank %}
                         <div style="display:flex; align-items:center; gap:15px;">
                           <div style="width:50px; height:50px; background:#f6f5f3; border-radius:50%; display:flex; align-items:center; justify-content:center;">
-                            {{ block.settings[icon_key] | image_url: width: 30 | image_tag: loading: 'lazy' }}
+                            {{ block.settings[icon_key] | image_url: width: 150 | image_tag: loading: 'lazy' }}
                           </div>
                           <div>
                             <div style="font-weight:700; font-size:14px; color:#173C2B;">{{ block.settings[title_key] }}</div>
@@ -98,7 +98,7 @@
                       {% if block.settings[icon_key] != blank %}
                         <div style="text-align:center;">
                           <div style="margin-bottom:10px; color:#173C2B;">
-                            {{ block.settings[icon_key] | image_url: width: 40 | image_tag: loading: 'lazy' }}
+                            {{ block.settings[icon_key] | image_url: width: 150 | image_tag: loading: 'lazy' }}
                           </div>
                           <div style="font-size:12px; font-weight:600;">{{ block.settings[title_key] }}</div>
                         </div>
@@ -136,7 +136,7 @@
                   <div class="about-value-card">
                     <div class="about-value-icon">
                       {% if block.settings[icon_key] != blank %}
-                        {{ block.settings[icon_key] | image_url: width: 40 | image_tag: loading: 'lazy' }}
+                        {{ block.settings[icon_key] | image_url: width: 150 | image_tag: loading: 'lazy' }}
                       {% endif %}
                     </div>
                     <div class="about-value-title">{{ block.settings[title_key] }}</div>
@@ -161,7 +161,7 @@
                 {% if block.settings[num_key] != blank %}
                   <div class="about-stat-item">
                     {% if block.settings[icon_key] != blank %}
-                      {{ block.settings[icon_key] | image_url: width: 40 | image_tag: loading: 'lazy' }}
+                      {{ block.settings[icon_key] | image_url: width: 150 | image_tag: loading: 'lazy' }}
                     {% endif %}
                     <div class="about-stat-num">{{ block.settings[num_key] }}</div>
                     <div class="about-stat-label">

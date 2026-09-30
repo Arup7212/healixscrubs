@@ -1,4 +1,4 @@
-* {
+﻿* {
   box-sizing: border-box;
 }
 
@@ -376,7 +376,7 @@ p:empty {
       calc((100% - min(var(--page-content-width), 100% - var(--page-margin) * 2)) / 2));
 
   /* Offset for full-width sections to account for the page margin,
-  used for Marquee — note that --util-page-margin-offset doesn't work here */
+  used for Marquee â€” note that --util-page-margin-offset doesn't work here */
   --full-page-margin-inline-offset: calc(((100vw - var(--full-page-grid-central-column-width)) / 2) * -1);
 
   width: 100%;
@@ -1439,7 +1439,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) .volume-pricing-note {
     --spacing-scale: var(--spacing-scale-default);
   }
 
-  /* Must disable this, when you use these with calc and another unit type, things break — see logo.liquid */
+  /* Must disable this, when you use these with calc and another unit type, things break â€” see logo.liquid */
   /* stylelint-disable length-zero-no-unit */
   --padding-block: 0px;
   --padding-block-start: var(--padding-block, 0px);
@@ -2510,4 +2510,6 @@ button.quick-add__button,
   color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
-}
+}.product-card .product-media-container { aspect-ratio: 4/5 !important; } .product-card .product-media-container img { object-fit: contain !important; height: 100% !important; width: 100% !important; }
+
+ .product-media-container { border: 2px solid red !important; }

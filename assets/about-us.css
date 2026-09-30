@@ -3,9 +3,10 @@
   color: #333;
 }
 .about-container {
-  max-width: 1200px;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 5rem;
+  width: 100%;
 }
 .about-section {
   padding: 60px 0;
@@ -82,10 +83,12 @@
   text-align: center;
   gap: 10px;
 }
-.about-hero__feature svg {
-  width: 32px;
-  height: 32px;
+.about-hero__feature svg,
+.about-hero__feature img {
+  width: 48px;
+  height: 48px;
   color: #173C2B;
+  object-fit: contain;
 }
 .about-hero__feature span {
   font-size: 12px;
@@ -132,8 +135,8 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 .about-value-icon {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background: #f6f5f3;
   border-radius: 50%;
   display: flex;
@@ -141,10 +144,12 @@
   justify-content: center;
   margin: 0 auto 20px;
 }
-.about-value-icon svg {
-  width: 30px;
-  height: 30px;
+.about-value-icon svg,
+.about-value-icon img {
+  width: 40px;
+  height: 40px;
   color: #173C2B;
+  object-fit: contain;
 }
 .about-value-title {
   font-size: 18px;
@@ -183,10 +188,12 @@
   align-items: center;
   gap: 10px;
 }
-.about-stat-item svg {
-  width: 40px;
-  height: 40px;
+.about-stat-item svg,
+.about-stat-item img {
+  width: 64px;
+  height: 64px;
   color: #173C2B;
+  object-fit: contain;
 }
 .about-stat-num {
   font-size: 32px;
@@ -246,6 +253,9 @@
 }
 
 @media(max-width: 768px) {
+  .about-container {
+    padding: 0 2rem;
+  }
   .about-hero, .about-image-text {
     flex-direction: column;
   }

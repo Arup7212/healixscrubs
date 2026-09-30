@@ -1,0 +1,4 @@
+﻿.product-grid .product-grid__item { display: flex; flex-direction: column; }
+.product-grid .product-grid__card { flex-grow: 1; }
+.product-grid .product-media-container, .product-grid .resource-card__media, .product-grid .card-gallery { aspect-ratio: 4/5 !important; height: auto !important; }
+.product-grid .product-media-container img, .product-grid .resource-card__image { object-fit: contain !important; aspect-ratio: 4/5 !important; height: 100% !important; width: 100% !important; }
