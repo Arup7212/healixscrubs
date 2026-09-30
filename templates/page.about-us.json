@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -10,6 +19,8 @@
             "title": "Designed for Care. Made for Comfort.",
             "text": "<p>We create premium medical scrubs designed to support healthcare professionals through long shifts, busy days, and everything in between.</p>",
             "button_label": "OUR STORY →",
+            "button_link": "",
+            "image": "shopify://shop_images/3d947ab4-1772-49c3-9f03-16a5b7b16b18.png",
             "feature_text_1": "Premium Cotton Fabric",
             "feature_text_2": "Made for Real Work",
             "feature_text_3": "Comfort You Can Rely On"
@@ -20,11 +31,22 @@
           "settings": {
             "layout": "image_left",
             "bg_color": "white",
+            "image": "shopify://shop_images/ChatGPT_Image_Jul_30_2026_03_20_31_PM.png",
             "subtitle": "OUR STORY",
             "title": "Built Around the People Who Care for Others",
             "text": "<p>Healthcare professionals spend long hours caring for others. We believe their workwear should be designed with the same level of care.</p><p>Our journey began with a simple idea: create scrubs that combine comfort, functionality, quality, and modern style. Every detail — from the fabric we select to the fit and finishing — is considered with everyday healthcare professionals in mind.</p>",
+            "button_label": "",
+            "button_link": "",
             "show_fabric_icons": false,
-            "show_commitment_icons": false
+            "icon_1": "shopify://shop_images/ChatGPT_Image_Jul_30_2026_03_20_31_PM.png",
+            "icon_title_1": "",
+            "icon_text_1": "",
+            "icon_title_2": "",
+            "icon_text_2": "",
+            "icon_title_3": "",
+            "icon_text_3": "",
+            "show_commitment_icons": false,
+            "commitment_footer_text": ""
           }
         },
         "fabric": {
@@ -32,17 +54,21 @@
           "settings": {
             "layout": "image_right",
             "bg_color": "light",
+            "image": "shopify://shop_images/f08011a7-901a-466a-972c-a6b454664bac.png",
             "subtitle": "OUR FABRIC PHILOSOPHY",
             "title": "Why We Choose Premium Cotton",
             "text": "<p>We believe the fabric you wear for 8-12 hours matters. That's why we focus on premium cotton and carefully selected materials that offer a soft, breathable, and comfortable experience throughout the day.</p><p>Our goal is simple: make workwear that feels good, performs reliably, and looks professional.</p>",
             "button_label": "EXPLORE OUR FABRIC →",
+            "button_link": "",
             "show_fabric_icons": true,
             "icon_title_1": "Soft & Breathable",
             "icon_text_1": "Gentle on Skin",
             "icon_title_2": "All-Day Comfort",
             "icon_text_2": "Move freely",
             "icon_title_3": "Durable & Reliable",
-            "icon_text_3": "Built to last"
+            "icon_text_3": "Built to last",
+            "show_commitment_icons": false,
+            "commitment_footer_text": ""
           }
         },
         "values": {
@@ -51,12 +77,16 @@
             "subtitle": "OUR VALUES",
             "title": "What Makes Us Different.",
             "text": "Thoughtfully designed. Carefully made. Always for you.",
+            "val_icon_1": "shopify://shop_images/snuggly.png",
             "val_title_1": "Premium Comfort",
             "val_text_1": "Soft, breathable fabrics designed for long hours of wear.",
+            "val_icon_2": "shopify://shop_images/stretching-exercises.png",
             "val_title_2": "Functional Design",
             "val_text_2": "Practical details and thoughtful features made for busy professionals.",
+            "val_icon_3": "shopify://shop_images/design-thinking.png",
             "val_title_3": "Modern Style",
             "val_text_3": "Professional silhouettes with a clean, contemporary look.",
+            "val_icon_4": "shopify://shop_images/nurse.png",
             "val_title_4": "Quality First",
             "val_text_4": "We focus on fabric, construction, fit, and finishing at every stage."
           }
@@ -66,10 +96,21 @@
           "settings": {
             "layout": "image_left",
             "bg_color": "white",
+            "image": "shopify://shop_images/Gemini_Generated_Image_r7br4nr7br4nr7br.png",
             "subtitle": "MADE FOR YOU",
             "title": "Made for Long Shifts. Designed for Real Work.",
             "text": "<p>From early morning rounds to late-night shifts, our scrubs are designed to move with you. We focus on comfort, functionality, durability, and a professional appearance — so you can focus on what matters most: caring for your patients.</p>",
-            "button_label": "SHOP OUR SCRUBS →"
+            "button_label": "SHOP OUR SCRUBS →",
+            "button_link": "",
+            "show_fabric_icons": false,
+            "icon_title_1": "",
+            "icon_text_1": "",
+            "icon_title_2": "",
+            "icon_text_2": "",
+            "icon_title_3": "",
+            "icon_text_3": "",
+            "show_commitment_icons": false,
+            "commitment_footer_text": ""
           }
         },
         "stats": {
@@ -78,12 +119,16 @@
             "subtitle": "TRUSTED BY HEALTHCARE PROFESSIONALS",
             "stat_num_1": "10,000+",
             "stat_label_1": "Happy Customers",
+            "stat_sub_1": "",
             "stat_num_2": "4.8/5",
             "stat_label_2": "Average Rating",
+            "stat_sub_2": "",
             "stat_num_3": "50+",
             "stat_label_3": "Styles & Colors",
+            "stat_sub_3": "",
             "stat_num_4": "Across India",
-            "stat_label_4": "and Beyond"
+            "stat_label_4": "and Beyond",
+            "stat_sub_4": ""
           }
         },
         "commitment": {
@@ -91,22 +136,31 @@
           "settings": {
             "layout": "image_left",
             "bg_color": "white",
+            "image": "shopify://shop_images/b5e24a4b-23e1-4b8f-b326-1533f1e799bc.png",
             "subtitle": "OUR COMMITMENT",
             "title": "Our Promise to You",
             "text": "<p>We are committed to continuously improving our fabrics, designs, and craftsmanship to create workwear that healthcare professionals can rely on every day.</p>",
-            "show_commitment_icons": true,
+            "button_label": "",
+            "button_link": "",
+            "show_fabric_icons": false,
             "icon_title_1": "Comfort",
+            "icon_text_1": "",
             "icon_title_2": "Quality",
+            "icon_text_2": "",
             "icon_title_3": "Functionality",
+            "icon_text_3": "",
+            "show_commitment_icons": true,
             "commitment_footer_text": "That's what we stand for."
           }
         },
         "cta": {
           "type": "cta",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_05_18_03_PM.png",
             "title": "Care for People. Care for a Better Tomorrow.",
             "text": "Better workwear for brighter days — for you, for your patients, and for a healthier tomorrow.",
-            "button_label": "EXPLORE OUR COLLECTION →"
+            "button_label": "EXPLORE OUR COLLECTION →",
+            "button_link": ""
           }
         }
       },
@@ -119,7 +173,8 @@
         "stats",
         "commitment",
         "cta"
-      ]
+      ],
+      "settings": {}
     }
   },
   "order": [
