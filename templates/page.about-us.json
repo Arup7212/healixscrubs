@@ -121,13 +121,16 @@
             "stat_num_1": "10,000+",
             "stat_label_1": "Happy Customers",
             "stat_sub_1": "",
+            "stat_icon_2": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_07_02_26_PM.png",
             "stat_num_2": "4.8/5",
             "stat_label_2": "Average Rating",
             "stat_sub_2": "",
+            "stat_icon_3": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_07_04_42_PM.png",
             "stat_num_3": "50+",
             "stat_label_3": "Styles & Colors",
             "stat_sub_3": "",
-            "stat_num_4": "Across India",
+            "stat_icon_4": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_07_06_26_PM.png",
+            "stat_num_4": "Across US",
             "stat_label_4": "and Beyond",
             "stat_sub_4": ""
           }
