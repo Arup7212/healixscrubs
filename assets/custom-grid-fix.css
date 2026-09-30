@@ -1,4 +1,7 @@
 ﻿.product-grid .product-grid__item { display: flex; flex-direction: column; }
 .product-grid .product-grid__card { flex-grow: 1; }
-.product-grid .product-media-container, .product-grid .resource-card__media, .product-grid .card-gallery { aspect-ratio: 4/5 !important; height: auto !important; }
-.product-grid .product-media-container img, .product-grid .resource-card__image { object-fit: contain !important; aspect-ratio: 4/5 !important; height: 100% !important; width: 100% !important; }
+.product-grid .product-media-container, .product-grid .resource-card__media, .product-grid .card-gallery { aspect-ratio: 1/1 !important; height: auto !important; }
+.product-grid .product-media-container img, .product-grid .resource-card__image { object-fit: cover !important; aspect-ratio: 1/1 !important; height: 100% !important; width: 100% !important; }
+.product-grid .product-title { font-size: 1.15rem !important; font-weight: 600 !important; }
+.product-grid .price { font-size: 1.1rem !important; }
+.main-collection .page-width, .main-collection .container { max-width: 100% !important; padding-left: 2% !important; padding-right: 2% !important; }
