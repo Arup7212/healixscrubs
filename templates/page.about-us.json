@@ -1,0 +1,128 @@
+{
+  "sections": {
+    "main": {
+      "type": "moko-about-us",
+      "blocks": {
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "subtitle": "ABOUT US",
+            "title": "Designed for Care. Made for Comfort.",
+            "text": "<p>We create premium medical scrubs designed to support healthcare professionals through long shifts, busy days, and everything in between.</p>",
+            "button_label": "OUR STORY →",
+            "feature_text_1": "Premium Cotton Fabric",
+            "feature_text_2": "Made for Real Work",
+            "feature_text_3": "Comfort You Can Rely On"
+          }
+        },
+        "story": {
+          "type": "image_text",
+          "settings": {
+            "layout": "image_left",
+            "bg_color": "white",
+            "subtitle": "OUR STORY",
+            "title": "Built Around the People Who Care for Others",
+            "text": "<p>Healthcare professionals spend long hours caring for others. We believe their workwear should be designed with the same level of care.</p><p>Our journey began with a simple idea: create scrubs that combine comfort, functionality, quality, and modern style. Every detail — from the fabric we select to the fit and finishing — is considered with everyday healthcare professionals in mind.</p>",
+            "show_fabric_icons": false,
+            "show_commitment_icons": false
+          }
+        },
+        "fabric": {
+          "type": "image_text",
+          "settings": {
+            "layout": "image_right",
+            "bg_color": "light",
+            "subtitle": "OUR FABRIC PHILOSOPHY",
+            "title": "Why We Choose Premium Cotton",
+            "text": "<p>We believe the fabric you wear for 8-12 hours matters. That's why we focus on premium cotton and carefully selected materials that offer a soft, breathable, and comfortable experience throughout the day.</p><p>Our goal is simple: make workwear that feels good, performs reliably, and looks professional.</p>",
+            "button_label": "EXPLORE OUR FABRIC →",
+            "show_fabric_icons": true,
+            "icon_title_1": "Soft & Breathable",
+            "icon_text_1": "Gentle on Skin",
+            "icon_title_2": "All-Day Comfort",
+            "icon_text_2": "Move freely",
+            "icon_title_3": "Durable & Reliable",
+            "icon_text_3": "Built to last"
+          }
+        },
+        "values": {
+          "type": "values",
+          "settings": {
+            "subtitle": "OUR VALUES",
+            "title": "What Makes Us Different.",
+            "text": "Thoughtfully designed. Carefully made. Always for you.",
+            "val_title_1": "Premium Comfort",
+            "val_text_1": "Soft, breathable fabrics designed for long hours of wear.",
+            "val_title_2": "Functional Design",
+            "val_text_2": "Practical details and thoughtful features made for busy professionals.",
+            "val_title_3": "Modern Style",
+            "val_text_3": "Professional silhouettes with a clean, contemporary look.",
+            "val_title_4": "Quality First",
+            "val_text_4": "We focus on fabric, construction, fit, and finishing at every stage."
+          }
+        },
+        "made_for_you": {
+          "type": "image_text",
+          "settings": {
+            "layout": "image_left",
+            "bg_color": "white",
+            "subtitle": "MADE FOR YOU",
+            "title": "Made for Long Shifts. Designed for Real Work.",
+            "text": "<p>From early morning rounds to late-night shifts, our scrubs are designed to move with you. We focus on comfort, functionality, durability, and a professional appearance — so you can focus on what matters most: caring for your patients.</p>",
+            "button_label": "SHOP OUR SCRUBS →"
+          }
+        },
+        "stats": {
+          "type": "stats",
+          "settings": {
+            "subtitle": "TRUSTED BY HEALTHCARE PROFESSIONALS",
+            "stat_num_1": "10,000+",
+            "stat_label_1": "Happy Customers",
+            "stat_num_2": "4.8/5",
+            "stat_label_2": "Average Rating",
+            "stat_num_3": "50+",
+            "stat_label_3": "Styles & Colors",
+            "stat_num_4": "Across India",
+            "stat_label_4": "and Beyond"
+          }
+        },
+        "commitment": {
+          "type": "image_text",
+          "settings": {
+            "layout": "image_left",
+            "bg_color": "white",
+            "subtitle": "OUR COMMITMENT",
+            "title": "Our Promise to You",
+            "text": "<p>We are committed to continuously improving our fabrics, designs, and craftsmanship to create workwear that healthcare professionals can rely on every day.</p>",
+            "show_commitment_icons": true,
+            "icon_title_1": "Comfort",
+            "icon_title_2": "Quality",
+            "icon_title_3": "Functionality",
+            "commitment_footer_text": "That's what we stand for."
+          }
+        },
+        "cta": {
+          "type": "cta",
+          "settings": {
+            "title": "Care for People. Care for a Better Tomorrow.",
+            "text": "Better workwear for brighter days — for you, for your patients, and for a healthier tomorrow.",
+            "button_label": "EXPLORE OUR COLLECTION →"
+          }
+        }
+      },
+      "block_order": [
+        "hero",
+        "story",
+        "fabric",
+        "values",
+        "made_for_you",
+        "stats",
+        "commitment",
+        "cta"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
