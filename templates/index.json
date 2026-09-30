@@ -833,22 +833,22 @@
         "feature_tKBdCK": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Premium Cotton Comfort",
+            "text": "Soft, breathable fabric designed for comfortable all-day wear."
           }
         },
         "feature_7XneN3": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Breathable & Moisture Friendly",
+            "text": "Helps you stay comfortable during long and demanding shifts."
           }
         },
         "feature_bAEjkA": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Made for Everyday Performance",
+            "text": "Durable construction, comfortable fit, and easy-care performance for daily use."
           }
         }
       },
@@ -859,13 +859,13 @@
       ],
       "name": "Why Choose Us",
       "settings": {
-        "heading": "Why Choose Us",
-        "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "heading": "WHY CHOOSE OUR SCRUBS",
+        "subtitle": "Designed for healthcare professionals who value comfort, quality, and performance throughout long shifts.",
         "image_1": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM_2193100a-ea4b-4d8a-a3f1-d42de31f9604.png",
         "image_2": "shopify://shop_images/DSC03520.webp",
-        "right_title": "Build a strategy that puts your money to work.",
-        "right_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>",
-        "button_label": "Read More",
+        "right_title": "Comfort That Works as Hard as You Do.",
+        "right_text": "<p>Made with premium cotton, our scrubs are designed to deliver breathable comfort, a soft feel, and dependable performance throughout your workday.</p><p></p>",
+        "button_label": "DISCOVER OUR SCRUBS",
         "button_link": "",
         "padding_top": 36,
         "padding_bottom": 36
