@@ -6,7 +6,7 @@
       
       {% when 'hero' %}
         <div class="about-hero" {{ block.shopify_attributes }}>
-          <div class="about-container" style="display: flex; align-items: center; width: 100%;">
+          <div class="about-container about-hero__inner">
             <div class="about-hero__content">
               {% if block.settings.subtitle != blank %}
                 <div class="about-subtitle">{{ block.settings.subtitle }}</div>

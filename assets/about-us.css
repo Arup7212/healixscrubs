@@ -20,10 +20,12 @@
 
 /* Hero Section */
 .about-hero {
-  display: flex;
-  align-items: center;
   background-color: #f6f5f3; /* Light beige/gray from design */
   padding-top: 60px;
+}
+.about-hero__inner {
+  display: flex;
+  align-items: center;
 }
 .about-hero__content {
   flex: 1;
@@ -256,15 +258,20 @@
   .about-container {
     padding: 0 2rem;
   }
-  .about-hero, .about-image-text {
+  .about-hero__inner, .about-image-text {
     flex-direction: column;
   }
   .about-hero__content {
     padding-right: 0;
     padding-bottom: 40px;
   }
+  .about-hero__features {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .about-values-grid, .about-stats-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
   .about-title {
     font-size: 32px;
