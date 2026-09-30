@@ -117,6 +117,7 @@
           "type": "stats",
           "settings": {
             "subtitle": "TRUSTED BY HEALTHCARE PROFESSIONALS",
+            "stat_icon_1": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_18_28_PM.png",
             "stat_num_1": "10,000+",
             "stat_label_1": "Happy Customers",
             "stat_sub_1": "",
