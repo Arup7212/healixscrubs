@@ -118,12 +118,23 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "custom_variants": {
+              "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "{% render 'product-card-variants', product: closest.product %}",
+                "padding-block-start": 8,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
-            "price_EzJzMm"
+            "price_EzJzMm",
+            "custom_variants"
           ]
         }
       },

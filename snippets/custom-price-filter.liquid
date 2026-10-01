@@ -2,8 +2,11 @@
   .custom-price-section {
     padding-top: {{ settings.section_padding_top | default: 15 }}px;
     padding-bottom: {{ settings.section_padding_bottom | default: 15 }}px;
+    padding-left: 20px;
+    padding-right: 20px;
     background: {{ settings.section_bg | default: '#ffffff' }};
     width: 100%;
+    min-width: 280px;
     max-width: 300px;
   }
 

@@ -1,0 +1,28 @@
+{%- if product.variants.size > 1 -%}
+  <div class="product-card-variants-wrapper" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 2;">
+    {%- for option in product.options_with_values -%}
+      {%- if option.name == 'Size' or option.name == 'size' or option.name == 'Size (US)' or option.name == 'Length' or option.name == 'Width' -%}
+        {%- assign option_pos = 'option' | append: option.position -%}
+        {%- for value in option.values -%}
+          {%- assign target_variant = value.variant -%}
+          {%- if target_variant == blank -%}
+            {%- for variant in product.variants -%}
+              {%- if variant[option_pos] == value.name -%}
+                {%- assign target_variant = variant -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- assign variant_url = product.url -%}
+          {%- if target_variant != blank -%}
+            {%- assign variant_url = product.url | append: '?variant=' | append: target_variant.id -%}
+          {%- endif -%}
+          <a href="{{ variant_url }}" class="product-card-variant-pill {% if value.available == false %}product-card-variant-pill--sold-out{% endif %}"
+               style="border: 1px solid {% if value.available == false %}#e8e8e8{% else %}#d1d1d1{% endif %}; padding: 6px 10px; font-size: 13px; font-weight: 500; border-radius: 4px; color: {% if value.available == false %}#b0b0b0{% else %}#111111{% endif %}; background-color: {% if value.available == false %}#f5f5f5{% else %}#ffffff{% endif %}; text-decoration: {% if value.available == false %}line-through{% else %}none{% endif %}; text-transform: uppercase;">
+            {{ value.name }}
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
