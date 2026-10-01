@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "policy-list": {
+      "type": "policy-list",
+      "blocks": {
+        "block_1": {
+          "type": "policy_item",
+          "settings": {
+            "title": "Information We Collect",
+            "content": "<p>When you visit our website or purchase from us, we may collect information such as:<\/p><ul><li>Name<\/li><li>Email address<\/li><li>Phone number<\/li><li>Billing and shipping address<\/li><li>Order and purchase information<\/li><li>Payment-related information<\/li><li>Product preferences and shopping activity<\/li><li>Device, browser, IP address, and website usage information<\/li><li>Information you provide when contacting our customer support<\/li><\/ul>",
+            "two_columns": true
+          }
+        },
+        "block_2": {
+          "type": "policy_item",
+          "settings": {
+            "title": "How We Use Your Information",
+            "content": "<p>We use your information to:<\/p><ul><li>Process and deliver your orders<\/li><li>Confirm and manage purchases<\/li><li>Provide shipping and delivery updates<\/li><li>Respond to customer support requests<\/li><li>Process returns, exchanges, and refunds<\/li><li>Improve our products, website, and shopping experience<\/li><li>Prevent fraud and protect our website<\/li><li>Send promotional emails or offers where you have provided appropriate consent<\/li><li>Comply with applicable legal and regulatory requirements<\/li><\/ul>",
+            "two_columns": true
+          }
+        },
+        "block_3": {
+          "type": "policy_item",
+          "settings": {
+            "title": "Shopify",
+            "content": "<p>Our online store is powered by <strong>Shopify<\/strong>, which provides the ecommerce platform used to sell our products and process customer transactions.<\/p>",
+            "two_columns": false
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3"
+      ],
+      "settings": {
+        "title": "Privacy Policy",
+        "description": "<p>At MOKO, we respect your privacy and are committed to protecting your personal information.<br>This Privacy Policy explains how we collect, use, and protect your information when you visit our website, browse our products, or place an order with us.<\/p>",
+        "padding_top": 36,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "policy-list"
+  ]
+}
