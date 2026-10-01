@@ -107,7 +107,7 @@
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
             "button_1_label": "Shop All",
-            "button_1_link": "",
+            "button_1_link": "shopify://collections/pax-one-pocket-scrub-top",
             "button_1_bg": "#173c2b",
             "button_1_text": "#ffffff",
             "button_2_label": "",
@@ -823,7 +823,7 @@
         "heading": "Built for Comfort.\nMade for You.",
         "text": "Experience the perfect blend of style, comfort, and performance.",
         "btn_label": "SHOP NOW",
-        "btn_link": "",
+        "btn_link": "shopify://pages/cotton-vs-polyester",
         "image": "shopify://shop_images/ChatGPT_Image_Jul_30_2026_03_22_38_PM.png"
       }
     },
@@ -866,7 +866,7 @@
         "right_title": "Comfort That Works as Hard as You Do.",
         "right_text": "<p>Made with premium cotton, our scrubs are designed to deliver breathable comfort, a soft feel, and dependable performance throughout your workday.</p><p></p>",
         "button_label": "DISCOVER OUR SCRUBS",
-        "button_link": "",
+        "button_link": "shopify://pages/about-us",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -928,8 +928,8 @@
         "title": "Styles That Work As Hard As You Do",
         "text": "From classic solids to modern fits — our collections are made for every role and every routine.",
         "collection": "prime-two-pocket-scrub-top",
-        "btn_label": "EXPLORE COLLECTIONS",
-        "btn_link": ""
+        "btn_label": "EXPLORE PRODUCTS",
+        "btn_link": "shopify://collections/pax-one-pocket-scrub-top"
       }
     },
     "newsletter_banner_1": {
