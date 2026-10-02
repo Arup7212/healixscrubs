@@ -21,7 +21,7 @@
           "static": true,
           "settings": {
             "enable_filtering": true,
-            "filter_style": "vertical",
+            "filter_style": "horizontal",
             "filter_width": "centered",
             "text_label_case": "default",
             "show_swatch_label": false,
@@ -59,7 +59,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -118,12 +118,23 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "custom_variants": {
+              "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "{% render 'product-card-variants', product: closest.product %}",
+                "padding-block-start": 8,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
-            "price_EzJzMm"
+            "price_EzJzMm",
+            "custom_variants"
           ]
         }
       },
@@ -133,10 +144,10 @@
         "mobile_product_card_size": "small",
         "enable_infinite_scroll": true,
         "products_per_page": 24,
-        "product_grid_width": "centered",
+        "product_grid_width": "full-width",
         "full_width_on_mobile": true,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 24,
+        "columns_gap_horizontal": 8,
+        "columns_gap_vertical": 16,
         "padding-inline-start": 0,
         "padding-inline-end": 0,
         "background_color": "{{ settings.color_palette.background }}",

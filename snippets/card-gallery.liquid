@@ -60,6 +60,8 @@
       assign constrain_to_viewport = true
       assign media_fit = block_settings.constrain_to_viewport
     endif
+  else
+    assign media_fit = 'contain'
   endif
 %}
 

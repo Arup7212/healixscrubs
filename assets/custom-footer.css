@@ -19,9 +19,16 @@
 /* --- Base Section --- */
 .custom-footer-section {
   background-color: #eef2f9;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 0px;
   position: relative;
+}
+
+@media(min-width:768px) {
+  .custom-footer-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 /* Subtle top accent line */
@@ -242,10 +249,6 @@
    Tablet (750px - 989px)
    ============================================ */
 @media screen and (max-width: 989px) {
-  .custom-footer-section {
-    padding-top: 60px;
-    padding-bottom: 48px;
-  }
 
   .custom-footer-section .footer-content {
     gap: 36px 28px;
@@ -256,10 +259,6 @@
    Mobile (≤749px)
    ============================================ */
 @media screen and (max-width: 749px) {
-  .custom-footer-section {
-    padding-top: 60px;
-    padding-bottom: 0px !important;
-  }
 
   .custom-footer-section .footer-content {
     grid-template-columns: repeat(6, 1fr);

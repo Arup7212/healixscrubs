@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "disabled": true,
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "comparison_table_cJ7VPJ": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_T4aF84": {
+          "type": "row",
+          "settings": {
+            "factor": "Breathability",
+            "col2_value": "High — natural fiber, airflow",
+            "col3_value": "Low — traps heat/moisture"
+          }
+        },
+        "row_Rr73YY": {
+          "type": "row",
+          "settings": {
+            "factor": "Sweat / moisture handling",
+            "col2_value": "Absorbs, wicks away from skin",
+            "col3_value": "Retains moisture against skin"
+          }
+        },
+        "row_rFr3eY": {
+          "type": "row",
+          "settings": {
+            "factor": "Skin sensitivity risk",
+            "col2_value": "Low — hypoallergenic",
+            "col3_value": "Higher — friction, dye/resin irritation"
+          }
+        },
+        "row_TqCjAR": {
+          "type": "row",
+          "settings": {
+            "factor": "Long-shift comfort",
+            "col2_value": "Soft, less chafing",
+            "col3_value": "Can cause chafing, acne mechanica"
+          }
+        }
+      },
+      "block_order": [
+        "row_T4aF84",
+        "row_Rr73YY",
+        "row_rFr3eY",
+        "row_TqCjAR"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "title": "MOKO Premium Cotton vs. Polyester Scrubs",
+        "heading_size": "h1",
+        "subtitle": "<p>A performance and skin-health comparison for long-term wear</p>",
+        "color_scheme": "background-1",
+        "col1_heading": "Factor",
+        "col2_heading": "MOKO 100% Cotton (treated)",
+        "col3_heading": "95% Polyester Blend",
+        "takeaway_title": "Takeaway",
+        "takeaway_text": "<p>With MOKO's finishing technology, cotton no longer has to trade off performance for comfort. MOKO scrubs now match polyester's practicality...</p>",
+        "footer_text": "<p>MOKO WEARS — Premium cotton comfort, engineered for modern healthcare.</p>",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "comparison_table_cJ7VPJ"
+  ]
+}

@@ -106,11 +106,11 @@
             "subheading": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>",
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
-            "button_1_label": "Shop Women",
-            "button_1_link": "",
+            "button_1_label": "Shop All",
+            "button_1_link": "shopify://collections/pax-one-pocket-scrub-top",
             "button_1_bg": "#173c2b",
             "button_1_text": "#ffffff",
-            "button_2_label": "Shop Men",
+            "button_2_label": "",
             "button_2_link": "",
             "button_2_bg": "#ffffff",
             "button_2_text": "#173c2b",
@@ -129,11 +129,11 @@
             "subheading": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>",
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
-            "button_1_label": "Shop Women",
-            "button_1_link": "",
+            "button_1_label": "Shop All",
+            "button_1_link": "shopify://collections/pax-one-pocket-scrub-top",
             "button_1_bg": "#173c2b",
             "button_1_text": "#ffffff",
-            "button_2_label": "Shop Men",
+            "button_2_label": "",
             "button_2_link": "",
             "button_2_bg": "#ffffff",
             "button_2_text": "#173c2b",
@@ -152,11 +152,11 @@
             "subheading": "<p>DESIGNED FOR NURSES. MADE FOR HEROES.</p>",
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
-            "button_1_label": "Shop Women",
+            "button_1_label": "Shop All",
             "button_1_link": "",
             "button_1_bg": "#173c2b",
             "button_1_text": "#ffffff",
-            "button_2_label": "Shop Men",
+            "button_2_label": "",
             "button_2_link": "",
             "button_2_bg": "#ffffff",
             "button_2_text": "#173c2b",
@@ -287,6 +287,7 @@
         "fabric_item_4YdTaL",
         "fabric_item_d8XKKi"
       ],
+      "disabled": true,
       "name": "Shop By Fabric",
       "settings": {
         "background_color": "#ffffff",
@@ -342,6 +343,55 @@
         "bg_color": "{{ settings.color_palette.color2 }}"
       }
     },
+    "mask_features_c9rMw7": {
+      "type": "Mask_Features",
+      "blocks": {
+        "feature_hHhKpF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_04_36_28_PM_1.png",
+            "title": "Breathable Fabric",
+            "text": "Lightweight, breathable fabric helps keep you cool and comfortable during long working hours."
+          }
+        },
+        "feature_XTbgY9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_04_38_56_PM.png",
+            "title": "Moisture Management",
+            "text": "Designed to help manage everyday moisture and keep you feeling fresh throughout your shift."
+          }
+        },
+        "feature_gXJfig": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/341ba039-b54b-48e4-a816-c871bc6f88aa.png",
+            "title": "Durable Construction",
+            "text": "Strong stitching and quality fabric are built to handle demanding daily wear and repeated washing."
+          }
+        },
+        "feature_XGcRUY": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/ab9b8c1f-e2d7-44e7-bb4d-7990c980607f.png",
+            "title": "All-Day Comfort",
+            "text": "A soft, flexible feel with an easy fit that supports comfortable movement throughout your day."
+          }
+        }
+      },
+      "block_order": [
+        "feature_hHhKpF",
+        "feature_XTbgY9",
+        "feature_gXJfig",
+        "feature_XGcRUY"
+      ],
+      "name": "Mask Features",
+      "settings": {
+        "heading": "Comfort. Durability. Performance.",
+        "subheading": "PREMIUM MEDICAL SCRUBS",
+        "main_image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_03_45_36_PM.png"
+      }
+    },
     "moko_virasat_slider_xQdrfw": {
       "type": "MokoVirasatSlider",
       "name": "Moko Virasat Slider",
@@ -353,17 +403,17 @@
         "autoplay_speed": 3.5,
         "bg_image": "shopify://shop_images/ChatGPT_Image_Aug_19_2026_05_02_20_PM.png",
         "bg_overlay_opacity": 35,
-        "left_cta_label": "EXPLORE COLLECTION",
+        "left_cta_label": "EXPLORE PRODUCTS",
         "left_cta_url": "",
         "card1_subtitle": "MOKO PRESENTS YOU",
         "card1_title": "Virasat",
-        "card1_logo_image": "shopify://shop_images/ChatGPT_Image_Aug_19_2026_06_30_57_PM.png",
+        "card1_logo_image": "shopify://shop_images/WhatsApp_Image_2026-09-29_at_7.51.56_PM_1.png",
         "logo_max_width": 220,
         "card1_description": "A curated edit of heritage\nAjrakh Drees",
         "card1_url": "",
-        "card1_bg_color": "#4e0f1b",
+        "card1_bg_color": "{{ settings.color_palette.background }}",
         "card1_bg_opacity": 85,
-        "card1_text_color": "#faf8f5"
+        "card1_text_color": "#e82f2f"
       }
     },
     "custom_collection_carousel_h8D6YX": {
@@ -622,6 +672,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:names.product_list",
       "settings": {
         "collection": "all",
@@ -681,6 +732,7 @@
       "block_order": [
         "reelcart_reel_cards_EqGyyi"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -712,6 +764,7 @@
     },
     "product_tabs_slider_PKCyJw": {
       "type": "product-tabs-slider",
+      "disabled": true,
       "name": "Product Tabs Sliderr",
       "settings": {
         "heading": "SEARCH PRODUCTS BY",
@@ -720,6 +773,21 @@
         "collection1": "pax-one-pocket-scrub-top",
         "tab2_name": "BY MANUFACTURER",
         "collection2": "prime-two-pocket-scrub-top"
+      }
+    },
+    "divider_iCBxeM": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "{{ settings.color_palette.background }}",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 44
       }
     },
     "moko_promo_banner_VhwFwi": {
@@ -755,7 +823,7 @@
         "heading": "Built for Comfort.\nMade for You.",
         "text": "Experience the perfect blend of style, comfort, and performance.",
         "btn_label": "SHOP NOW",
-        "btn_link": "",
+        "btn_link": "shopify://pages/cotton-vs-polyester",
         "image": "shopify://shop_images/ChatGPT_Image_Jul_30_2026_03_22_38_PM.png"
       }
     },
@@ -765,22 +833,22 @@
         "feature_tKBdCK": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Premium Cotton Comfort",
+            "text": "Soft, breathable fabric designed for comfortable all-day wear."
           }
         },
         "feature_7XneN3": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Breathable & Moisture Friendly",
+            "text": "Helps you stay comfortable during long and demanding shifts."
           }
         },
         "feature_bAEjkA": {
           "type": "feature",
           "settings": {
-            "title": "Certified Experts",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "Made for Everyday Performance",
+            "text": "Durable construction, comfortable fit, and easy-care performance for daily use."
           }
         }
       },
@@ -791,14 +859,14 @@
       ],
       "name": "Why Choose Us",
       "settings": {
-        "heading": "Why Choose Us",
-        "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "heading": "WHY CHOOSE OUR SCRUBS",
+        "subtitle": "Designed for healthcare professionals who value comfort, quality, and performance throughout long shifts.",
         "image_1": "shopify://shop_images/ChatGPT_Image_Jul_22_2026_12_08_44_PM_2193100a-ea4b-4d8a-a3f1-d42de31f9604.png",
         "image_2": "shopify://shop_images/DSC03520.webp",
-        "right_title": "Build a strategy that puts your money to work.",
-        "right_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac leo nec...</p>",
-        "button_label": "Read More",
-        "button_link": "",
+        "right_title": "Comfort That Works as Hard as You Do.",
+        "right_text": "<p>Made with premium cotton, our scrubs are designed to deliver breathable comfort, a soft feel, and dependable performance throughout your workday.</p><p></p>",
+        "button_label": "DISCOVER OUR SCRUBS",
+        "button_link": "shopify://pages/about-us",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -856,12 +924,12 @@
       "name": "MOKO Collection Highlight",
       "settings": {
         "bg_color": "#f8f9fa",
-        "subtitle": "Our Collections",
+        "subtitle": "Our Products",
         "title": "Styles That Work As Hard As You Do",
         "text": "From classic solids to modern fits — our collections are made for every role and every routine.",
         "collection": "prime-two-pocket-scrub-top",
-        "btn_label": "EXPLORE COLLECTIONS",
-        "btn_link": ""
+        "btn_label": "EXPLORE PRODUCTS",
+        "btn_link": "shopify://collections/pax-one-pocket-scrub-top"
       }
     },
     "newsletter_banner_1": {
@@ -881,11 +949,13 @@
     "hero_slideshow_RQeWDK",
     "shop_by_fabric_U4NY9e",
     "moko_feature_banner_getaE6",
+    "mask_features_c9rMw7",
     "moko_virasat_slider_xQdrfw",
     "custom_collection_carousel_h8D6YX",
     "product_list_fa6P9H",
     "1787136128c4733f22",
     "product_tabs_slider_PKCyJw",
+    "divider_iCBxeM",
     "moko_promo_banner_VhwFwi",
     "why_choose_us_CGamKt",
     "features_banner_1",

@@ -1,0 +1,259 @@
+{{ 'component-comparison-table.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="comparison-section color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="comparison-header center">
+      {%- if section.settings.title != blank -%}
+        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: #0b7356;">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      
+      {%- if section.settings.subtitle != blank -%}
+        <div class="comparison-subtitle{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: #555; margin-bottom: 2rem; font-size: 1.1rem;">
+          {{ section.settings.subtitle }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="comparison-table-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>{{ section.settings.col1_heading | default: 'Factor' }}</th>
+            <th class="highlight-col">{{ section.settings.col2_heading }}</th>
+            <th>{{ section.settings.col3_heading }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="comparison-factor">{{ block.settings.factor }}</td>
+              <td class="highlight-col">{{ block.settings.col2_value }}</td>
+              <td>{{ block.settings.col3_value }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="comparison-footer-section">
+      {%- if section.settings.takeaway_title != blank or section.settings.takeaway_text != blank -%}
+        <div class="comparison-takeaway{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- if section.settings.takeaway_title != blank -%}
+            <h3 class="takeaway-title" style="color: #212B36; margin-bottom: 0.5rem;">{{ section.settings.takeaway_title }}</h3>
+          {%- endif -%}
+          {%- if section.settings.takeaway_text != blank -%}
+            <div class="takeaway-text rte" style="color: #444; line-height: 1.6;">{{ section.settings.takeaway_text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.footer_text != blank -%}
+        <div class="comparison-footer{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="margin-top: 2rem; color: #888; font-style: italic; font-size: 0.9rem;">
+          {{ section.settings.footer_text }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "MOKO Premium Cotton vs. Polyester Scrubs",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>A performance and skin-health comparison for long-term wear</p>"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" }
+      ],
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Table Headings"
+    },
+    {
+      "type": "text",
+      "id": "col1_heading",
+      "label": "Column 1 Heading",
+      "default": "Factor"
+    },
+    {
+      "type": "text",
+      "id": "col2_heading",
+      "label": "Column 2 Heading",
+      "default": "MOKO 100% Cotton (treated)"
+    },
+    {
+      "type": "text",
+      "id": "col3_heading",
+      "label": "Column 3 Heading",
+      "default": "95% Polyester Blend"
+    },
+    {
+      "type": "header",
+      "content": "Takeaway"
+    },
+    {
+      "type": "text",
+      "id": "takeaway_title",
+      "label": "Takeaway Title",
+      "default": "Takeaway"
+    },
+    {
+      "type": "richtext",
+      "id": "takeaway_text",
+      "label": "Takeaway Text",
+      "default": "<p>With MOKO's finishing technology, cotton no longer has to trade off performance for comfort. MOKO scrubs now match polyester's practicality...</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "<p>MOKO WEARS — Premium cotton comfort, engineered for modern healthcare.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "factor",
+          "label": "Factor (Col 1)",
+          "default": "Breathability"
+        },
+        {
+          "type": "text",
+          "id": "col2_value",
+          "label": "Value (Col 2)",
+          "default": "High — natural fiber, airflow"
+        },
+        {
+          "type": "text",
+          "id": "col3_value",
+          "label": "Value (Col 3)",
+          "default": "Low — traps heat/moisture"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "factor": "Breathability",
+            "col2_value": "High — natural fiber, airflow",
+            "col3_value": "Low — traps heat/moisture"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "factor": "Sweat / moisture handling",
+            "col2_value": "Absorbs, wicks away from skin",
+            "col3_value": "Retains moisture against skin"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "factor": "Skin sensitivity risk",
+            "col2_value": "Low — hypoallergenic",
+            "col3_value": "Higher — friction, dye/resin irritation"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "factor": "Long-shift comfort",
+            "col2_value": "Soft, less chafing",
+            "col3_value": "Can cause chafing, acne mechanica"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
