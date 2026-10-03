@@ -1,0 +1,327 @@
+{{ 'contact-us.css' | asset_url | stylesheet_tag }}
+
+<div class="contact-page-wrapper">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="contact-page-header mask-features-header">
+      {% if section.settings.subtitle != blank %}
+        <div class="section-tagline">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h1 class="section-title">{{ section.settings.title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.text != blank %}
+        <p class="section-details">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Quick Contact Info Cards Row -->
+    <div class="contact-info-grid">
+      
+      <!-- Card 1: Phone -->
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="contact-info-title">{{ section.settings.card1_title | default: "Call Us Toll-Free" }}</h3>
+        <div class="contact-info-text">
+          <a href="tel:{{ section.settings.phone | remove: ' ' | remove: '-' }}">{{ section.settings.phone | default: "+1 (800) 555-MOKO" }}</a><br>
+          <span>{{ section.settings.phone_hours | default: "Mon - Fri: 9am - 5pm EST" }}</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Email -->
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <h3 class="contact-info-title">{{ section.settings.card2_title | default: "Email Support" }}</h3>
+        <div class="contact-info-text">
+          <a href="mailto:{{ section.settings.email }}">{{ section.settings.email | default: "support@moko.ca" }}</a><br>
+          <span>{{ section.settings.email_sub | default: "Fast response within 24 hours" }}</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Location -->
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="contact-info-title">{{ section.settings.card3_title | default: "Canada Headquarters" }}</h3>
+        <div class="contact-info-text">
+          <span>{{ section.settings.address | default: "100 King St W, Toronto, ON" }}</span><br>
+          <span>{{ section.settings.country | default: "Canada M5X 1A9" }}</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Hours -->
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="contact-info-title">{{ section.settings.card4_title | default: "Operating Hours" }}</h3>
+        <div class="contact-info-text">
+          <span>{{ section.settings.hours1 | default: "Mon - Fri: 9:00 AM - 6:00 PM" }}</span><br>
+          <span>{{ section.settings.hours2 | default: "Sat - Sun: Closed" }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Main Two-Column Section: Contact Form + Canada Map -->
+    <div class="contact-main-grid">
+      
+      <!-- Left: Contact Form -->
+      <div class="contact-form-card">
+        <h2 class="contact-form-title">{{ section.settings.form_heading | default: "Send Us a Message" }}</h2>
+        <p class="contact-form-subtitle">{{ section.settings.form_subheading | default: "Fill out the form below and our customer care team will get back to you promptly." }}</p>
+
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div class="contact-form-notice contact-form-notice--success">
+              <strong>Thank you for reaching out!</strong> Your message has been sent successfully. We will reply shortly.
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="contact-form-notice contact-form-notice--error">
+              <strong>Please correct the following errors:</strong>
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="contact-form-row">
+            <div class="contact-form-group">
+              <label for="ContactForm-name">Your Name *</label>
+              <input type="text" id="ContactForm-name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="e.g. Sarah Jenkins" required>
+            </div>
+            
+            <div class="contact-form-group">
+              <label for="ContactForm-email">Your Email *</label>
+              <input type="email" id="ContactForm-email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" placeholder="e.g. sarah@example.ca" required>
+            </div>
+          </div>
+
+          <div class="contact-form-group">
+            <label for="ContactForm-phone">Phone Number</label>
+            <input type="tel" id="ContactForm-phone" name="contact[phone]" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="e.g. +1 (416) 555-0199">
+          </div>
+
+          <div class="contact-form-group">
+            <label for="ContactForm-body">Message *</label>
+            <textarea id="ContactForm-body" name="contact[body]" placeholder="How can we help you today? Please include any relevant details..." required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          </div>
+
+          <div class="contact-form-submit-wrap">
+            <button type="submit" class="moko-btn">
+              <span>SEND MESSAGE</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </div>
+        {% endform %}
+      </div>
+
+      <!-- Right: Canada Interactive Map & Location Card -->
+      <div class="contact-map-card">
+        
+        <div class="contact-map-header">
+          <div class="contact-map-header-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{{ section.settings.map_title | default: "Headquarters Location" }}</span>
+          </div>
+
+        </div>
+
+        <!-- Embedded Interactive Canada Map (Google Maps Embed Toronto, Canada) -->
+        <div class="contact-map-embed-wrapper">
+          <iframe 
+            src="{{ section.settings.map_iframe_url | default: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57218635547!2d-79.51814275143389!3d43.71815566213797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca' }}" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Canada Headquarters Map">
+          </iframe>
+        </div>
+
+        <!-- Streamlined Location Card Under Map -->
+        <div class="contact-locations-list">
+          
+          <div class="contact-location-item">
+            <div class="contact-location-pin-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-location-details">
+              <h4>{{ section.settings.map_address_title | default: "Toronto Headquarters" }}</h4>
+              <p>{{ section.settings.map_address_text | default: "100 King Street West, Suite 5600, Toronto, ON M5X 1A9, Canada" }}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MOKO Contact Us Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle / Tagline",
+      "default": "CONTACT US"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "We'd Love to Hear From You"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description Text",
+      "default": "Have questions about our medical scrubs, group orders, or sizing? Our Canadian customer care team is here to assist you."
+    },
+    {
+      "type": "header",
+      "content": "Contact Info Cards"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Card 1 Title",
+      "default": "Call Us Toll-Free"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+1 (800) 555-MOKO"
+    },
+    {
+      "type": "text",
+      "id": "phone_hours",
+      "label": "Phone Hours",
+      "default": "Mon - Fri: 9:00 AM - 5:00 PM EST"
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Card 2 Title",
+      "default": "Email Support"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address",
+      "default": "support@moko.ca"
+    },
+    {
+      "type": "text",
+      "id": "email_sub",
+      "label": "Email Subtitle",
+      "default": "Fast response within 24 hours"
+    },
+    {
+      "type": "text",
+      "id": "card3_title",
+      "label": "Card 3 Title",
+      "default": "Canada Headquarters"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address Line 1",
+      "default": "100 King St W, Toronto, ON"
+    },
+    {
+      "type": "text",
+      "id": "country",
+      "label": "Address Line 2",
+      "default": "Canada M5X 1A9"
+    },
+    {
+      "type": "text",
+      "id": "card4_title",
+      "label": "Card 4 Title",
+      "default": "Operating Hours"
+    },
+    {
+      "type": "text",
+      "id": "hours1",
+      "label": "Hours Line 1",
+      "default": "Mon - Fri: 9:00 AM - 6:00 PM EST"
+    },
+    {
+      "type": "text",
+      "id": "hours2",
+      "label": "Hours Line 2",
+      "default": "Sat - Sun: Closed"
+    },
+    {
+      "type": "header",
+      "content": "Form & Map Settings"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form Heading",
+      "default": "Send Us a Message"
+    },
+    {
+      "type": "textarea",
+      "id": "form_subheading",
+      "label": "Form Subheading",
+      "default": "Fill out the form below and our customer care team will get back to you promptly."
+    },
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Map Header Title",
+      "default": "Headquarters Location"
+    },
+    {
+      "type": "text",
+      "id": "map_address_title",
+      "label": "Map Location Title",
+      "default": "Toronto Headquarters"
+    },
+    {
+      "type": "textarea",
+      "id": "map_address_text",
+      "label": "Map Location Address",
+      "default": "100 King Street West, Suite 5600, Toronto, ON M5X 1A9, Canada"
+    },
+    {
+      "type": "text",
+      "id": "map_iframe_url",
+      "label": "Google Maps Embed Iframe URL",
+      "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57218635547!2d-79.51814275143389!3d43.71815566213797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MOKO Contact Us Page"
+    }
+  ]
+}
+{% endschema %}

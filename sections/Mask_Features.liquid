@@ -1,42 +1,35 @@
 <style>
 .mask-features-section {
   text-align: center;
-  padding: 50px 20px;
+  padding: 0px 16px 40px 16px;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: inherit; /* Inherit font from theme */
+  font-family: inherit;
+}
+
+@media(min-width:768px){
+  .mask-features-section{
+  padding: 0px 16px 60px 16px;
+
+  }
 }
 
 .mask-features-header {
-  margin-bottom: 50px;
-}
-
-.mask-features-header h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.mask-features-header p {
-  font-size: 15px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0;
+  margin-bottom: 40px;
 }
 
 .mask-features-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
 }
 
 .mask-features-column {
   flex: 1 1 250px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
 }
 
 .mask-feature-item {
@@ -44,63 +37,73 @@
 }
 
 .mask-feature-icon {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .mask-feature-icon img {
-  max-width: 60px;
+  max-width: 54px;
   height: auto;
   display: inline-block;
 }
 
 .mask-feature-title {
+  font-family: 'Jost', sans-serif;
   font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-weight: 700;
+  color: #173C2B;
+  margin-bottom: 8px;
 }
 
 .mask-feature-text {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  max-width: 280px;
+  color: #4b5563;
   margin: 0 auto;
 }
 
 .mask-main-image {
-  flex: 2 1 400px;
+  flex: 2 1 380px;
   text-align: center;
 }
 
 .mask-main-image img {
   max-width: 100%;
   height: auto;
+  border-radius: 4px;
 }
 
 @media (max-width: 900px) {
   .mask-features-container {
     flex-direction: column;
+    gap: 30px;
   }
   
   .mask-main-image {
     order: -1;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    width: 100%;
   }
   
   .mask-features-column {
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
     width: 100%;
   }
 }
 </style>
 
 <div class="mask-features-section">
-  <div class="mask-features-header">
-    {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading }}</h2>
-    {% endif %}
-    {% if section.settings.subheading != blank %}
-      <p>{{ section.settings.subheading }}</p>
-    {% endif %}
+  <div class="container">
+    <div class="mask-features-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="section-tagline">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
   </div>
 
   <div class="mask-features-container">

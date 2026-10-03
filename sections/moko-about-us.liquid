@@ -6,19 +6,19 @@
       
       {% when 'hero' %}
         <div class="about-hero" {{ block.shopify_attributes }}>
-          <div class="about-container about-hero__inner">
-            <div class="about-hero__content">
+          <div class="container about-hero__inner">
+            <div class="about-hero__content mask-features-header">
               {% if block.settings.subtitle != blank %}
-                <div class="about-subtitle">{{ block.settings.subtitle }}</div>
+                <div class="section-tagline">{{ block.settings.subtitle }}</div>
               {% endif %}
               {% if block.settings.title != blank %}
-                <h1 class="about-title">{{ block.settings.title }}</h1>
+                <h1 class="section-title">{{ block.settings.title }}</h1>
               {% endif %}
               {% if block.settings.text != blank %}
                 <div class="about-text">{{ block.settings.text }}</div>
               {% endif %}
               {% if block.settings.button_label != blank %}
-                <a href="{{ block.settings.button_link }}" class="about-btn">{{ block.settings.button_label }}</a>
+                <a href="{{ block.settings.button_link }}" class="moko-btn">{{ block.settings.button_label }}</a>
               {% endif %}
               
               <div class="about-hero__features">
@@ -46,7 +46,7 @@
 
       {% when 'image_text' %}
         <div class="about-section {% if block.settings.bg_color == 'white' %}about-section--white{% else %}about-section--light{% endif %}" {{ block.shopify_attributes }}>
-          <div class="about-container">
+          <div class="container">
             <div class="about-image-text {% if block.settings.layout == 'image_right' %}about-image-text--reverse{% endif %}">
               <div class="about-image-text__image">
                 {% if block.settings.image != blank %}
@@ -55,18 +55,18 @@
                   {{ 'image' | placeholder_svg_tag }}
                 {% endif %}
               </div>
-              <div class="about-image-text__content">
+              <div class="about-image-text__content mask-features-header">
                 {% if block.settings.subtitle != blank %}
-                  <div class="about-subtitle">{{ block.settings.subtitle }}</div>
+                  <div class="section-tagline">{{ block.settings.subtitle }}</div>
                 {% endif %}
                 {% if block.settings.title != blank %}
-                  <h2 class="about-title">{{ block.settings.title }}</h2>
+                  <h2 class="section-title">{{ block.settings.title }}</h2>
                 {% endif %}
                 {% if block.settings.text != blank %}
                   <div class="about-text">{{ block.settings.text }}</div>
                 {% endif %}
                 {% if block.settings.button_label != blank %}
-                  <a href="{{ block.settings.button_link }}" class="about-btn">{{ block.settings.button_label }}</a>
+                  <a href="{{ block.settings.button_link }}" class="moko-btn">{{ block.settings.button_label }}</a>
                 {% endif %}
 
                 {% if block.settings.show_fabric_icons %}
@@ -116,15 +116,15 @@
         </div>
 
       {% when 'values' %}
-        <div class="about-section about-section--light" {{ block.shopify_attributes }}>
-          <div class="about-container">
-            <div class="about-values-header">
+        <div class="about-section {% if block.settings.bg_color == 'white' %}about-section--white{% else %}about-section--light{% endif %}" {{ block.shopify_attributes }}>
+          <div class="container">
+            <div class="mask-features-header">
               {% if block.settings.subtitle != blank %}
-                <div class="about-subtitle">{{ block.settings.subtitle }}</div>
+                <div class="section-tagline">{{ block.settings.subtitle }}</div>
               {% endif %}
-              <h2 class="about-title" style="margin-bottom:10px;">{{ block.settings.title }}</h2>
+              <h2 class="section-title">{{ block.settings.title }}</h2>
               {% if block.settings.text != blank %}
-                <p style="color:#666;">{{ block.settings.text }}</p>
+                <p class="section-details">{{ block.settings.text }}</p>
               {% endif %}
             </div>
             <div class="about-values-grid">
@@ -149,9 +149,9 @@
         </div>
 
       {% when 'stats' %}
-        <div class="about-stats" style="background-color: #f6f5f3;" {{ block.shopify_attributes }}>
-          <div class="about-container">
-            <div class="about-stats-subtitle">{{ block.settings.subtitle }}</div>
+        <div class="about-stats about-section {% if block.settings.bg_color == 'white' %}about-section--white{% else %}about-section--light{% endif %}" {{ block.shopify_attributes }}>
+          <div class="container">
+            <h2 class="section-title about-stats-title">{{ block.settings.subtitle }}</h2>
             <div class="about-stats-grid">
               {% for i in (1..4) %}
                 {% assign icon_key = 'stat_icon_' | append: i %}
@@ -178,10 +178,10 @@
       {% when 'cta' %}
         <div class="about-cta" style="{% if block.settings.image != blank %}background-image: url('{{ block.settings.image | image_url: width: 2000 }}');{% endif %}" {{ block.shopify_attributes }}>
           <div class="about-cta-content">
-            <h2 class="about-title">{{ block.settings.title }}</h2>
-            <div class="about-text" style="margin-bottom:40px;">{{ block.settings.text }}</div>
+            <h2 class="section-title">{{ block.settings.title }}</h2>
+            <div class="about-text">{{ block.settings.text }}</div>
             {% if block.settings.button_label != blank %}
-              <a href="{{ block.settings.button_link }}" class="about-cta-btn">{{ block.settings.button_label }}</a>
+              <a href="{{ block.settings.button_link }}" class="moko-btn moko-btn--light">{{ block.settings.button_label }}</a>
             {% endif %}
           </div>
         </div>
@@ -206,11 +206,11 @@
         { "type": "url", "id": "button_link", "label": "Button Link" },
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "image_picker", "id": "feature_icon_1", "label": "Feature 1 Icon (Image)" },
-        { "type": "text", "id": "feature_text_1", "label": "Feature 1 Text", "default": "Premium Cotton Fabric" },
+        { "type": "text", "id": "feature_text_1", "label": "Feature 1 Text", "default": "Comfort" },
         { "type": "image_picker", "id": "feature_icon_2", "label": "Feature 2 Icon (Image)" },
-        { "type": "text", "id": "feature_text_2", "label": "Feature 2 Text", "default": "Made for Real Work" },
+        { "type": "text", "id": "feature_text_2", "label": "Feature 2 Text", "default": "Durability" },
         { "type": "image_picker", "id": "feature_icon_3", "label": "Feature 3 Icon (Image)" },
-        { "type": "text", "id": "feature_text_3", "label": "Feature 3 Text", "default": "Comfort You Can Rely On" }
+        { "type": "text", "id": "feature_text_3", "label": "Feature 3 Text", "default": "Performance" }
       ]
     },
     {
@@ -265,6 +265,16 @@
       "type": "values",
       "name": "Values Grid",
       "settings": [
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background Color",
+          "options": [
+            { "value": "white", "label": "White" },
+            { "value": "light", "label": "Light Gray" }
+          ],
+          "default": "light"
+        },
         { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "OUR VALUES" },
         { "type": "text", "id": "title", "label": "Title", "default": "What Makes Us Different." },
         { "type": "text", "id": "text", "label": "Text", "default": "Thoughtfully designed. Carefully made." },
@@ -286,6 +296,16 @@
       "type": "stats",
       "name": "Stats Row",
       "settings": [
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background Color",
+          "options": [
+            { "value": "white", "label": "White" },
+            { "value": "light", "label": "Light Gray" }
+          ],
+          "default": "light"
+        },
         { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "TRUSTED BY HEALTHCARE PROFESSIONALS" },
         { "type": "image_picker", "id": "stat_icon_1", "label": "Stat 1 Icon (Image)" },
         { "type": "text", "id": "stat_num_1", "label": "Stat 1 Number", "default": "10,000+" },
@@ -312,7 +332,7 @@
         { "type": "image_picker", "id": "image", "label": "Background Image" },
         { "type": "text", "id": "title", "label": "Title", "default": "Care for People. Care for a Better Tomorrow." },
         { "type": "text", "id": "text", "label": "Text", "default": "Better workwear for brighter days." },
-        { "type": "text", "id": "button_label", "label": "Button Label", "default": "EXPLORE OUR COLLECTION →" },
+        { "type": "text", "id": "button_label", "label": "Button Label", "default": "EXPLORE OUR COLLECTION" },
         { "type": "url", "id": "button_link", "label": "Button Link" }
       ]
     }

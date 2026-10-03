@@ -1,4 +1,4 @@
-﻿* {
+* {
   box-sizing: border-box;
 }
 
@@ -2331,6 +2331,59 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 }
 
 /* ============================================
+   Global MOKO Button Class (.moko-btn)
+   ============================================ */
+.moko-btn,
+button.moko-btn,
+a.moko-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 14px 32px !important;
+  background-color: var(--primary-color, #173C2B) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s ease,
+    color 0.3s ease !important;
+}
+
+.moko-btn:hover,
+button.moko-btn:hover,
+a.moko-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(23, 60, 43, 0.28) !important;
+  background-color: var(--primary-color, #173C2B) !important;
+  color: #ffffff !important;
+}
+
+.moko-btn--light,
+a.moko-btn--light {
+  background-color: #ffffff !important;
+  color: var(--primary-color, #173C2B) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18) !important;
+}
+
+.moko-btn--light:hover,
+a.moko-btn--light:hover {
+  background-color: #ffffff !important;
+  color: var(--primary-color, #173C2B) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* ============================================
    Button Hover Shadow & Shine Effects
    ============================================ */
 .button[id^='BuyButtons-ProductSubmitButton-'],
@@ -2344,7 +2397,8 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 .moko-promo-banner__btn,
 .moko-col-highlight__btn,
 .ccc-view-more,
-.newsletter-banner__button {
+.newsletter-banner__button,
+.moko-btn {
   position: relative !important;
   overflow: hidden !important;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -2403,12 +2457,12 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 .product-form .add-to-cart-button:hover::after,
 .button-secondary:hover::after,
 .button-custom:hover::after,
-.hero-slider-btn:hover::after,
-.why-choose-us-btn:hover::after,
-.moko-promo-banner__btn:hover::after,
-.moko-col-highlight__btn:hover::after,
-.ccc-view-more:hover::after,
-.newsletter-banner__button:hover::after {
+.hero-slider-btn::after,
+.why-choose-us-btn::after,
+.moko-promo-banner__btn::after,
+.moko-col-highlight__btn::after,
+.ccc-view-more::after,
+.newsletter-banner__button::after {
   animation: button-shine-sweep 0.75s ease-in-out;
   opacity: 1;
 }
@@ -2480,9 +2534,23 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
   }
 }
 
+.section-tagline,
 .section-subheading,
-.section-description,
 .section-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #72778e !important;
+  line-height: 1.5 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.2px !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+.section-description,
+.section-details {
+  font-family: 'Inter', sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   color: #72778e !important;
@@ -2493,9 +2561,14 @@ main>.shopify-section:first-child .section:not(.disable-section-top-offset) {
 
 @media screen and (min-width: 768px) {
 
+  .section-tagline,
   .section-subheading,
-  .section-description,
   .section-subtitle {
+    margin-bottom: 12px !important;
+  }
+
+  .section-description,
+  .section-details {
     font-size: 15px !important;
     margin-bottom: 28px !important;
   }
@@ -2519,6 +2592,14 @@ button.quick-add__button,
   color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
-}.product-card .product-media-container { aspect-ratio: 4/5 !important; } .product-card .product-media-container img { object-fit: contain !important; height: 100% !important; width: 100% !important; }
+}
 
+.product-card .product-media-container {
+  aspect-ratio: 4/5 !important;
+}
 
+.product-card .product-media-container img {
+  object-fit: contain !important;
+  height: 100% !important;
+  width: 100% !important;
+}
