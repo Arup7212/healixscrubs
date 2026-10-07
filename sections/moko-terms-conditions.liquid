@@ -1,0 +1,304 @@
+{%- style -%}
+.moko-terms-conditions {
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  background-color: #f7f9f7;
+}
+
+.moko-terms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.moko-terms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: #e9efe7;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.moko-terms-header-content {
+  padding: 60px;
+  flex: 1;
+}
+
+.moko-terms-header-subtitle {
+  color: #7b9e7b;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.moko-terms-header-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c362c;
+  margin-bottom: 20px;
+  font-family: serif;
+}
+
+.moko-terms-header-text {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.moko-terms-header-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.moko-terms-header-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.moko-terms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.moko-terms-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.moko-terms-card-number {
+  background-color: #e9efe7;
+  color: #2c362c;
+  font-weight: 700;
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.moko-terms-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f7f9f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.moko-terms-card-icon svg,
+.moko-terms-card-icon img {
+  width: 20px;
+  height: 20px;
+  color: #555;
+  object-fit: contain;
+}
+
+.moko-terms-card-content {
+  flex: 1;
+}
+
+.moko-terms-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c362c;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.moko-terms-card-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.moko-terms-card-text p {
+  margin-bottom: 10px;
+}
+
+.moko-terms-card-text ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.moko-terms-card-text li {
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 990px) {
+  .moko-terms-header {
+    flex-direction: column;
+  }
+  .moko-terms-header-content {
+    padding: 40px 30px;
+  }
+  .moko-terms-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .moko-terms-header-title {
+    font-size: 36px;
+  }
+  .moko-terms-card {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .moko-terms-card-icons {
+    display: flex;
+    gap: 15px;
+  }
+}
+{%- endstyle -%}
+
+<div class="moko-terms-conditions">
+  <div class="moko-terms-container">
+    <div class="moko-terms-header">
+      <div class="moko-terms-header-content">
+        {% if section.settings.subtitle != blank %}
+          <div class="moko-terms-header-subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h1 class="moko-terms-header-title">{{ section.settings.title }}</h1>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="moko-terms-header-text">{{ section.settings.text }}</div>
+        {% endif %}
+      </div>
+      {% if section.settings.image != blank %}
+        <div class="moko-terms-header-image">
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy" width="800" height="{{ 800 | divided_by: section.settings.image.aspect_ratio | round }}">
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="moko-terms-grid">
+      {% for block in section.blocks %}
+        <div class="moko-terms-card" {{ block.shopify_attributes }}>
+          <div class="moko-terms-card-icons" style="display: flex; gap: 15px;">
+            <div class="moko-terms-card-number">
+              {{ forloop.index | prepend: '0' | slice: -2, 2 }}
+            </div>
+            <div class="moko-terms-card-icon">
+              {% if block.settings.icon != blank %}
+                <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="{{ block.settings.title | escape }}" width="20" height="20" loading="lazy">
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              {% endif %}
+            </div>
+          </div>
+          <div class="moko-terms-card-content">
+            <h3 class="moko-terms-card-title">{{ block.settings.title }}</h3>
+            <div class="moko-terms-card-text">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Moko Terms & Conditions",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "OUR POLICIES"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Terms & Conditions"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Welcome to MOKO. These Terms & Conditions govern your use of our website..."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Header Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy",
+      "name": "Policy",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "PNG Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "General"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Content",
+          "default": "<p>Content goes here...</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Moko Terms & Conditions",
+      "blocks": [
+        { "type": "policy", "settings": { "title": "General" } },
+        { "type": "policy", "settings": { "title": "Products & Availability" } },
+        { "type": "policy", "settings": { "title": "Pricing" } },
+        { "type": "policy", "settings": { "title": "Orders" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
