@@ -66,28 +66,56 @@
           "type": "policy",
           "settings": {
             "title": "General",
-            "text": "<p>Content goes here...</p>"
+            "text": "<p>MOKO provides medical scrubs, healthcare apparel, and related products through this website. We reserve the right to update or modify these Terms & Conditions when necessary.</p><p>By using our website, you confirm that you are legally capable of entering into a purchase agreement and that the information you provide is accurate and complete.</p>"
           }
         },
         "policy_FTjkpP": {
           "type": "policy",
           "settings": {
             "title": "Products & Availability",
-            "text": "<p>Content goes here...</p>"
+            "text": "<p>We make every effort to display our products, colors, descriptions, sizes, fabrics, and other details as accurately as possible.</p><p>However, actual product colors may vary slightly depending on your device, screen settings, lighting conditions, or manufacturing variations.</p><p>All products are subject to availability. We reserve the right to discontinue products or limit quantities without prior notice.</p>"
           }
         },
         "policy_dMtP8V": {
           "type": "policy",
           "settings": {
             "title": "Pricing",
-            "text": "<p>Content goes here...</p>"
+            "text": "<p>All product prices displayed on our website are subject to change without notice.</p><p>The final price applicable to your order will be displayed during checkout. Any applicable taxes, shipping charges, discounts, or additional fees will be shown where relevant.</p><p>We reserve the right to correct pricing or product information errors.</p>"
           }
         },
         "policy_zyxVnb": {
           "type": "policy",
           "settings": {
             "title": "Orders",
-            "text": "<p>Content goes here...</p>"
+            "text": "<p>After placing an order, you may receive an order confirmation by email, SMS, or another available communication method.</p><p>Receiving an order confirmation does not necessarily mean that your order has been accepted or dispatched.</p><p>We reserve the right to cancel or refuse an order in situations including:</p><ul><li>Product unavailability</li><li>Incorrect pricing or product information</li><li>Payment verification issues</li><li>Suspected fraudulent activity</li><li>Incorrect or incomplete customer information</li><li>Circumstances beyond our reasonable control</li></ul><p>If payment has already been collected for an order that we cancel, the applicable refund will be processed according to our refund policy.</p>"
+          }
+        },
+        "policy_t9QjGQ": {
+          "type": "policy",
+          "settings": {
+            "title": "Payments",
+            "text": "<p>Customers must provide accurate billing and payment information when placing an order.</p><p>Payments may be processed through secure third-party payment providers. MOKO is not responsible for delays or failures caused directly by banks, payment gateways, or other third-party payment services.</p>"
+          }
+        },
+        "policy_pqMWxr": {
+          "type": "policy",
+          "settings": {
+            "title": "Shipping & Delivery",
+            "text": "<p>Orders will be processed and shipped according to our Shipping & Delivery Policy.</p><p>Delivery times are estimates and may vary due to location, courier operations, public holidays, weather conditions, or other circumstances beyond our control.</p><p>Customers are responsible for providing a complete and accurate delivery address and contact information.</p>"
+          }
+        },
+        "policy_7ifGg6": {
+          "type": "policy",
+          "settings": {
+            "title": "Returns, Exchanges & Refunds",
+            "text": "<p>Returns, exchanges, and refunds are handled according to our applicable Return & Exchange Policy.</p><p>Products must meet the eligibility requirements stated in that policy before a return or exchange can be approved.</p><p>Items that have been worn, washed, damaged, altered, or used may not be eligible for return or exchange, except where required by applicable law.</p>"
+          }
+        },
+        "policy_JFLCWP": {
+          "type": "policy",
+          "settings": {
+            "title": "Product Care",
+            "text": "<p>Customers should follow the washing, drying, and care instructions provided with the product or on our website.</p><p>MOKO is not responsible for damage caused by improper washing, drying, ironing, chemical exposure, misuse, or failure to follow the recommended care instructions.</p>"
           }
         }
       },
@@ -95,7 +123,11 @@
         "policy_iydy6h",
         "policy_FTjkpP",
         "policy_dMtP8V",
-        "policy_zyxVnb"
+        "policy_zyxVnb",
+        "policy_t9QjGQ",
+        "policy_pqMWxr",
+        "policy_7ifGg6",
+        "policy_JFLCWP"
       ],
       "name": "Moko Terms & Conditions",
       "settings": {
