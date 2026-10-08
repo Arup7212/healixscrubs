@@ -110,6 +110,13 @@
             "title": "Your Privacy Rights",
             "text": "<p>Depending on applicable laws, you may have the right to:</p><ul><li>Request access to your personal information<br/></li><li>Request correction of inaccurate information<br/></li><li>Request deletion of certain personal information<br/></li><li>Withdraw consent for certain communications<br/></li><li>Request information about how your personal data is being used<br/></li></ul><p>To exercise any applicable privacy rights, please contact us using the contact information provided on our website.</p>"
           }
+        },
+        "policy_8xmxiA": {
+          "type": "policy",
+          "settings": {
+            "title": "Marketing Communications",
+            "text": "<p>If you choose to subscribe to our promotional communications, we may send you information about products, offers, promotions, or other updates.</p><p>You can unsubscribe from marketing emails at any time by using the unsubscribe option provided in the email or by contacting us directly.</p>"
+          }
         }
       },
       "block_order": [
@@ -119,7 +126,8 @@
         "policy_zyxVnb",
         "policy_VPCFnR",
         "policy_8k9e9V",
-        "policy_jg4h98"
+        "policy_jg4h98",
+        "policy_8xmxiA"
       ],
       "name": "Moko Terms & Conditions",
       "settings": {
