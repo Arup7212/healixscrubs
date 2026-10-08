@@ -65,29 +65,43 @@
         "policy_iydy6h": {
           "type": "policy",
           "settings": {
-            "title": "General",
-            "text": "<p>Content goes here...</p>"
+            "title": "Order Processing",
+            "text": "<p>Orders are generally processed within <strong>1–3 business days</strong> after the order is successfully placed.</p><p>Orders placed on weekends or public holidays will generally be processed on the next business day.</p><p>Processing time may be longer during:</p><ul><li>Sales and promotional periods</li><li>Holidays</li><li>High-volume order periods</li><li>Unexpected operational circumstances</li></ul><p>Once your order has been shipped, you will receive a shipping confirmation with tracking information where available.</p>"
           }
         },
         "policy_FTjkpP": {
           "type": "policy",
           "settings": {
-            "title": "Products & Availability",
-            "text": "<p>Content goes here...</p>"
+            "title": "Delivery Time",
+            "text": "<p>Estimated delivery time depends on your shipping destination and the shipping method selected at checkout.</p><h4>Standard Delivery</h4><p><strong>Estimated delivery: 3–7 business days after dispatch</strong></p><p>Please note that delivery estimates are approximate and may vary depending on the destination, courier service, weather, holidays, and other circumstances outside our control.</p>"
           }
         },
         "policy_dMtP8V": {
           "type": "policy",
           "settings": {
-            "title": "Pricing",
-            "text": "<p>Content goes here...</p>"
+            "title": "Shipping Charges",
+            "text": "<p>Shipping charges are calculated and displayed at checkout based on the applicable shipping method, destination, order value, or other shipping conditions.</p><p>Any applicable shipping charges will be shown before you complete your purchase.</p>"
           }
         },
         "policy_zyxVnb": {
           "type": "policy",
           "settings": {
-            "title": "Orders",
-            "text": "<p>Content goes here...</p>"
+            "title": "Order Tracking",
+            "text": "<p>Once your order has been dispatched, we will provide tracking information where available.</p><p>You can use the tracking number provided in your shipping confirmation to check the progress of your shipment.</p>"
+          }
+        },
+        "policy_JpNPHN": {
+          "type": "policy",
+          "settings": {
+            "title": "Delivery Address",
+            "text": "<p>Please make sure that your shipping address, phone number, email address, and other delivery information are correct before completing your order.</p><p>MOKO Medical Wear is not responsible for delivery issues caused by:</p><ul><li>Incorrect address</li><li>Incomplete address</li><li>Incorrect PIN/ZIP code</li><li>Incorrect phone number</li><li>Customer being unavailable to receive the shipment</li></ul><p>If you notice an error in your shipping address, please contact us as soon as possible.</p>"
+          }
+        },
+        "policy_UEjBi7": {
+          "type": "policy",
+          "settings": {
+            "title": "Delivery Delays",
+            "text": "<p>Although we work with our shipping partners to deliver orders within the estimated timeframe, delays may occasionally occur.</p><p>Possible reasons include:</p><ul><li>Courier delays</li><li>Severe weather</li><li>Public holidays</li><li>High shipping volume</li><li>Incorrect address information</li><li>Remote-area delivery</li><li>Transportation disruptions</li><li>Unexpected events beyond our control</li></ul><p>If there is a significant delay to your order, we will make reasonable efforts to assist you.</p>"
           }
         }
       },
@@ -95,13 +109,16 @@
         "policy_iydy6h",
         "policy_FTjkpP",
         "policy_dMtP8V",
-        "policy_zyxVnb"
+        "policy_zyxVnb",
+        "policy_JpNPHN",
+        "policy_UEjBi7"
       ],
       "name": "Moko Terms & Conditions",
       "settings": {
         "subtitle": "OUR POLICIES",
-        "title": "Terms & Conditions",
-        "text": "Welcome to MOKO. These Terms & Conditions govern your use of our website...",
+        "title": "Shipping & Delivery",
+        "text": "At&nbsp;MOKO Medical Wear, we work to make sure your order is processed carefully and delivered to you as quickly and safely as possible.",
+        "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_14_24_PM.png",
         "padding_top": 60,
         "padding_bottom": 60
       }
