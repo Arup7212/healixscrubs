@@ -129,7 +129,7 @@
           "type": "policy",
           "settings": {
             "title": "How to Request a Return or Exchange",
-            "text": "<p>To request a return or exchange, please contact our customer support team with:</p><ul><li><br/>Your order number<br/></li><li><br/>Customer name<br/></li><li><br/>Product name<br/></li><li><br/>Reason for return or exchange<br/></li><li><br/>Required photographs, if applicable<br/></li></ul><p>Our support team will provide the next steps after reviewing your request.</p>"
+            "text": "<p>To request a return or exchange, please contact our customer support team with:</p><ul><li>Your order number<br/></li><li>Customer name<br/></li><li>Product name<br/></li><li>Reason for return or exchange<br/></li><li>Required photographs, if applicable<br/></li></ul><p>Our support team will provide the next steps after reviewing your request.</p>"
           }
         }
       },
