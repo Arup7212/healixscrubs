@@ -1,8 +1,9 @@
 .comparison-table-wrapper {
   overflow-x: auto;
   margin-bottom: 2rem;
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e0e6e2;
 }
 
 .comparison-table {
@@ -16,68 +17,82 @@
 .comparison-table td {
   padding: 1rem 1.5rem;
   text-align: left;
-  border: 1px solid #e0e0e0;
+
 }
 
 .comparison-table th {
-  background-color: #0b7356;
+  background-color: #173C2B;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .comparison-table th:first-child {
-  background-color: #0b7356;
+  background-color: #234d3a;
 }
 
 .comparison-table td {
-  color: #333333;
-  font-size: 1rem;
+  color: #2c362c;
+  font-size: 0.95rem;
 }
 
 .comparison-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f7f9f7;
 }
 
 .comparison-table tr:hover {
-  background-color: #f1f8f6;
+  background-color: #eef4f0;
 }
 
 .comparison-table .comparison-factor {
   font-weight: 600;
-  color: #2c3e50;
+  color: #173C2B;
 }
 
 /* Highlight column (middle) */
 .comparison-table th.highlight-col {
-  background-color: #085e46; /* slightly darker green for emphasis */
+  background-color: #173C2B;
+
 }
 
 .comparison-table td.highlight-col {
-  background-color: rgba(11, 115, 86, 0.05);
+  background-color: rgba(23, 60, 43, 0.05);
   font-weight: 500;
+  color: #173C2B;
 }
+
 .comparison-table tr:nth-child(even) td.highlight-col {
-  background-color: rgba(11, 115, 86, 0.08);
+  background-color: rgba(23, 60, 43, 0.08);
 }
+
 .comparison-table tr:hover td.highlight-col {
-  background-color: rgba(11, 115, 86, 0.12);
+  background-color: rgba(23, 60, 43, 0.12);
 }
 
 .comparison-takeaway {
   margin-top: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid #e5ebe7;
+  border-left: 4px solid #173C2B;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .comparison-takeaway .takeaway-title {
-  color: #0b7356; /* Match header */
-  font-size: 1.5rem;
+  color: #173C2B;
+  font-size: 1.25rem;
   font-weight: 700;
+  margin-bottom: 8px;
 }
 
 @media screen and (max-width: 749px) {
+
   .comparison-table th,
   .comparison-table td {
     padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 }

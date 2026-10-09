@@ -246,6 +246,28 @@
 }
 
 /* ============================================
+   Desktop (≥990px) — 5 Column Grid Layout
+   ============================================ */
+@media screen and (min-width: 990px) {
+
+  .custom-footer-section .footer-content {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 48px 40px;
+  }
+
+  /* First column (Logo with text & socials) spans 2 columns */
+  .custom-footer-section .footer-content > :first-child {
+    grid-column: span 2 !important;
+  }
+
+  /* Remaining menu columns span 1 column each */
+  .custom-footer-section .footer-content > :nth-child(n+2) {
+    grid-column: span 1 !important;
+  }
+}
+
+/* ============================================
    Tablet (750px - 989px)
    ============================================ */
 @media screen and (max-width: 989px) {
@@ -261,26 +283,19 @@
 @media screen and (max-width: 749px) {
 
   .custom-footer-section .footer-content {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 28px 16px;
   }
 
-  /* Logo+Socials — full width on top */
-  .custom-footer-section .footer-content> :nth-child(1) {
-    grid-column: span 6;
-    padding-bottom: 4px;
+  /* All blocks span full width (1 row, 1 column) by default */
+  .custom-footer-section .footer-content > * {
+    grid-column: span 2 !important;
   }
 
-  /* Row 2: Shop + Company + Main Menu — 3 in a row */
-  .custom-footer-section .footer-content> :nth-child(2),
-  .custom-footer-section .footer-content> :nth-child(3),
-  .custom-footer-section .footer-content> :nth-child(4) {
-    grid-column: span 2;
-  }
-
-  /* Any remaining blocks — full width */
-  .custom-footer-section .footer-content> :nth-child(n+5) {
-    grid-column: span 6;
+  /* Shop and Company menus sit side-by-side in 1 row as 2 columns */
+  .custom-footer-section .footer-content > :nth-child(2),
+  .custom-footer-section .footer-content > :nth-child(3) {
+    grid-column: span 1 !important;
   }
 
   /* Tighter heading spacing on mobile */

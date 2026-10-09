@@ -4,12 +4,6 @@
   background-color: #f7f9f7;
 }
 
-.moko-terms-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .moko-terms-header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +32,6 @@
   font-size: 48px;
   font-weight: 700;
   color: #2c362c;
-  margin-bottom: 20px;
   font-family: serif;
 }
 
@@ -64,13 +57,15 @@
 .moko-terms-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 40px 30px;
+  margin-top: 20px;
 }
 
 .moko-terms-card {
+  position: relative;
   background: #ffffff;
   border-radius: 12px;
-  padding: 30px;
+  padding: 40px 30px;
   display: flex;
   gap: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.03);
@@ -78,6 +73,10 @@
 }
 
 .moko-terms-card-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #e9efe7;
   color: #2c362c;
   font-weight: 700;
@@ -88,7 +87,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 2;
 }
 
 .moko-terms-card-icon {
@@ -146,7 +146,7 @@
     flex-direction: column;
   }
   .moko-terms-header-content {
-    padding: 40px 30px;
+   padding:20px
   }
   .moko-terms-grid {
     grid-template-columns: 1fr;
@@ -155,11 +155,12 @@
 
 @media screen and (max-width: 750px) {
   .moko-terms-header-title {
-    font-size: 36px;
+    font-size: 28px;
   }
   .moko-terms-card {
     flex-direction: column;
     gap: 15px;
+    padding: 25px 20px;
   }
   .moko-terms-card-icons {
     display: flex;
@@ -169,7 +170,7 @@
 {%- endstyle -%}
 
 <div class="moko-terms-conditions">
-  <div class="moko-terms-container">
+  <div class="container">
     <div class="moko-terms-header">
       <div class="moko-terms-header-content">
         {% if section.settings.subtitle != blank %}

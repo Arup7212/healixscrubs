@@ -15,16 +15,16 @@
 {%- endstyle -%}
 
 <div class="comparison-section color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  <div class="page-width">
+  <div class="container">
     <div class="comparison-header center">
       {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: #0b7356;">
+        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: var(--primary-color, #173C2B); font-size: 26px; font-weight: 700; margin-bottom: 10px;">
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
       
       {%- if section.settings.subtitle != blank -%}
-        <div class="comparison-subtitle{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: #555; margin-bottom: 2rem; font-size: 1.1rem;">
+        <div class="comparison-subtitle{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="color: #556b5f; margin-bottom: 2rem; font-size: 1rem;">
           {{ section.settings.subtitle }}
         </div>
       {%- endif -%}
@@ -55,16 +55,16 @@
       {%- if section.settings.takeaway_title != blank or section.settings.takeaway_text != blank -%}
         <div class="comparison-takeaway{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {%- if section.settings.takeaway_title != blank -%}
-            <h3 class="takeaway-title" style="color: #212B36; margin-bottom: 0.5rem;">{{ section.settings.takeaway_title }}</h3>
+            <h3 class="takeaway-title" style="color: var(--primary-color, #173C2B); margin-bottom: 0.5rem; font-size: 1.25rem;">{{ section.settings.takeaway_title }}</h3>
           {%- endif -%}
           {%- if section.settings.takeaway_text != blank -%}
-            <div class="takeaway-text rte" style="color: #444; line-height: 1.6;">{{ section.settings.takeaway_text }}</div>
+            <div class="takeaway-text rte" style="color: #333333; line-height: 1.6;">{{ section.settings.takeaway_text }}</div>
           {%- endif -%}
         </div>
       {%- endif -%}
 
       {%- if section.settings.footer_text != blank -%}
-        <div class="comparison-footer{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="margin-top: 2rem; color: #888; font-style: italic; font-size: 0.9rem;">
+        <div class="comparison-footer{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="margin-top: 2rem; color: #556b5f; font-style: italic; font-size: 0.875rem;">
           {{ section.settings.footer_text }}
         </div>
       {%- endif -%}
