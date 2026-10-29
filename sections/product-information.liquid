@@ -183,38 +183,31 @@
   additional_blocks: additional_blocks
 %}
 
-<!-- Ask for Estimate Button -->
-<div class="estimate-button-wrapper">
-  <button type="button" id="ask-estimate-btn" class="button estimate-button">
+<div class="estimate-wrapper">
+  <button type="button" id="ask-estimate-btn" class="button">
     Ask for Estimate
   </button>
 </div>
 
-<!-- Estimate Popup -->
 <div id="estimate-modal" class="estimate-modal" aria-hidden="true">
   <div class="estimate-overlay" data-estimate-close></div>
 
-  <div class="estimate-dialog" role="dialog"
-       aria-modal="true" aria-labelledby="estimate-title">
-
+  <div class="estimate-dialog" role="dialog" aria-modal="true"
+       aria-labelledby="estimate-title">
     <button type="button" class="estimate-close"
-      data-estimate-close aria-label="Close popup">&times;</button>
+            data-estimate-close aria-label="Close">&times;</button>
 
     <h2 id="estimate-title">Ask for Estimate</h2>
-    <p>Enter your details to receive the selected product information by email.</p>
 
     <form id="estimate-form">
-      <label for="estimate-name">Full Name</label>
-      <input id="estimate-name" name="name" type="text"
-        autocomplete="name" required maxlength="100">
+      <label for="estimate-name">Name</label>
+      <input id="estimate-name" name="name" type="text" required>
 
-      <label for="estimate-email">Email Address</label>
-      <input id="estimate-email" name="email" type="email"
-        autocomplete="email" required maxlength="254">
+      <label for="estimate-email">Email</label>
+      <input id="estimate-email" name="email" type="email" required>
 
-      <label for="estimate-phone">Mobile Number</label>
-      <input id="estimate-phone" name="phone" type="tel"
-        autocomplete="tel" required maxlength="20">
+      <label for="estimate-phone">Mobile</label>
+      <input id="estimate-phone" name="phone" type="tel" required>
 
       <button type="submit" id="estimate-submit" class="button">
         Submit Request
@@ -226,133 +219,111 @@
 </div>
 
 <style>
-  .estimate-button-wrapper {
-    margin-top: 14px;
-  }
-
-  .estimate-button-wrapper .estimate-button {
-    width: 100%;
-    cursor: pointer;
-  }
+  .estimate-wrapper { margin: 16px 0; }
+  #ask-estimate-btn { width: 100%; }
 
   .estimate-modal {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 99999;
+    z-index: 999999;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 20px;
   }
 
-  .estimate-modal.is-open {
-    display: flex;
-  }
+  .estimate-modal.is-open { display: flex; }
 
   .estimate-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,.6);
   }
 
   .estimate-dialog {
     position: relative;
     z-index: 1;
-    background: #fff;
-    color: #222;
     width: 100%;
-    max-width: 460px;
+    max-width: 450px;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 30px;
+    padding: 28px;
+    background: #fff;
+    color: #222;
     border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.2);
-  }
-
-  .estimate-dialog h2 {
-    margin: 0 30px 10px 0;
-    font-size: 25px;
   }
 
   .estimate-dialog label {
     display: block;
-    margin: 16px 0 6px;
-    font-weight: 600;
+    margin: 14px 0 6px;
   }
 
   .estimate-dialog input {
-    display: block;
+    box-sizing: border-box;
     width: 100%;
-    min-height: 44px;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
   }
 
-  .estimate-dialog #estimate-submit {
+  #estimate-submit {
     width: 100%;
-    margin-top: 22px;
+    margin-top: 20px;
   }
 
   .estimate-close {
     position: absolute;
+    top: 8px;
     right: 14px;
-    top: 10px;
     border: 0;
     background: transparent;
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
-  }
-
-  #estimate-message {
-    margin-bottom: 0;
-    font-size: 14px;
-  }
-
-  @media (max-width: 480px) {
-    .estimate-dialog {
-      padding: 22px;
-    }
   }
 </style>
 
 <script>
 (function () {
-  const button = document.getElementById('ask-estimate-btn');
   const modal = document.getElementById('estimate-modal');
+  const openButton = document.getElementById('ask-estimate-btn');
   const form = document.getElementById('estimate-form');
   const submitButton = document.getElementById('estimate-submit');
   const message = document.getElementById('estimate-message');
 
-  if (!button || !modal || !form || button.dataset.initialized) return;
-  button.dataset.initialized = 'true';
+  if (!modal || !openButton || !form) return;
+
+  const API_URL = 'YOUR_VERCEL_FUNCTION_URL';
+
+  const productTitle = {{ product.title | json }};
+  const productUrl =
+    window.location.origin + {{ product.url | json }};
+
+  openButton.addEventListener('click', function () {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    message.textContent = '';
+  });
 
   function closeModal() {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
   }
 
-  button.addEventListener('click', function () {
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.getElementById('estimate-name').focus();
-  });
-
   modal.querySelectorAll('[data-estimate-close]').forEach(function (el) {
     el.addEventListener('click', closeModal);
   });
 
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
-    }
+    if (event.key === 'Escape') closeModal();
   });
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    if (!form.reportValidity()) return;
+    if (API_URL === 'YOUR_VERCEL_FUNCTION_URL') {
+      message.textContent = 'Please configure the email service URL.';
+      return;
+    }
 
     submitButton.disabled = true;
     submitButton.textContent = 'Sending...';
@@ -362,63 +333,49 @@
       const productForm = document.querySelector(
         'form[action*="/cart/add"]'
       );
-
-      const formData = productForm
+      const productData = productForm
         ? new FormData(productForm)
         : new FormData();
 
-      const selectedOptions = {};
+      const selectedOptions = [];
 
-      for (const [key, value] of formData.entries()) {
-        if (
-          key.startsWith('options[') ||
-          key.startsWith('properties[')
-        ) {
-          selectedOptions[key] = String(value);
+      for (const [key, value] of productData.entries()) {
+        if (key.startsWith('options[') ||
+            key.startsWith('properties[')) {
+          selectedOptions.push(key + ': ' + value);
         }
       }
 
-      const variantId = formData.get('id');
-
-      const requestData = {
-        customer: {
-          name: document.getElementById('estimate-name').value.trim(),
-          email: document.getElementById('estimate-email').value.trim(),
-          phone: document.getElementById('estimate-phone').value.trim()
-        },
-        product: {
-          id: {{ product.id | json }},
-          title: {{ product.title | json }},
-          url: window.location.origin + {{ product.url | json }},
-          handle: {{ product.handle | json }},
-          variantId: variantId ? String(variantId) : null,
-          quantity: formData.get('quantity') || '1',
-          selectedOptions: selectedOptions
-        }
+      const payload = {
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        phone: form.elements.phone.value.trim(),
+        productTitle: productTitle,
+        productUrl: productUrl,
+        variantId: String(productData.get('id') || ''),
+        quantity: String(productData.get('quantity') || '1'),
+        selectedOptions: selectedOptions.join('\n')
       };
 
-      const response = await fetch(
-        'https://onboarding@resend.dev/api/estimate',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestData)
-        }
-      );
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || 'Unable to send request.');
+        throw new Error(result.error || 'Email sending failed');
       }
 
-      message.textContent = 'Request submitted successfully. Please check your email.';
-      message.style.color = 'green';
+      message.textContent = 'Estimate request sent successfully!';
       form.reset();
 
     } catch (error) {
-      message.textContent = error.message || 'Something went wrong. Please try again.';
-      message.style.color = 'red';
+      console.error('Estimate error:', error);
+      message.textContent =
+        'Unable to send request. Please try again later.';
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = 'Submit Request';
@@ -426,7 +383,140 @@
   });
 })();
 </script>
+<script>
+  
+module.exports = async function handler(req, res) {
+  const allowedOrigin = process.env.SHOPIFY_STORE_ORIGIN;
 
+  res.setHeader('Vary', 'Origin');
+
+  if (req.headers.origin === allowedOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (req.headers.origin !== allowedOrigin) {
+    return res.status(403).json({ error: 'Origin not allowed' });
+  }
+
+  const {
+    name,
+    email,
+    phone,
+    productTitle,
+    productUrl,
+    variantId,
+    quantity,
+    selectedOptions
+  } = req.body || {};
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (
+    typeof name !== 'string' || !name.trim() || name.length > 120 ||
+    typeof email !== 'string' || !emailPattern.test(email) || email.length > 254 ||
+    typeof phone !== 'string' || !phone.trim() || phone.length > 40 ||
+    typeof productTitle !== 'string' || !productTitle.trim() ||
+    typeof productUrl !== 'string'
+  ) {
+    return res.status(400).json({
+      error: 'Please provide valid form details'
+    });
+  }
+
+  if (!process.env.BREVO_API_KEY) {
+    return res.status(500).json({
+      error: 'Email service is not configured'
+    });
+  }
+
+  const escapeHtml = (value) =>
+    String(value || '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[char]);
+
+  const emailPayload = {
+    sender: {
+      email: 'ayan.bluehorse@gmail.com',
+      name: 'Estimator'
+    },
+    to: [
+      {
+        email: 'amandal25526@gmail.com',
+        name: 'Arup'
+      },
+      {
+        email: email.trim(),
+        name: name.trim()
+      }
+    ],
+    subject: 'Estimator Form Submission',
+    htmlContent: `
+      <h2>Estimate Request</h2>
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Mobile:</strong> ${escapeHtml(phone)}</p>
+      <p><strong>Product:</strong> ${escapeHtml(productTitle)}</p>
+      <p><strong>Product URL:</strong> ${escapeHtml(productUrl)}</p>
+      <p><strong>Variant ID:</strong> ${escapeHtml(variantId)}</p>
+      <p><strong>Quantity:</strong> ${escapeHtml(quantity)}</p>
+      <p><strong>Selected Options:</strong><br>
+        ${escapeHtml(selectedOptions).replace(/\n/g, '<br>')}
+      </p>
+    `
+  };
+
+  try {
+    const brevoResponse = await fetch(
+      'https://api.brevo.com/v3/smtp/email',
+      {
+        method: 'POST',
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json',
+          'api-key': process.env.BREVO_API_KEY
+        },
+        body: JSON.stringify(emailPayload)
+      }
+    );
+
+    const result = await brevoResponse.json().catch(() => ({}));
+
+    if (!brevoResponse.ok) {
+      console.error('Brevo API error:', result);
+      return res.status(502).json({
+        error: 'Brevo rejected the email request'
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      messageId: result.messageId
+    });
+
+  } catch (error) {
+    console.error('Email service error:', error);
+    return res.status(500).json({
+      error: 'Unable to send the email'
+    });
+  }
+};
+
+  </script>
 {% stylesheet %}
   .sticky-add-to-cart__bar {
     position: fixed;
