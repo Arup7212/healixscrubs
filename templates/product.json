@@ -218,6 +218,7 @@
             },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
+              "disabled": true,
               "settings": {
                 "stacking": false,
                 "text_color": "",
