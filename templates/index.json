@@ -901,6 +901,7 @@
         },
         "feature_4": {
           "type": "feature",
+          "disabled": true,
           "settings": {
             "icon": "shopify://shop_images/nurse.png",
             "title": "Trusted by Nurses",
