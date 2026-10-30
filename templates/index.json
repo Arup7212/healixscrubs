@@ -153,7 +153,7 @@
             "heading": "<h2>Elevate Your Shift. <strong>Every Single Day.</strong></h2>",
             "description": "<p>Premium medical scrubs that move with you, so you can focus on what matters most.</p>",
             "button_1_label": "Shop All",
-            "button_1_link": "",
+            "button_1_link": "shopify://collections/women",
             "button_1_bg": "#173c2b",
             "button_1_text": "#ffffff",
             "button_2_label": "",
