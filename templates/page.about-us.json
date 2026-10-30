@@ -15,9 +15,9 @@
         "hero": {
           "type": "hero",
           "settings": {
-            "subtitle": "ABOUT US",
-            "title": "Designed for Care. Made for Comfort.",
-            "text": "<p>We create premium medical scrubs designed to support healthcare professionals through long shifts, busy days, and everything in between.</p>",
+            "subtitle": "ABOUT US — THE STORY BEHIND MOKO WEARS",
+            "title": "We Believe Better Workwear Starts With Better Fabric.",
+            "text": "<p>At MOKO WEARS, our story begins with a simple belief: the people who care for others deserve clothing that cares about their comfort, too.</p><p>For healthcare professionals, every day brings long hours, constant movement, and countless moments that matter. What they wear should support them through it all—not become another thing they have to think about.</p><p>That is why we set out to build MOKO WEARS: a modern workwear brand with a focus on fabric, comfort, thoughtful design, and the everyday needs of healthcare professionals.</p>",
             "button_label": "",
             "button_link": "",
             "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_06_49_PM.png",
@@ -32,9 +32,9 @@
             "layout": "image_left",
             "bg_color": "white",
             "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_09_15_PM.png",
-            "subtitle": "OUR STORY",
-            "title": "Built Around the People Who Care for Others",
-            "text": "<p>Healthcare professionals spend long hours caring for others. We believe their workwear should be designed with the same level of care.</p><p>Our journey began with a simple idea: create scrubs that combine comfort, functionality, quality, and modern style. Every detail — from the fabric we select to the fit and finishing — is considered with everyday healthcare professionals in mind.</p>",
+            "subtitle": "OUR HERITAGE",
+            "title": "Rooted in Textiles. Inspired by Care.",
+            "text": "<p>Our journey is shaped by decades of experience in the textile and knitted-fabric industry. We understand that great clothing begins long before it reaches the wardrobe. It begins with the yarn, the knit, the feel of the fabric, and the care taken at every stage of its creation.</p><p>We bring that perspective to medical scrubs, rethinking everyday workwear with a fabric-first approach and a commitment to creating products that feel good to wear and are made with purpose.</p>",
             "button_label": "",
             "button_link": "",
             "show_fabric_icons": false,
@@ -75,21 +75,21 @@
           "type": "values",
           "settings": {
             "bg_color": "white",
-            "subtitle": "OUR VALUES",
-            "title": "What Makes Us Different.",
-            "text": "Thoughtfully designed. Carefully made. Always for you.",
+            "subtitle": "OUR PRINCIPLES",
+            "title": "A Different Approach to Medical Scrubs.",
+            "text": "We believe professional clothing should offer more than just a uniform appearance. It should balance comfort, function, and a clean, confident look. MOKO WEARS is built around three principles:",
             "val_icon_1": "shopify://shop_images/snuggly.png",
-            "val_title_1": "Premium Comfort",
-            "val_text_1": "Soft, breathable fabrics designed for long hours of wear.",
+            "val_title_1": "Comfort that moves with you",
+            "val_text_1": "Thoughtfully selected fabrics and practical designs made for the demands of busy working days.",
             "val_icon_2": "shopify://shop_images/stretching-exercises.png",
-            "val_title_2": "Functional Design",
-            "val_text_2": "Practical details and thoughtful features made for busy professionals.",
+            "val_title_2": "Quality in every detail",
+            "val_text_2": "A focus on fabric feel, fit, construction, and the details that make everyday clothing more enjoyable to wear.",
             "val_icon_3": "shopify://shop_images/design-thinking.png",
-            "val_title_3": "Modern Style",
-            "val_text_3": "Professional silhouettes with a clean, contemporary look.",
-            "val_icon_4": "shopify://shop_images/nurse.png",
-            "val_title_4": "Quality First",
-            "val_text_4": "We focus on fabric, construction, fit, and finishing at every stage."
+            "val_title_3": "A more considered choice",
+            "val_text_3": "We are exploring how natural-fiber-focused materials and responsible design choices can contribute to a more thoughtful approach to workwear.",
+            "val_icon_4": "",
+            "val_title_4": "",
+            "val_text_4": ""
           }
         },
         "made_for_you": {
@@ -99,10 +99,10 @@
             "bg_color": "light",
             "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_12_50_PM.png",
             "subtitle": "MADE FOR YOU",
-            "title": "Made for Long Shifts. Designed for Real Work.",
-            "text": "<p>From early morning rounds to late-night shifts, our scrubs are designed to move with you. We focus on comfort, functionality, durability, and a professional appearance — so you can focus on what matters most: caring for your patients.</p>",
+            "title": "Made for the People Who Make a Difference.",
+            "text": "<p>From the first shift of the morning to the final task of a long day, healthcare professionals show up for others. We want MOKO WEARS to be part of their everyday journey—with clothing designed around their needs, their movement, and their comfort.</p><p>We are not here simply to make another uniform. We are here to rethink how professional workwear can feel.</p>",
             "button_label": "SHOP OUR SCRUBS",
-            "button_link": "",
+            "button_link": "shopify://collections/all",
             "show_fabric_icons": false,
             "icon_title_1": "",
             "icon_text_1": "",
@@ -141,11 +141,11 @@
           "type": "image_text",
           "settings": {
             "layout": "image_left",
-            "bg_color": "light",
+            "bg_color": "white",
             "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_14_24_PM.png",
-            "subtitle": "OUR COMMITMENT",
-            "title": "Our Promise to You",
-            "text": "<p>We are committed to continuously improving our fabrics, designs, and craftsmanship to create workwear that healthcare professionals can rely on every day.</p>",
+            "subtitle": "WELCOME TO MOKO WEARS",
+            "title": "Premium Comfort. Professional Performance.",
+            "text": "<p>We are building a brand around a simple promise: thoughtful fabrics, professional style, and comfort you can appreciate every day.</p><p>Because when you spend your day caring for others, what you wear should feel right for you.</p>",
             "button_label": "",
             "button_link": "",
             "show_fabric_icons": false,
@@ -156,17 +156,17 @@
             "icon_title_3": "Functionality",
             "icon_text_3": "",
             "show_commitment_icons": true,
-            "commitment_footer_text": "That's what we stand for."
+            "commitment_footer_text": "MOKO WEARS — Thoughtful fabrics, professional style."
           }
         },
         "cta": {
           "type": "cta",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_05_18_03_PM.png",
-            "title": "Care for People. Care for a Better Tomorrow.",
-            "text": "Better workwear for brighter days — for you, for your patients, and for a healthier tomorrow.",
+            "title": "Welcome to MOKO WEARS",
+            "text": "Premium Comfort. Professional Performance. Because when you spend your day caring for others, what you wear should feel right for you.",
             "button_label": "EXPLORE OUR COLLECTION",
-            "button_link": ""
+            "button_link": "shopify://collections/all"
           }
         }
       },
