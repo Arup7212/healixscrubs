@@ -24,23 +24,21 @@
     {% endif %}
   </div>
 
-  <div class="why-choose-us-content">
-    <div class="why-choose-us-images">
-      <div class="image-large">
+  <div class="why-choose-us-content{% if section.settings.image_1 == blank and section.settings.image_2 == blank %} why-choose-us-content--no-images{% endif %}">
+    {% if section.settings.image_1 != blank or section.settings.image_2 != blank %}
+      <div class="why-choose-us-images">
         {% if section.settings.image_1 != blank %}
-          {{ section.settings.image_1 | image_url: width: 800 | image_tag: loading: 'lazy' }}
-        {% else %}
-          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          <div class="image-large">
+            {{ section.settings.image_1 | image_url: width: 800 | image_tag: loading: 'lazy' }}
+          </div>
         {% endif %}
-      </div>
-      <div class="image-small">
         {% if section.settings.image_2 != blank %}
-          {{ section.settings.image_2 | image_url: width: 400 | image_tag: loading: 'lazy' }}
-        {% else %}
-          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          <div class="image-small">
+            {{ section.settings.image_2 | image_url: width: 400 | image_tag: loading: 'lazy' }}
+          </div>
         {% endif %}
       </div>
-    </div>
+    {% endif %}
     
     <div class="why-choose-us-text">
       {% if section.settings.right_title != blank %}
