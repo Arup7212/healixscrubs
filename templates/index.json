@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_jVaWmY": {
@@ -404,7 +413,7 @@
         "card1_url": "",
         "card1_bg_color": "{{ settings.color_palette.background }}",
         "card1_bg_opacity": 85,
-        "card1_text_color": "#173C2B"
+        "card1_text_color": "#173c2b"
       }
     },
     "custom_collection_carousel_h8D6YX": {
