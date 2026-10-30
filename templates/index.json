@@ -921,6 +921,7 @@
     },
     "moko_collection_highlight_xYtVM9": {
       "type": "moko-collection-highlight",
+      "disabled": true,
       "name": "MOKO Collection Highlight",
       "settings": {
         "bg_color": "#f8f9fa",
