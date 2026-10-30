@@ -394,6 +394,7 @@
     },
     "moko_virasat_slider_xQdrfw": {
       "type": "MokoVirasatSlider",
+      "disabled": true,
       "name": "Moko Virasat Slider",
       "settings": {
         "enable_section": true,
