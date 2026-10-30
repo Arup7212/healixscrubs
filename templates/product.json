@@ -216,6 +216,17 @@
               },
               "blocks": {}
             },
+            "estimator_button_block": {
+              "type": "estimator-button",
+              "settings": {
+                "button_text": "Request an Estimate",
+                "brevo_api_key": "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",
+                "sender_email": "ayan.bluehorse@gmail.com",
+                "recipient_email": "amandal25526@gmail.com",
+                "heading": "Request an Estimate",
+                "subheading": "Submit your details and we will get back to you with custom pricing."
+              }
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "disabled": true,
@@ -327,6 +338,7 @@
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "estimator_button_block",
             "buy_buttons_eYQEYi",
             "tryora_try_on_button_L68HKa",
             "text_aEtTtq",

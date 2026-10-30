@@ -1,0 +1,838 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign block_settings = block.settings
+
+  if product.featured_image
+    assign default_product_image = product.featured_image | image_url: width: 300
+    unless default_product_image contains 'http://' or default_product_image contains 'https:'
+      assign default_product_image = default_product_image | prepend: 'https:'
+    endunless
+  else
+    assign default_product_image = ''
+  endif
+%}
+
+<script type="application/json" id="EstimatorVariantPrices-{{ block.id }}">
+  {
+    {%- for variant in product.variants -%}
+      "{{ variant.id }}": {{ variant.price | money | strip_html | json }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  }
+</script>
+<script type="application/json" id="EstimatorVariantImages-{{ block.id }}">
+  {
+    {%- for variant in product.variants -%}
+      {%- if variant.featured_image -%}
+        {%- assign v_img = variant.featured_image | image_url: width: 300 -%}
+        {%- unless v_img contains 'http://' or v_img contains 'https:' -%}
+          {%- assign v_img = v_img | prepend: 'https:' -%}
+        {%- endunless -%}
+      {%- else -%}
+        {%- assign v_img = default_product_image -%}
+      {%- endif -%}
+      "{{ variant.id }}": {{ v_img | json }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  }
+</script>
+
+<div class="estimator-block-wrapper" {{ block.shopify_attributes }}>
+  <button
+    type="button"
+    class="moko-btn estimator-open-btn"
+    id="EstimatorOpenBtn-{{ block.id }}"
+    aria-haspopup="dialog"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+    <span>{{ block_settings.button_text | default: "Request an Estimate" }}</span>
+  </button>
+</div>
+
+<!-- Modal Popup -->
+<div class="estimator-modal-overlay" id="EstimatorModal-{{ block.id }}" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="EstimatorTitle-{{ block.id }}">
+  <div class="estimator-modal-backdrop" id="EstimatorBackdrop-{{ block.id }}"></div>
+  <div class="estimator-modal-dialog">
+    <button type="button" class="estimator-modal-close" id="EstimatorClose-{{ block.id }}" aria-label="Close modal">&times;</button>
+    
+    <div class="estimator-modal-header">
+      <h3 id="EstimatorTitle-{{ block.id }}">{{ block_settings.heading | default: "Request an Estimate" }}</h3>
+      <p>{{ block_settings.subheading | default: "Submit your details and we will get back to you with custom pricing." }}</p>
+    </div>
+
+    <!-- Product Summary Card -->
+    <div class="estimator-product-summary">
+      {% if product.featured_image %}
+        <div class="estimator-product-img">
+          <img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title | escape }}" loading="lazy" width="60" height="60">
+        </div>
+      {% endif %}
+      <div class="estimator-product-info">
+        <h4 class="estimator-product-title">{{ product.title }}</h4>
+        <div class="estimator-variant-badge">
+          <span id="EstimatorVariantDisplay-{{ block.id }}">
+            {% unless current_variant.title contains 'Default' %}
+              {{ current_variant.title }}
+            {% endunless %}
+          </span>
+        </div>
+        <div class="estimator-price-badge" id="EstimatorPriceDisplay-{{ block.id }}" style="font-size: 14px; font-weight: 700; color: #173C2B; margin-top: 4px;">
+          {{ current_variant.price | money }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Estimate Form -->
+    <form class="estimator-form" id="EstimatorForm-{{ block.id }}">
+      <div class="estimator-field-group">
+        <label for="EstimatorName-{{ block.id }}">Your Name <span class="required">*</span></label>
+        <input type="text" id="EstimatorName-{{ block.id }}" name="name" required placeholder="e.g. Dr. Sarah Jenkins" maxlength="120">
+      </div>
+
+      <div class="estimator-field-row">
+        <div class="estimator-field-group">
+          <label for="EstimatorEmail-{{ block.id }}">Email Address <span class="required">*</span></label>
+          <input type="email" id="EstimatorEmail-{{ block.id }}" name="email" required placeholder="e.g. sarah@hospital.com" maxlength="254">
+        </div>
+
+        <div class="estimator-field-group">
+          <label for="EstimatorPhone-{{ block.id }}">Mobile / Phone <span class="required">*</span></label>
+          <input type="tel" id="EstimatorPhone-{{ block.id }}" name="phone" required placeholder="e.g. +1 (555) 019-2834" maxlength="40">
+        </div>
+      </div>
+
+      <div class="estimator-field-group">
+        <label for="EstimatorQuantity-{{ block.id }}">Estimated Quantity <span class="required">*</span></label>
+        <input type="number" id="EstimatorQuantity-{{ block.id }}" name="quantity" min="1" value="1" required>
+      </div>
+
+      <!-- Feedback Messages -->
+      <div class="estimator-alert estimator-alert--error" id="EstimatorError-{{ block.id }}" style="display: none;"></div>
+      <div class="estimator-alert estimator-alert--success" id="EstimatorSuccess-{{ block.id }}" style="display: none;">
+        {{ block_settings.success_message | default: "Thank you! Your estimate request has been submitted successfully. We will review your request and get back to you shortly." }}
+      </div>
+
+      <div class="estimator-actions">
+        <button type="submit" class="moko-btn estimator-submit-btn" id="EstimatorSubmitBtn-{{ block.id }}">
+          <span class="btn-text">Send Estimate Request</span>
+          <span class="btn-spinner" style="display: none;">
+            <svg class="spinner-svg" viewBox="0 0 50 50">
+              <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .estimator-block-wrapper {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .estimator-open-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  /* Modal Overlay */
+  .estimator-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483647 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .estimator-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1;
+  }
+
+  .estimator-modal-dialog {
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    z-index: 2;
+    margin: auto;
+    box-sizing: border-box;
+    animation: estimatorModalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes estimatorModalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .estimator-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: #888;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .estimator-modal-close:hover {
+    color: #173C2B;
+  }
+
+  .estimator-modal-header h3 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #173C2B;
+    font-family: inherit;
+  }
+
+  .estimator-modal-header p {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .estimator-product-summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f7f9f8;
+    border: 1px solid #e2e8e5;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 22px;
+  }
+
+  .estimator-product-img img {
+    border-radius: 4px;
+    object-fit: cover;
+    background: #fff;
+  }
+
+  .estimator-product-info {
+    flex: 1;
+  }
+
+  .estimator-product-title {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .estimator-variant-badge {
+    font-size: 12px;
+    color: #173C2B;
+    font-weight: 600;
+  }
+
+  .estimator-field-group {
+    margin-bottom: 16px;
+  }
+
+  .estimator-field-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .estimator-field-row .estimator-field-group {
+    flex: 1;
+  }
+
+  .estimator-field-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .estimator-field-group .required {
+    color: #e53e3e;
+  }
+
+  .estimator-field-group input,
+  .estimator-field-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .estimator-field-group input:focus,
+  .estimator-field-group textarea:focus {
+    outline: none;
+    border-color: #173C2B;
+    box-shadow: 0 0 0 2px rgba(23, 60, 43, 0.15);
+  }
+
+  .estimator-alert {
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .estimator-alert--error {
+    background: #fff5f5;
+    color: #c53030;
+    border: 1px solid #feb2b2;
+  }
+
+  .estimator-alert--success {
+    background: #f0fff4;
+    color: #276749;
+    border: 1px solid #9ae6b4;
+  }
+
+  .estimator-submit-btn {
+    width: 100%;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Spinner */
+  .spinner-svg {
+    animation: rotate 1.5s linear infinite;
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+  }
+
+  .spinner-svg .path {
+    stroke: #ffffff;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const blockId = "{{ block.id }}";
+    const openBtn = document.getElementById(`EstimatorOpenBtn-${blockId}`);
+    const modal = document.getElementById(`EstimatorModal-${blockId}`);
+    const backdrop = document.getElementById(`EstimatorBackdrop-${blockId}`);
+    const closeBtn = document.getElementById(`EstimatorClose-${blockId}`);
+    const form = document.getElementById(`EstimatorForm-${blockId}`);
+    const submitBtn = document.getElementById(`EstimatorSubmitBtn-${blockId}`);
+    const errorAlert = document.getElementById(`EstimatorError-${blockId}`);
+    const successAlert = document.getElementById(`EstimatorSuccess-${blockId}`);
+    const variantDisplay = document.getElementById(`EstimatorVariantDisplay-${blockId}`);
+
+    const apiKey = {{ block_settings.brevo_api_key | default: "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" | json }};
+    const senderEmail = {{ block_settings.sender_email | default: "ayan.bluehorse@gmail.com" | json }};
+    const senderName = {{ block_settings.sender_name | default: "Estimator" | json }};
+    const recipientEmail = {{ block_settings.recipient_email | default: "amandal25526@gmail.com" | json }};
+    const recipientName = {{ block_settings.recipient_name | default: "Arup" | json }};
+    const productTitle = {{ product.title | json }};
+    const productUrl = {{ shop.secure_url | append: product.url | json }};
+
+    const variantPricesEl = document.getElementById(`EstimatorVariantPrices-${blockId}`);
+    const variantPrices = variantPricesEl ? JSON.parse(variantPricesEl.textContent || '{}') : {};
+
+    const variantImagesEl = document.getElementById(`EstimatorVariantImages-${blockId}`);
+    const variantImages = variantImagesEl ? JSON.parse(variantImagesEl.textContent || '{}') : {};
+
+    const defaultPrice = {{ current_variant.price | money | strip_html | json }};
+    const defaultImage = {{ default_product_image | json }};
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/[&<>"']/g, function(char) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[char];
+      });
+    }
+
+    function getCurrentVariantInfo() {
+      let variantId = '';
+      let selectedOptionsArr = [];
+
+      const variantInput = document.querySelector('input[name="id"]');
+      if (variantInput && variantInput.value) {
+        variantId = variantInput.value;
+      } else {
+        const urlParams = new URLSearchParams(window.location.search);
+        variantId = urlParams.get('variant') || '{{ current_variant.id }}';
+      }
+
+      const optionInputs = document.querySelectorAll('variant-picker input:checked, variant-picker select');
+      if (optionInputs.length > 0) {
+        optionInputs.forEach(input => {
+          let name = input.getAttribute('name') || input.dataset.optionName || 'Option';
+          if (name.includes('-')) {
+            name = name.split('-')[0];
+          } else if (name.includes('[')) {
+            const match = name.match(/\[(.*?)\]/);
+            if (match) name = match[1];
+          }
+          const value = input.value || '';
+          if (value) {
+            selectedOptionsArr.push(`${name}: ${value}`);
+          }
+        });
+      }
+
+      if (selectedOptionsArr.length === 0) {
+        {% if current_variant %}
+          {% if current_variant.option1 %}selectedOptionsArr.push(`Option 1: {{ current_variant.option1 }}`);{% endif %}
+          {% if current_variant.option2 %}selectedOptionsArr.push(`Option 2: {{ current_variant.option2 }}`);{% endif %}
+          {% if current_variant.option3 %}selectedOptionsArr.push(`Option 3: {{ current_variant.option3 }}`);{% endif %}
+        {% endif %}
+      }
+
+      const formattedPrice = variantPrices[String(variantId)] || defaultPrice || '';
+      const imageUrl = variantImages[String(variantId)] || defaultImage || '';
+
+      return {
+        variantId: variantId,
+        selectedOptions: selectedOptionsArr.join('\n'),
+        formattedPrice: formattedPrice,
+        imageUrl: imageUrl
+      };
+    }
+
+    const variantPriceDisplay = document.getElementById(`EstimatorPriceDisplay-${blockId}`);
+
+    // Move modal to body so it escapes section stacking context & header overlaps
+    function ensureModalInBody() {
+      if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', ensureModalInBody);
+    } else {
+      ensureModalInBody();
+    }
+
+    function openModal() {
+      ensureModalInBody();
+      const info = getCurrentVariantInfo();
+      if (variantDisplay) {
+        const cleanOptions = info.selectedOptions.replace(/\n/g, ', ');
+        variantDisplay.textContent = cleanOptions || 'Standard';
+      }
+      if (variantPriceDisplay) {
+        variantPriceDisplay.textContent = info.formattedPrice || defaultPrice || '';
+      }
+      errorAlert.style.display = 'none';
+      successAlert.style.display = 'none';
+      form.style.display = 'block';
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        errorAlert.style.display = 'none';
+        successAlert.style.display = 'none';
+
+        const nameInput = document.getElementById(`EstimatorName-${blockId}`);
+        const emailInput = document.getElementById(`EstimatorEmail-${blockId}`);
+        const phoneInput = document.getElementById(`EstimatorPhone-${blockId}`);
+        const quantityInput = document.getElementById(`EstimatorQuantity-${blockId}`);
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const quantity = parseInt(quantityInput.value, 10) || 1;
+        const currentInfo = getCurrentVariantInfo();
+
+        const customerEmail = email.trim();
+        const customerName = name.trim();
+
+        // Primary recipient is the email entered in the form
+        const toList = [
+          {
+            email: customerEmail,
+            name: customerName
+          }
+        ];
+
+        // Also notify admin if configured and different from customer email (prevents duplicate error)
+        if (recipientEmail && recipientEmail.toLowerCase() !== customerEmail.toLowerCase()) {
+          toList.push({
+            email: recipientEmail,
+            name: recipientName || "Admin"
+          });
+        }
+
+        const emailPayload = {
+          sender: {
+            email: senderEmail,
+            name: senderName
+          },
+          to: toList,
+          replyTo: {
+            email: customerEmail,
+            name: customerName
+          },
+          subject: `Estimate Request Confirmation for ${productTitle}`,
+          htmlContent: `
+            <div style="background-color: #f7faf8; padding: 32px 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 14px; padding: 36px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #edf2ef;">
+                
+                <!-- Checkmark Icon with Radiating Accents -->
+                <div style="text-align: center; margin-bottom: 16px;">
+                  <svg width="60" height="52" viewBox="0 0 60 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+                    <line x1="30" y1="2" x2="30" y2="6" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="18" y1="6" x2="21" y2="9" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="42" y1="6" x2="39" y2="9" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="11" y1="14" x2="15" y2="15" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="49" y1="14" x2="45" y2="15" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="30" cy="30" r="19" fill="#dcfce7"/>
+                    <path d="M24 30L28 34L36 26" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <!-- Title & Green Line -->
+                <h1 style="text-align: center; color: #0b3b2c; font-size: 25px; font-weight: 700; margin: 0 0 10px 0; font-family: inherit; letter-spacing: -0.3px;">
+                  Estimate Request Confirmation
+                </h1>
+                <div style="width: 44px; height: 3px; background-color: #52a370; border-radius: 2px; margin: 0 auto 24px auto;"></div>
+
+                <!-- Greeting -->
+                <p style="margin: 0 0 10px 0; font-size: 15px; color: #1a202c; line-height: 1.5; font-family: inherit;">
+                  Dear <strong>${escapeHtml(customerName)}</strong>,
+                </p>
+                <p style="margin: 0 0 24px 0; font-size: 14px; line-height: 1.6; color: #4a5568; font-family: inherit;">
+                  Thank you for requesting an estimate. We have received your request and our team will get back to you shortly with custom pricing.
+                </p>
+
+                <!-- Request Details Card -->
+                <div style="background-color: #f3f8f5; border: 1px solid #e1ebe5; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                  
+                  <!-- Card Header -->
+                  <div style="margin-bottom: 16px;">
+                    <span style="display: inline-block; width: 28px; height: 28px; line-height: 28px; border-radius: 6px; background-color: #dcfce7; text-align: center; vertical-align: middle; margin-right: 8px;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; display: inline-block;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </span>
+                    <strong style="font-size: 16px; color: #0b3b2c; vertical-align: middle; font-family: inherit;">Request Details</strong>
+                  </div>
+
+                  <!-- Inner White Card with Image & Table -->
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; border-collapse: separate; border-spacing: 0; overflow: hidden;">
+                    <tr>
+                      ${currentInfo.imageUrl ? `
+                      <td valign="top" style="padding: 18px 16px; width: 145px; text-align: center; border-right: 1px solid #edf2ef; background-color: #ffffff;">
+                        <img src="${escapeHtml(currentInfo.imageUrl)}" alt="${escapeHtml(productTitle)}" width="135" style="width: 135px; height: 135px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto; background-color: #f7f7f7;" />
+                      </td>
+                      ` : ''}
+                      <td valign="top" style="padding: 4px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-size: 13px; font-family: inherit;">
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; width: 135px; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                              </svg>Name:
+                            </td>
+                            <td style="padding: 9px 14px; color: #111827; border-bottom: 1px solid #edf2ef; font-weight: 500;">
+                              ${escapeHtml(customerName)}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                              </svg>Email:
+                            </td>
+                            <td style="padding: 9px 14px; border-bottom: 1px solid #edf2ef;">
+                              <a href="mailto:${escapeHtml(customerEmail)}" style="color: #0066cc; text-decoration: underline;">${escapeHtml(customerEmail)}</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                              </svg>Mobile:
+                            </td>
+                            <td style="padding: 9px 14px; border-bottom: 1px solid #edf2ef;">
+                              <a href="tel:${escapeHtml(phone)}" style="color: #0066cc; text-decoration: underline;">${escapeHtml(phone)}</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                              </svg>Product:
+                            </td>
+                            <td style="padding: 9px 14px; color: #111827; border-bottom: 1px solid #edf2ef; font-weight: 500;">
+                              ${escapeHtml(productTitle)}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                              </svg>Price:
+                            </td>
+                            <td style="padding: 9px 14px; color: #0b3b2c; border-bottom: 1px solid #edf2ef; font-weight: 700;">
+                              ${escapeHtml(currentInfo.formattedPrice || defaultPrice)}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                              </svg>Product URL:
+                            </td>
+                            <td style="padding: 9px 14px; border-bottom: 1px solid #edf2ef;">
+                              <a href="${escapeHtml(productUrl)}" style="color: #0066cc; text-decoration: underline;">View Product <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-left: 2px; display: inline-block;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-bottom: 1px solid #edf2ef; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                              </svg>Quantity:
+                            </td>
+                            <td style="padding: 9px 14px; color: #111827; border-bottom: 1px solid #edf2ef; font-weight: 500;">
+                              ${escapeHtml(quantity)}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 9px 14px; color: #4b5563; border-right: 1px solid #edf2ef; font-weight: 500; white-space: nowrap;">
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 8px; display: inline-block;">
+                                <line x1="4" y1="21" x2="4" y2="14"></line>
+                                <line x1="4" y1="10" x2="4" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12" y2="3"></line>
+                                <line x1="20" y1="21" x2="20" y2="16"></line>
+                                <line x1="20" y1="12" x2="20" y2="3"></line>
+                                <line x1="1" y1="14" x2="7" y2="14"></line>
+                                <line x1="9" y1="8" x2="15" y2="8"></line>
+                                <line x1="17" y1="16" x2="23" y2="16"></line>
+                              </svg>Selected Options:
+                            </td>
+                            <td style="padding: 9px 14px; color: #111827; font-weight: 500;">
+                              ${escapeHtml(currentInfo.selectedOptions).replace(/\n/g, ', ') || 'Standard'}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <!-- Footer note -->
+                <div style="margin-top: 18px;">
+                  <span style="display: inline-block; width: 22px; height: 22px; line-height: 22px; border-radius: 50%; background-color: #dcfce7; text-align: center; vertical-align: middle; margin-right: 8px;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; display: inline-block;">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  </span>
+                  <span style="font-size: 13px; color: #64748b; vertical-align: middle; font-family: inherit;">
+                    If you have any questions, feel free to reply directly to this email.
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          `
+        };
+
+        // Loading state
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.btn-text').textContent = 'Submitting...';
+        submitBtn.querySelector('.btn-spinner').style.display = 'inline-block';
+
+        try {
+          const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+            method: "POST",
+            headers: {
+              "accept": "application/json",
+              "api-key": apiKey,
+              "content-type": "application/json"
+            },
+            body: JSON.stringify(emailPayload)
+          });
+
+          const data = await response.json();
+
+          if (response.ok || data.messageId) {
+            form.reset();
+            form.style.display = 'none';
+            successAlert.style.display = 'block';
+          } else {
+            errorAlert.textContent = data.message || data.error || 'Unable to submit estimate request. Please try again.';
+            errorAlert.style.display = 'block';
+          }
+        } catch (err) {
+          console.error('Estimator Submit Error:', err);
+          errorAlert.textContent = 'Error connecting to email service. Note: If your browser blocks direct API calls (CORS), a backend proxy may be required.';
+          errorAlert.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('.btn-text').textContent = 'Send Estimate Request';
+          submitBtn.querySelector('.btn-spinner').style.display = 'none';
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Estimator Button",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Label",
+      "default": "Request an Estimate"
+    },
+    {
+      "type": "text",
+      "id": "brevo_api_key",
+      "label": "Brevo API Key",
+      "default": "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"
+    },
+    {
+      "type": "text",
+      "id": "sender_email",
+      "label": "Sender Email",
+      "default": "ayan.bluehorse@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "recipient_email",
+      "label": "Recipient Email",
+      "default": "amandal25526@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Modal Heading",
+      "default": "Request an Estimate"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Modal Subheading",
+      "default": "Submit your details and we will get back to you with custom pricing."
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thank you! Your estimate request has been submitted successfully. We will review your request and get back to you shortly."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Estimator Button"
+    }
+  ]
+}
+{% endschema %}
