@@ -66,28 +66,28 @@
           "type": "policy",
           "settings": {
             "title": "Return & Exchange Eligibility",
-            "text": "<p>To be eligible for a return or exchange, the product must generally:</p><ul><li>Be unused and unworn.<br/></li><li>Be unwashed and unaltered.<br/></li><li>Be in its original condition.<br/></li><li>Have the original tags and packaging intact.<br/></li><li>Be accompanied by the order details or proof of purchase.<br/></li></ul><p>Products that have been worn, washed, altered, damaged, or used may not be eligible for return or exchange, except where required by applicable law.</p>"
+            "text": "<p>To be eligible for a return or exchange, your request must be initiated within 15 days of receiving your order, and the product must generally:</p><ul><li>Be unused and unworn.<br/></li><li>Be unwashed and unaltered.<br/></li><li>Be in its original condition.<br/></li><li>Have the original tags and packaging intact.<br/></li><li>Be accompanied by the order details or proof of purchase.<br/></li></ul><p>Products that have been worn, washed, altered, damaged, or used may not be eligible for return or exchange, except where required by applicable law.</p>"
           }
         },
         "policy_FTjkpP": {
           "type": "policy",
           "settings": {
-            "title": "Time Period",
-            "text": "<p>Return or exchange requests should be submitted within the applicable return period stated on our website or order confirmation.</p><p>Requests submitted after the applicable period may not be accepted.</p>"
+            "title": "15-Day Return & Exchange Period",
+            "text": "<p>Return or exchange requests must be submitted within 15 days of delivery.</p><p>Requests submitted after the 15-day period may not be accepted.</p>"
           }
         },
         "policy_dMtP8V": {
           "type": "policy",
           "settings": {
             "title": "Damaged or Incorrect Products",
-            "text": "<p>If you receive a product that is damaged, defective, incorrect, or different from what you ordered, please contact us as soon as possible.</p><p>To help us resolve the issue quickly, please provide:</p><ul><li>Order number<br/></li><li>Description of the issue<br/></li><li>Clear photographs of the product<br/></li><li>Photographs of the packaging, where applicable<br/></li></ul><p>After reviewing the request, we may offer a replacement, exchange, refund, or another appropriate resolution depending on the circumstances.</p>"
+            "text": "<p>If you receive a product that is damaged, defective, incorrect, or different from what you ordered, please contact us within 15 days of delivery.</p><p>To help us resolve the issue quickly, please provide:</p><ul><li>Order number<br/></li><li>Description of the issue<br/></li><li>Clear photographs of the product<br/></li><li>Photographs of the packaging, where applicable<br/></li></ul><p>After reviewing the request, we may offer a replacement, exchange, refund, or another appropriate resolution depending on the circumstances.</p>"
           }
         },
         "policy_zyxVnb": {
           "type": "policy",
           "settings": {
             "title": "Size Exchanges",
-            "text": "<p>If you have ordered the wrong size, you may request an exchange subject to product availability and our applicable exchange conditions.</p><p>The product must be unused, unwashed, and in its original condition with tags and packaging intact.</p><p>Any applicable shipping or exchange charges will be communicated before processing the exchange.</p>"
+            "text": "<p>If you have ordered the wrong size, you may request an exchange within 15 days of delivery, subject to product availability and our applicable exchange conditions.</p><p>The product must be unused, unwashed, and in its original condition with tags and packaging intact.</p><p>Any applicable shipping or exchange charges will be communicated before processing the exchange.</p>"
           }
         },
         "policy_4xMVCB": {
@@ -129,7 +129,7 @@
           "type": "policy",
           "settings": {
             "title": "How to Request a Return or Exchange",
-            "text": "<p>To request a return or exchange, please contact our customer support team with:</p><ul><li>Your order number<br/></li><li>Customer name<br/></li><li>Product name<br/></li><li>Reason for return or exchange<br/></li><li>Required photographs, if applicable<br/></li></ul><p>Our support team will provide the next steps after reviewing your request.</p>"
+            "text": "<p>To request a return or exchange within the 15-day eligibility window, please contact our customer support team at <a href=\"mailto:returns@mokowears.com\">returns@mokowears.com</a> with:</p><ul><li>Your order number<br/></li><li>Customer name<br/></li><li>Product name<br/></li><li>Reason for return or exchange<br/></li><li>Required photographs, if applicable<br/></li></ul><p>Our support team will provide the next steps after reviewing your request.</p>"
           }
         }
       },
@@ -149,7 +149,7 @@
       "settings": {
         "subtitle": "OUR POLICIES",
         "title": "Return & Exchange",
-        "text": "At MOKO, we want you to be satisfied with your purchase. If you receive a product that is damaged, defective, incorrect, or does not meet the applicable return or exchange conditions, you may contact us for assistance.",
+        "text": "At MOKO, we want you to be satisfied with your purchase. If you receive a product that is damaged, defective, incorrect, or does not meet the applicable return or exchange conditions, you may contact us within 15 days of delivery for assistance.",
         "image": "shopify://shop_images/ChatGPT_Image_Sep_30_2026_06_14_24_PM.png",
         "padding_top": 60,
         "padding_bottom": 60

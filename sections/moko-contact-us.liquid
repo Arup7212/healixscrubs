@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <!-- Card 2: Email -->
+      <!-- Card 2: Email Support -->
       <div class="contact-info-card">
         <div class="contact-info-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -43,25 +43,27 @@
             <polyline points="22,6 12,13 2,6"/>
           </svg>
         </div>
-        <h3 class="contact-info-title">{{ section.settings.card2_title | default: "Email Support" }}</h3>
+        <h3 class="contact-info-title">{{ section.settings.card2_title | default: "Customer Support" }}</h3>
         <div class="contact-info-text">
-          <a href="mailto:{{ section.settings.email }}">{{ section.settings.email | default: "support@moko.ca" }}</a><br>
+          <a href="mailto:{{ section.settings.email | default: 'support@mokowears.com' }}">{{ section.settings.email | default: "support@mokowears.com" }}</a><br>
           <span>{{ section.settings.email_sub | default: "Fast response within 24 hours" }}</span>
         </div>
       </div>
 
-      <!-- Card 3: Location -->
+      <!-- Card 3: Bulk Orders -->
       <div class="contact-info-card">
         <div class="contact-info-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <h3 class="contact-info-title">{{ section.settings.card3_title | default: "Canada Headquarters" }}</h3>
+        <h3 class="contact-info-title">{{ section.settings.card3_title | default: "Bulk & Group Orders" }}</h3>
         <div class="contact-info-text">
-          <span>{{ section.settings.address | default: "100 King St W, Toronto, ON" }}</span><br>
-          <span>{{ section.settings.country | default: "Canada M5X 1A9" }}</span>
+          <a href="mailto:{{ section.settings.bulk_email | default: 'orders@mokowears.com' }}">{{ section.settings.bulk_email | default: "orders@mokowears.com" }}</a><br>
+          <span>{{ section.settings.bulk_email_sub | default: "Clinics, hospitals & corporate inquiries" }}</span>
         </div>
       </div>
 
@@ -75,14 +77,14 @@
         </div>
         <h3 class="contact-info-title">{{ section.settings.card4_title | default: "Operating Hours" }}</h3>
         <div class="contact-info-text">
-          <span>{{ section.settings.hours1 | default: "Mon - Fri: 9:00 AM - 6:00 PM" }}</span><br>
+          <span>{{ section.settings.hours1 | default: "Mon - Fri: 9:00 AM - 6:00 PM EST" }}</span><br>
           <span>{{ section.settings.hours2 | default: "Sat - Sun: Closed" }}</span>
         </div>
       </div>
 
     </div>
 
-    <!-- Main Two-Column Section: Contact Form + Canada Map -->
+    <!-- Main Two-Column Section: Contact Form + Map -->
     <div class="contact-main-grid">
       
       <!-- Left: Contact Form -->
@@ -112,13 +114,13 @@
             
             <div class="contact-form-group">
               <label for="ContactForm-email">Your Email *</label>
-              <input type="email" id="ContactForm-email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" placeholder="e.g. sarah@example.ca" required>
+              <input type="email" id="ContactForm-email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" placeholder="e.g. sarah@example.com" required>
             </div>
           </div>
 
           <div class="contact-form-group">
             <label for="ContactForm-phone">Phone Number</label>
-            <input type="tel" id="ContactForm-phone" name="contact[phone]" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="e.g. +1 (416) 555-0199">
+            <input type="tel" id="ContactForm-phone" name="contact[phone]" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="e.g. +1 (800) 555-0199">
           </div>
 
           <div class="contact-form-group">
@@ -135,42 +137,47 @@
         {% endform %}
       </div>
 
-      <!-- Right: Canada Interactive Map & Location Card -->
+      <!-- Right: Interactive Map -->
       <div class="contact-map-card">
-        
-        <div class="contact-map-header">
-          <div class="contact-map-header-title">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>{{ section.settings.map_title | default: "Headquarters Location" }}</span>
-          </div>
-
-        </div>
-
-        <!-- Embedded Interactive Canada Map (Google Maps Embed Toronto, Canada) -->
-        <div class="contact-map-embed-wrapper">
-          <iframe 
-            src="{{ section.settings.map_iframe_url | default: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57218635547!2d-79.51814275143389!3d43.71815566213797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca' }}" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Canada Headquarters Map">
-          </iframe>
-        </div>
-
-        <!-- Streamlined Location Card Under Map -->
-        <div class="contact-locations-list">
-          
-          <div class="contact-location-item">
-            <div class="contact-location-pin-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="contact-location-details">
-              <h4>{{ section.settings.map_address_title | default: "Toronto Headquarters" }}</h4>
-              <p>{{ section.settings.map_address_text | default: "100 King Street West, Suite 5600, Toronto, ON M5X 1A9, Canada" }}</p>
+        {% if section.settings.map_title != blank %}
+          <div class="contact-map-header">
+            <div class="contact-map-header-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>{{ section.settings.map_title }}</span>
             </div>
           </div>
+        {% endif %}
 
-        </div>
+        <!-- Embedded Interactive Map -->
+        {% if section.settings.map_iframe_url != blank %}
+          <div class="contact-map-embed-wrapper">
+            <iframe 
+              src="{{ section.settings.map_iframe_url }}" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Location Map">
+            </iframe>
+          </div>
+        {% endif %}
+
+        {% if section.settings.map_address_title != blank or section.settings.map_address_text != blank %}
+          <div class="contact-locations-list">
+            <div class="contact-location-item">
+              <div class="contact-location-pin-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-location-details">
+                {% if section.settings.map_address_title != blank %}
+                  <h4>{{ section.settings.map_address_title }}</h4>
+                {% endif %}
+                {% if section.settings.map_address_text != blank %}
+                  <p>{{ section.settings.map_address_text }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
 
       </div>
 
@@ -199,7 +206,7 @@
       "type": "textarea",
       "id": "text",
       "label": "Description Text",
-      "default": "Have questions about our medical scrubs, group orders, or sizing? Our Canadian customer care team is here to assist you."
+      "default": "Have questions about our medical scrubs, group orders, or sizing? Our customer care team is here to assist you."
     },
     {
       "type": "header",
@@ -227,13 +234,13 @@
       "type": "text",
       "id": "card2_title",
       "label": "Card 2 Title",
-      "default": "Email Support"
+      "default": "Customer Support"
     },
     {
       "type": "text",
       "id": "email",
-      "label": "Email Address",
-      "default": "support@moko.ca"
+      "label": "Customer Support Email",
+      "default": "support@mokowears.com"
     },
     {
       "type": "text",
@@ -245,19 +252,19 @@
       "type": "text",
       "id": "card3_title",
       "label": "Card 3 Title",
-      "default": "Canada Headquarters"
+      "default": "Bulk & Group Orders"
     },
     {
       "type": "text",
-      "id": "address",
-      "label": "Address Line 1",
-      "default": "100 King St W, Toronto, ON"
+      "id": "bulk_email",
+      "label": "Bulk Order Email",
+      "default": "orders@mokowears.com"
     },
     {
       "type": "text",
-      "id": "country",
-      "label": "Address Line 2",
-      "default": "Canada M5X 1A9"
+      "id": "bulk_email_sub",
+      "label": "Bulk Order Subtitle",
+      "default": "Clinics, hospitals & corporate inquiries"
     },
     {
       "type": "text",
@@ -297,19 +304,17 @@
       "type": "text",
       "id": "map_title",
       "label": "Map Header Title",
-      "default": "Headquarters Location"
+      "default": "Find Us"
     },
     {
       "type": "text",
       "id": "map_address_title",
-      "label": "Map Location Title",
-      "default": "Toronto Headquarters"
+      "label": "Map Location Title"
     },
     {
       "type": "textarea",
       "id": "map_address_text",
-      "label": "Map Location Address",
-      "default": "100 King Street West, Suite 5600, Toronto, ON M5X 1A9, Canada"
+      "label": "Map Location Address"
     },
     {
       "type": "text",

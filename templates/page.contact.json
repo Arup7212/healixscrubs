@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "moko_contact_us": {
@@ -5,8 +14,22 @@
       "settings": {
         "subtitle": "CONTACT US",
         "title": "We'd Love to Hear From You",
-        "text": "Have questions about our medical scrubs, group orders, or sizing? Our Canadian customer care team is here to assist you.",
-        "map_title": "Headquarters Location"
+        "text": "Have questions about our medical scrubs, group orders, or sizing? Our customer care team is here to assist you.",
+        "card1_title": "Call Us Toll-Free",
+        "phone": "+1 (800) 555-MOKO",
+        "phone_hours": "Mon - Fri: 9:00 AM - 5:00 PM EST",
+        "card2_title": "Customer Support",
+        "email": "support@mokowears.com",
+        "email_sub": "Fast response within 24 hours",
+        "card3_title": "Bulk & Group Orders",
+        "bulk_email": "orders@mokowears.com",
+        "bulk_email_sub": "Clinics, hospitals & corporate inquiries",
+        "card4_title": "Operating Hours",
+        "hours1": "Mon - Fri: 9:00 AM - 6:00 PM EST",
+        "hours2": "Sat - Sun: Closed",
+        "form_heading": "Send Us a Message",
+        "form_subheading": "Fill out the form below and our customer care team will get back to you promptly.",
+        "map_title": "Find Us"
       }
     }
   },
