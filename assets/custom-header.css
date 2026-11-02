@@ -2,7 +2,7 @@
    Layout: [Menu ☰] [Logo] ---spacer--- [Search] [Profile/Cart]
    Professional look: hamburger on far left, logo next to it, actions on right */
 
-/* ---- Header Styling — Matching Footer (#eef2f9 background, primary color text/icons) ---- */
+/* ---- Header Styling – Matching Footer (#eef2f9 background, primary color text/icons) ---- */
 .header-section,
 .header__row,
 #header-component,
@@ -53,6 +53,40 @@
   color: #ffffff !important;
 }
 
+/* ============================================================
+   FIX: Remove blank space at top of site
+   The sticky header uses top: -1px for IntersectionObserver.
+   Ensure no extra gap appears above the header-section.
+   ============================================================ */
+#header-group {
+  /* Prevent any collapse or gap above the sticky header */
+  position: relative;
+  z-index: var(--layer-menu-drawer, 100);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.header-section {
+  margin-top: 0 !important;
+}
+
+/* ============================================================
+   FIX: Desktop header — increase inner top & bottom padding
+   Default --header-padding is var(--padding-sm) = 0.7rem
+   We bump it to give comfortable breathing room inside header
+   ============================================================ */
+.header .header__columns {
+  --padding-block-start: 16px;
+  --padding-block-end: 16px;
+}
+
+
+
+/* ============================================================
+   FIX: Mobile header — restore top & bottom padding
+   The theme sets padding-block: 0 on the mobile drawer grid,
+   which removes all vertical space. We restore it here.
+   ============================================================ */
 @media screen and (max-width: 749px) {
 
   /* Override the mobile grid to: menu | logo | spacer | search | actions */
@@ -60,9 +94,12 @@
     grid-template-columns: auto auto 1fr auto auto !important;
     grid-template-areas: 'menu logo spacer search actions' !important;
     column-gap: 8px !important;
+    /* Restore the vertical padding the theme strips to 0 on mobile */
+    padding-block: 12px !important;
+    padding-inline: 16px !important;
   }
 
-  /* Hamburger menu — far left */
+  /* Hamburger menu – far left */
   .header__columns header-drawer {
     grid-area: menu !important;
   }
@@ -73,12 +110,12 @@
     justify-self: start;
   }
 
-  /* Search icon — right side, before cart */
+  /* Search icon – right side, before cart */
   .header__columns .search-action {
     grid-area: search !important;
   }
 
-  /* Profile + Cart icons — far right */
+  /* Profile + Cart icons – far right */
   .header__columns header-actions {
     grid-area: actions !important;
     display: flex !important;
@@ -87,11 +124,15 @@
 }
 
 @media screen and (max-width: 749px) {
+
   /* Same overrides for drawer menu style on mobile */
   #header-component[data-menu-style='drawer'] .header__columns {
     grid-template-columns: auto auto 1fr auto auto !important;
     grid-template-areas: 'menu logo spacer search actions' !important;
     column-gap: 8px !important;
+    /* Restore vertical breathing room stripped by the theme */
+    padding-block: 12px !important;
+    padding-inline: 16px !important;
   }
 
   #header-component[data-menu-style='drawer'] .header__columns header-drawer {
