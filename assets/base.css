@@ -2595,11 +2595,11 @@ button.quick-add__button,
 }
 
 .product-card .product-media-container {
-  aspect-ratio: 4/5 !important;
+  aspect-ratio: 1/1 !important;
 }
 
 .product-card .product-media-container img {
-  object-fit: contain !important;
+  object-fit: cover !important;
   height: 100% !important;
   width: 100% !important;
 }
