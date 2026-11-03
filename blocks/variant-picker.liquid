@@ -8,7 +8,7 @@
 -%}
 
 {% unless product_resource == blank %}
-  {% render 'variant-main-picker', product_resource: product_resource, section: section, product: product %}
+  {% render 'variant-main-picker', product_resource: product_resource, section: section, product: product, block: block %}
 {% endunless %}
 
 {% schema %}
@@ -184,6 +184,52 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Size Chart Drawer"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_size_chart",
+      "label": "Enable Size Chart",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "size_chart_button_text",
+      "label": "Button Label",
+      "default": "Size Chart"
+    },
+    {
+      "type": "text",
+      "id": "size_chart_title",
+      "label": "Drawer Title",
+      "default": "Size Guide"
+    },
+    {
+      "type": "text",
+      "id": "size_chart_note",
+      "label": "Standard Size Note",
+      "default": "MOKO size is same as standard size."
+    },
+    {
+      "type": "text",
+      "id": "size_chart_whatsapp_number",
+      "label": "WhatsApp Phone Number",
+      "default": "918101344391"
+    },
+    {
+      "type": "text",
+      "id": "size_chart_whatsapp_heading",
+      "label": "WhatsApp Section Heading",
+      "default": "Want help with sizing?"
+    },
+    {
+      "type": "text",
+      "id": "size_chart_whatsapp_subheading",
+      "label": "WhatsApp Section Subheading",
+      "default": "Talk to an Expert"
     }
   ],
   "presets": [

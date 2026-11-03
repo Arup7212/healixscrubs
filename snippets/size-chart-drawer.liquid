@@ -1,0 +1,633 @@
+{% doc %}
+  Renders the Size Chart Side Drawer component.
+  @param {object} [block_settings] - Block settings from variant picker.
+  @param {object} [product] - Product object.
+  @param {object} section - Section object.
+{% enddoc %}
+
+{% liquid
+  assign title = block_settings.size_chart_title | default: "Size Guide"
+  assign note_text = block_settings.size_chart_note | default: "MOKO size is same as standard size."
+  assign whatsapp_num = block_settings.size_chart_whatsapp_number | default: "918101344391"
+  assign whatsapp_num_clean = whatsapp_num | replace: '+', '' | replace: ' ', '' | replace: '-', ''
+  assign whatsapp_heading = block_settings.size_chart_whatsapp_heading | default: "Want help with sizing?"
+  assign whatsapp_subheading = block_settings.size_chart_whatsapp_subheading | default: "Talk to an Expert"
+  assign product_title = product.title | default: "Product"
+  assign whatsapp_message = "Hi! I need help with sizing for " | append: product_title
+%}
+
+<div class="size-chart-drawer-root" id="SizeChartRoot-{{ section.id }}">
+  <!-- Backdrop Overlay -->
+  <div class="size-chart-backdrop" id="SizeChartBackdrop-{{ section.id }}" data-size-chart-close tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Side Drawer Panel -->
+  <aside
+    class="size-chart-drawer"
+    id="SizeChartDrawer-{{ section.id }}"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="SizeChartTitle-{{ section.id }}"
+    aria-hidden="true"
+  >
+    <!-- Drawer Header -->
+    <div class="size-chart-drawer__header">
+      <div class="size-chart-drawer__header-left">
+        <h3 class="size-chart-drawer__title" id="SizeChartTitle-{{ section.id }}">{{ title }}</h3>
+      </div>
+      <button
+        type="button"
+        class="size-chart-drawer__close-btn"
+        data-size-chart-close
+        aria-label="Close size guide"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Body -->
+    <div class="size-chart-drawer__body">
+      <!-- MOKO Standard Size Note -->
+      <div class="size-chart-drawer__note">
+        <span class="size-chart-drawer__note-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </span>
+        <span class="size-chart-drawer__note-text">{{ note_text }}</span>
+      </div>
+
+      <!-- Unit Switcher -->
+      <div class="size-chart-drawer__unit-section">
+        <span class="size-chart-drawer__unit-label">Select Unit:</span>
+        <div class="size-chart-unit-switcher" role="radiogroup" aria-label="Measurement units">
+          <button
+            type="button"
+            class="size-chart-unit-btn is-active"
+            data-unit="in"
+            role="radio"
+            aria-checked="true"
+          >
+            IN
+          </button>
+          <button
+            type="button"
+            class="size-chart-unit-btn"
+            data-unit="cm"
+            role="radio"
+            aria-checked="false"
+          >
+            CM
+          </button>
+        </div>
+      </div>
+
+      <!-- Size Chart Table -->
+      <div class="size-chart-table-wrapper">
+        <table class="size-chart-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest</th>
+              <th>Waist</th>
+              <th>Hip</th>
+              <th>Shoulder</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="size-cell">S-38</td>
+              <td data-measurement data-in="38">38</td>
+              <td data-measurement data-in="36">36</td>
+              <td data-measurement data-in="40">40</td>
+              <td data-measurement data-in="17">17</td>
+            </tr>
+            <tr>
+              <td class="size-cell">M-40</td>
+              <td data-measurement data-in="40">40</td>
+              <td data-measurement data-in="38">38</td>
+              <td data-measurement data-in="42">42</td>
+              <td data-measurement data-in="17.5">17.5</td>
+            </tr>
+            <tr>
+              <td class="size-cell">L-42</td>
+              <td data-measurement data-in="42">42</td>
+              <td data-measurement data-in="40">40</td>
+              <td data-measurement data-in="44">44</td>
+              <td data-measurement data-in="18">18</td>
+            </tr>
+            <tr>
+              <td class="size-cell">XL-44</td>
+              <td data-measurement data-in="44">44</td>
+              <td data-measurement data-in="42">42</td>
+              <td data-measurement data-in="46">46</td>
+              <td data-measurement data-in="18.5">18.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- WhatsApp Assistance Card -->
+      <div class="size-chart-whatsapp-box">
+        <div class="size-chart-whatsapp-info">
+          <div class="size-chart-whatsapp-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.743.95 3.71 1.452 5.711 1.453h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.411"/>
+            </svg>
+          </div>
+          <div class="size-chart-whatsapp-text-group">
+            <span class="size-chart-whatsapp-heading">{{ whatsapp_heading }}</span>
+            <span class="size-chart-whatsapp-subheading">{{ whatsapp_subheading }}</span>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/{{ whatsapp_num_clean }}?text={{ whatsapp_message | url_encode }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="size-chart-whatsapp-action"
+          aria-label="Chat with sizing expert on WhatsApp"
+        >
+          <span>Chat on WhatsApp</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<style>
+  /* Size Chart Trigger Button */
+  .variant-option__legend--has-size-chart {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .variant-option__dropdown-header--has-size-chart {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+
+  .variant-option--has-size-chart {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .size-chart-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    padding: 2px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #173C2B;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-family: inherit;
+    line-height: 1.2;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .size-chart-trigger-btn:hover {
+    color: #0b2218;
+    opacity: 0.85;
+  }
+
+  .size-chart-trigger-btn .size-chart-icon {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Backdrop */
+  .size-chart-backdrop {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 2147483646;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+  }
+
+  .size-chart-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Drawer Container */
+  .size-chart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 2147483647;
+    box-shadow: -12px 0 35px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+    visibility: hidden;
+    pointer-events: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .size-chart-drawer.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Drawer Header */
+  .size-chart-drawer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .size-chart-drawer__title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.2px;
+  }
+
+  .size-chart-drawer__close-btn {
+    background: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0;
+  }
+
+  .size-chart-drawer__close-btn:hover {
+    background: #f3f4f6;
+    color: #111827;
+  }
+
+  /* Drawer Body */
+  .size-chart-drawer__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* MOKO standard size note */
+  .size-chart-drawer__note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 22px;
+    font-size: 13.5px;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .size-chart-drawer__note-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #173C2B;
+    flex-shrink: 0;
+  }
+
+  /* Unit Switcher Section */
+  .size-chart-drawer__unit-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .size-chart-drawer__unit-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .size-chart-unit-switcher {
+    display: inline-flex;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 20px;
+    gap: 2px;
+  }
+
+  .size-chart-unit-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 18px;
+    border-radius: 16px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .size-chart-unit-btn.is-active {
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Table Wrapper & Table */
+  .size-chart-table-wrapper {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .size-chart-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  .size-chart-table thead th {
+    background: #000000;
+    color: #ffffff;
+    padding: 13px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border: none;
+  }
+
+  .size-chart-table thead th:first-child {
+    text-align: left;
+    padding-left: 18px;
+  }
+
+  .size-chart-table tbody tr {
+    transition: background-color 0.15s ease;
+  }
+
+  .size-chart-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  .size-chart-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+
+  .size-chart-table tbody tr:hover {
+    background-color: #f1f5f9;
+  }
+
+  .size-chart-table tbody td {
+    padding: 13px 12px;
+    color: #374151;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .size-chart-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .size-chart-table tbody td.size-cell {
+    font-weight: 700;
+    color: #111827;
+    text-align: left;
+    padding-left: 18px;
+  }
+
+  /* WhatsApp Assistance Card */
+  .size-chart-whatsapp-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .size-chart-whatsapp-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .size-chart-whatsapp-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .size-chart-whatsapp-text-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .size-chart-whatsapp-heading {
+    font-size: 13px;
+    color: #166534;
+    font-weight: 500;
+  }
+
+  .size-chart-whatsapp-subheading {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #14532d;
+  }
+
+  .size-chart-whatsapp-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #25D366;
+    color: #ffffff;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .size-chart-whatsapp-action:hover {
+    background: #1ebc59;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 500px) {
+    .size-chart-drawer {
+      max-width: 100%;
+    }
+    .size-chart-drawer__body {
+      padding: 18px 16px;
+    }
+    .size-chart-table thead th,
+    .size-chart-table tbody td {
+      padding: 11px 8px;
+      font-size: 12.5px;
+    }
+    .size-chart-whatsapp-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .size-chart-whatsapp-action {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const rootId = "SizeChartRoot-{{ section.id }}";
+    const drawerId = "SizeChartDrawer-{{ section.id }}";
+    const backdropId = "SizeChartBackdrop-{{ section.id }}";
+
+    function initSizeChart() {
+      const root = document.getElementById(rootId);
+      const drawer = document.getElementById(drawerId);
+      const backdrop = document.getElementById(backdropId);
+
+      if (!drawer || !backdrop) return;
+
+      // Move root container to body so it escapes parent stacking context and overflow clipping
+      if (root && root.parentElement !== document.body) {
+        document.body.appendChild(root);
+      }
+
+      function openDrawer() {
+        backdrop.classList.add('is-open');
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus close button for accessibility
+        const closeBtn = drawer.querySelector('.size-chart-drawer__close-btn');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeDrawer() {
+        backdrop.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Delegate trigger button clicks (works even after dynamic section re-renders)
+      document.addEventListener('click', function(e) {
+        const trigger = e.target.closest('[data-size-chart-open]');
+        if (trigger) {
+          e.preventDefault();
+          openDrawer();
+        }
+
+        const closeBtn = e.target.closest('[data-size-chart-close]');
+        if (closeBtn) {
+          e.preventDefault();
+          closeDrawer();
+        }
+      });
+
+      // Escape key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+          closeDrawer();
+        }
+      });
+
+      // Unit Switcher logic (IN / CM)
+      const unitButtons = drawer.querySelectorAll('.size-chart-unit-btn');
+      const measurementCells = drawer.querySelectorAll('[data-measurement]');
+
+      unitButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const targetUnit = this.getAttribute('data-unit');
+          if (this.classList.contains('is-active')) return;
+
+          unitButtons.forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-checked', 'false');
+          });
+
+          this.classList.add('is-active');
+          this.setAttribute('aria-checked', 'true');
+
+          measurementCells.forEach(cell => {
+            const inValue = parseFloat(cell.getAttribute('data-in'));
+            if (!isNaN(inValue)) {
+              if (targetUnit === 'cm') {
+                // 1 inch = 2.54 cm, round to 1 decimal place cleanly
+                const cmValue = Math.round(inValue * 2.54 * 10) / 10;
+                cell.textContent = cmValue;
+              } else {
+                // Restore original inches
+                cell.textContent = inValue;
+              }
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSizeChart);
+    } else {
+      initSizeChart();
+    }
+  })();
+</script>
