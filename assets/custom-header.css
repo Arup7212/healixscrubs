@@ -55,19 +55,37 @@
 
 /* ============================================================
    FIX: Remove blank space at top of site
-   The sticky header uses top: -1px for IntersectionObserver.
    Ensure no extra gap appears above the header-section.
    ============================================================ */
+html,
+body,
+.page-wrapper {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+theme-drawer {
+  display: contents !important;
+}
+
 #header-group {
   /* Prevent any collapse or gap above the sticky header */
   position: relative;
   z-index: var(--layer-menu-drawer, 100);
   margin-top: 0 !important;
   padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .header-section {
   margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.header-section:has(> #header-component[sticky='always']),
+.header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
+  top: 0 !important;
 }
 
 /* ============================================================
