@@ -8,7 +8,7 @@
 {% liquid
   assign title = block_settings.size_chart_title | default: "Size Guide"
   assign note_text = block_settings.size_chart_note | default: "MOKO size is same as standard size."
-  assign whatsapp_num = block_settings.size_chart_whatsapp_number | default: "918101344391"
+  assign whatsapp_num = block_settings.size_chart_whatsapp_number 
   assign whatsapp_num_clean = whatsapp_num | replace: '+', '' | replace: ' ', '' | replace: '-', ''
   assign whatsapp_heading = block_settings.size_chart_whatsapp_heading | default: "Want help with sizing?"
   assign whatsapp_subheading = block_settings.size_chart_whatsapp_subheading | default: "Talk to an Expert"
