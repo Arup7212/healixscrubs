@@ -127,6 +127,7 @@
         },
         "menu_shop": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "menu": "main-menu",
             "heading": "Shop",
