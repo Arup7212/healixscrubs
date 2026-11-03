@@ -212,7 +212,14 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-end": 0,
+                "enable_size_chart": true,
+                "size_chart_button_text": "Size Chart",
+                "size_chart_title": "Size Guide",
+                "size_chart_note": "MOKO size is same as standard size.",
+                "size_chart_whatsapp_number": "",
+                "size_chart_whatsapp_heading": "",
+                "size_chart_whatsapp_subheading": ""
               },
               "blocks": {}
             },
@@ -224,8 +231,10 @@
                 "sender_email": "ayan.bluehorse@gmail.com",
                 "recipient_email": "amandal25526@gmail.com",
                 "heading": "Request an Estimate",
-                "subheading": "Submit your details and we will get back to you with custom pricing."
-              }
+                "subheading": "Submit your details and we will get back to you with custom pricing.",
+                "success_message": "Thank you! Your estimate request has been submitted successfully. We will review your request and get back to you shortly."
+              },
+              "blocks": {}
             },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
