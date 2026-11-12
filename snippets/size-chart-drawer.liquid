@@ -9,7 +9,7 @@
   assign title = block_settings.size_chart_title | default: "Size Guide"
   assign note_text = block_settings.size_chart_note | default: "MOKO size is same as standard size."
   assign whatsapp_num = block_settings.size_chart_whatsapp_number 
-  assign whatsapp_num_clean = whatsapp_num | replace: '+', '' | replace: ' ', '' | replace: '-', ''
+  assign whatsapp_num_clean = whatsapp_num | replace: '+', '' | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', '' | replace: '.', ''
   assign whatsapp_heading = block_settings.size_chart_whatsapp_heading | default: "Want help with sizing?"
   assign whatsapp_subheading = block_settings.size_chart_whatsapp_subheading | default: "Talk to an Expert"
   assign product_title = product.title | default: "Product"
@@ -146,6 +146,8 @@
         </div>
         <a
           href="https://wa.me/{{ whatsapp_num_clean }}?text={{ whatsapp_message | url_encode }}"
+          data-whatsapp-phone="{{ whatsapp_num_clean }}"
+          data-whatsapp-text="{{ whatsapp_message | url_encode }}"
           target="_blank"
           rel="noopener noreferrer"
           class="size-chart-whatsapp-action"
@@ -589,6 +591,23 @@
           closeDrawer();
         }
       });
+
+      // Open WhatsApp directly to avoid Shopify preview external-link interstitial
+      const whatsappBtn = drawer.querySelector('.size-chart-whatsapp-action');
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function(e) {
+          const phone = this.getAttribute('data-whatsapp-phone');
+          if (!phone) return;
+
+          e.preventDefault();
+          const text = this.getAttribute('data-whatsapp-text') || '';
+          const waUrl = 'https://wa.me/' + phone + (text ? '?text=' + text : '');
+          const newWindow = window.open(waUrl, '_blank', 'noopener,noreferrer');
+          if (!newWindow) {
+            window.location.href = waUrl;
+          }
+        });
+      }
 
       // Unit Switcher logic (IN / CM)
       const unitButtons = drawer.querySelectorAll('.size-chart-unit-btn');
