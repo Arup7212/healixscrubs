@@ -93,10 +93,10 @@ theme-drawer {
    Default --header-padding is var(--padding-sm) = 0.7rem
    We bump it to give comfortable breathing room inside header
    ============================================================ */
-.header .header__columns {
+/* .header .header__columns {
   --padding-block-start: 16px;
   --padding-block-end: 16px;
-}
+} */
 
 
 
