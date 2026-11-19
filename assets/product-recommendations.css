@@ -1,12 +1,12 @@
 .recommendations-product {
-  padding-top: 40px;
+  /* padding-top: 40px; */
   padding-bottom: 40px;
   gap: 0px;
 }
 
 @media(min-width:768px) {
   .recommendations-product {
-    padding-top: 60px;
+    /* padding-top: 60px; */
     padding-bottom: 60px;
   }
 }
