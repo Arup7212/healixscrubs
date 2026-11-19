@@ -150,7 +150,7 @@ theme-drawer {
     column-gap: 8px !important;
     /* Restore vertical breathing room stripped by the theme */
     padding-block: 12px !important;
-    padding-inline: 16px !important;
+    /* padding-inline: 16px !important; */
   }
 
   #header-component[data-menu-style='drawer'] .header__columns header-drawer {
