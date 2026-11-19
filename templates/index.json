@@ -778,6 +778,7 @@
     },
     "divider_iCBxeM": {
       "type": "divider",
+      "disabled": true,
       "name": "t:names.divider_section",
       "settings": {
         "background_color": "",
