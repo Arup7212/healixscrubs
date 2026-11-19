@@ -25,11 +25,15 @@
         "bulk_email": "orders@mokowears.com",
         "bulk_email_sub": "Clinics, hospitals & corporate inquiries",
         "card4_title": "Operating Hours",
-        "hours1": "Mon - Fri: 9:00 AM - 6:00 PM EST",
-        "hours2": "Sat - Sun: Closed",
+        "hours1": "Monday – Friday: 9 AM – 5 PM ET",
+        "hours2": "Saturday: 10 AM – 2 PM ET",
+        "hours3": "Sunday: Closed",
         "form_heading": "Send Us a Message",
         "form_subheading": "Fill out the form below and our customer care team will get back to you promptly.",
-        "map_title": "Find Us"
+        "map_title": "Find Us",
+        "map_address_title": "United States Office",
+        "map_address_text": "123 Example Avenue, Suite 200, New York, NY 10001, United States",
+        "map_iframe_url": "https://www.google.com/maps?q=New+York,+NY&output=embed"
       }
     }
   },

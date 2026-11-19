@@ -44,4 +44,12 @@
     | image_url: width: 800
     | image_tag: loading: 'lazy', class: class, sizes: image_sizes
   }}
+{% elsif link.type == 'product_link' %}
+  {% if link.object.featured_image %}
+    {{
+      link.object.featured_image
+      | image_url: width: 800
+      | image_tag: loading: 'lazy', class: class, sizes: image_sizes
+    }}
+  {% endif %}
 {% endif %}

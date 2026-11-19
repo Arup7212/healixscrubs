@@ -77,8 +77,11 @@
         </div>
         <h3 class="contact-info-title">{{ section.settings.card4_title | default: "Operating Hours" }}</h3>
         <div class="contact-info-text">
-          <span>{{ section.settings.hours1 | default: "Mon - Fri: 9:00 AM - 6:00 PM EST" }}</span><br>
-          <span>{{ section.settings.hours2 | default: "Sat - Sun: Closed" }}</span>
+          <span>{{ section.settings.hours1 | default: "Monday – Friday: 9 AM – 5 PM ET" }}</span><br>
+          <span>{{ section.settings.hours2 | default: "Saturday: 10 AM – 2 PM ET" }}</span>
+          {% if section.settings.hours3 != blank %}
+            <br><span>{{ section.settings.hours3 }}</span>
+          {% endif %}
         </div>
       </div>
 
@@ -276,13 +279,19 @@
       "type": "text",
       "id": "hours1",
       "label": "Hours Line 1",
-      "default": "Mon - Fri: 9:00 AM - 6:00 PM EST"
+      "default": "Monday – Friday: 9 AM – 5 PM ET"
     },
     {
       "type": "text",
       "id": "hours2",
       "label": "Hours Line 2",
-      "default": "Sat - Sun: Closed"
+      "default": "Saturday: 10 AM – 2 PM ET"
+    },
+    {
+      "type": "text",
+      "id": "hours3",
+      "label": "Hours Line 3",
+      "default": "Sunday: Closed"
     },
     {
       "type": "header",
@@ -309,18 +318,20 @@
     {
       "type": "text",
       "id": "map_address_title",
-      "label": "Map Location Title"
+      "label": "Map Location Title",
+      "default": "United States Office"
     },
     {
       "type": "textarea",
       "id": "map_address_text",
-      "label": "Map Location Address"
+      "label": "Map Location Address",
+      "default": "123 Example Avenue, Suite 200, New York, NY 10001, United States"
     },
     {
       "type": "text",
       "id": "map_iframe_url",
       "label": "Google Maps Embed Iframe URL",
-      "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57218635547!2d-79.51814275143389!3d43.71815566213797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+      "default": "https://www.google.com/maps?q=New+York,+NY&output=embed"
     }
   ],
   "presets": [
