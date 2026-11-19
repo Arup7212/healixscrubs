@@ -114,7 +114,7 @@ theme-drawer {
     column-gap: 8px !important;
     /* Restore the vertical padding the theme strips to 0 on mobile */
     padding-block: 12px !important;
-    padding-inline: 16px !important;
+    /* padding-inline: 16px !important; */
   }
 
   /* Hamburger menu – far left */
