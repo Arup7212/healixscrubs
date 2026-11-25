@@ -18,7 +18,7 @@
   fetchpriority="low"
 ></script>
 
-{% capture cart_icon %}
+{% comment %} {% capture cart_icon %}
   <cart-icon
     class="header-actions__cart-icon{% if display_style == 'text' %} header-actions__cart-icon--text{% endif %}{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}"
     data-testid="cart-icon"
@@ -36,7 +36,7 @@
 
     {% render 'cart-bubble', limit: 100 %}
   </cart-icon>
-{% endcapture %}
+{% endcapture %} {% endcomment %}
 
 {% capture account_icon %}
   <svg
