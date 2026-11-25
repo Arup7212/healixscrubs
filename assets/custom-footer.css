@@ -10,7 +10,7 @@
 .custom-footer-section img[class*="logo"],
 .custom-footer-section .logo-block__image {
   filter: none !important;
-  max-width: 280px !important;
+  max-width: 212px !important;
   width: auto !important;
   max-height: 75px !important;
   object-fit: contain !important;
