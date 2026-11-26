@@ -220,3 +220,75 @@
     margin-block-start: 16px !important;
     margin-block-end: 18px !important;
   }
+
+  /* Product Description Headings (reduce size relative to main product title) */
+  .product-details .text-block.rte h1,
+  .product-details .rte h1,
+  .product-details .product-info-tabs__content h1 {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-block: 16px 8px !important;
+  }
+
+  .product-details .text-block.rte h2,
+  .product-details .rte h2,
+  .product-details .product-info-tabs__content h2 {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    margin-block: 14px 8px !important;
+  }
+
+  .product-details .text-block.rte h3,
+  .product-details .rte h3,
+  .product-details .product-info-tabs__content h3 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    margin-block: 12px 6px !important;
+  }
+
+  .product-details .text-block.rte h4,
+  .product-details .rte h4,
+  .product-details .product-info-tabs__content h4 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-block: 10px 6px !important;
+  }
+
+  .product-details .text-block.rte :is(h5, h6),
+  .product-details .rte :is(h5, h6),
+  .product-details .product-info-tabs__content :is(h5, h6) {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-block: 8px 4px !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    .product-details .text-block.rte h1,
+    .product-details .rte h1,
+    .product-details .product-info-tabs__content h1 {
+      font-size: 26px !important;
+    }
+
+    .product-details .text-block.rte h2,
+    .product-details .rte h2,
+    .product-details .product-info-tabs__content h2 {
+      font-size: 24px !important;
+    }
+
+    .product-details .text-block.rte h3,
+    .product-details .rte h3,
+    .product-details .product-info-tabs__content h3 {
+      font-size: 20px !important;
+    }
+
+    .product-details .text-block.rte h4,
+    .product-details .rte h4,
+    .product-details .product-info-tabs__content h4 {
+      font-size: 18px !important;
+    }
+  }
